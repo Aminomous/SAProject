@@ -37,7 +37,7 @@ public abstract class DatabaseDataService<T> implements IDataService<T> {
             boolean[] tableExist = new boolean[createTableQueries.size()];
             while (rs.next()) {
                 int i = 0;
-                for (String query: createTableQueries) {
+                for (String query : createTableQueries) {
                     String tableName = query.split(" ")[2];
                     if (tableName.equals(rs.getString(3).toLowerCase())) tableExist[i] = true;
                     i++;

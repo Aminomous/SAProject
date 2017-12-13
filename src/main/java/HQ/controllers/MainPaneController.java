@@ -1,39 +1,32 @@
 package HQ.controllers;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Menu;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
 
 public class MainPaneController {
 
     private MainController mainCtrl;
-    private FlowPane mainPane;
+    private GridPane mainPane;
     @FXML
-    private Menu loginStatus;
+    private BorderPane leftPane;
     @FXML
-    private FlowPane leftPane, rightPane, rootPane;
-    @FXML
-    private AnchorPane reportPane;
-    @FXML
-    private GridPane mainPaneInner;
+    private FlowPane rightPane;
 
-    public void exitProgram() {
-        System.exit(0);
+    public void initialize() {
+
     }
 
-    public FlowPane getMainPane() {
+    public GridPane getMainPane() {
         return mainPane;
     }
 
-    public void setMainPane(FlowPane mainPane) {
+    public void setMainPane(GridPane mainPane) {
         this.mainPane = mainPane;
     }
 
-    public FlowPane getLeftPane() {
+    public BorderPane getLeftPane() {
         return leftPane;
     }
 
@@ -41,15 +34,7 @@ public class MainPaneController {
         return rightPane;
     }
 
-    public Menu getLoginStatus() {
-        return loginStatus;
-    }
-
     public void setMainCtrl(MainController mainCtrl) {
         this.mainCtrl = mainCtrl;
-    }
-
-    public GridPane getMainPaneInner() {
-        return mainPaneInner;
     }
 }
