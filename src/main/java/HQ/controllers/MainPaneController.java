@@ -15,7 +15,6 @@ public class MainPaneController {
     private FlowPane rightPane;
 
     public void initialize() {
-
     }
 
     public GridPane getMainPane() {
