@@ -9,14 +9,16 @@ public class Education {
     private String major;
     private Calendar studyFrom;
     private Calendar studyTo;
+    private double GPA;
 
-    public Education(String level, String instituteName, String degreeOrCertificate, String major, Calendar studyFrom, Calendar studyTo) {
+    public Education(String level, String instituteName, String degreeOrCertificate, String major, Calendar studyFrom, Calendar studyTo, double gpa) {
         this.level = level;
         this.instituteName = instituteName;
         this.degreeOrCertificate = degreeOrCertificate;
         this.major = major;
         this.studyFrom = studyFrom;
         this.studyTo = studyTo;
+        GPA = gpa;
     }
 
     public String getLevel() {
@@ -41,5 +43,9 @@ public class Education {
 
     public Calendar getStudyTo() {
         return studyTo;
+    }
+
+    public double getGPA() {
+        return GPA;
     }
 }

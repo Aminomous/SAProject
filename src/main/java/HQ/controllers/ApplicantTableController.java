@@ -6,8 +6,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.FlowPane;
 
-import javax.swing.text.TableView;
-
 public class ApplicantTableController {
     private MainController mainCtrl;
     private FlowPane mainPane;
@@ -35,7 +33,7 @@ public class ApplicantTableController {
         this.mainCtrl = mainCtrl;
     }
 
-    class ApplicantData{
+    class ApplicantData {
         private SimpleStringProperty id;
         private SimpleStringProperty firstName;
         private SimpleStringProperty lastName;
