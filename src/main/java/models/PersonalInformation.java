@@ -45,7 +45,14 @@ public class PersonalInformation {
     private boolean q5;
     private ArrayList<Q6> q6;
 
-    public PersonalInformation(String id, String titleTH, String fNameTH, String lNameTH, String fNameEN, String lNameEN, String address, String email, String phoneNumber, Calendar dateOfBirth, String placeOfBirth, double weight, double heigth, String nationality, String race, String religion, String profNo, String militaryStatus, String maritalStatus, String emergencyContact, int toeicScore, int toeicYear, int toeflScore, int toeflYear, int word, int excel, int powerpoint, boolean driveCar, boolean ownCar, String driveLicenseCar, boolean rideMotocycle, boolean ownMotocycle, boolean driveLicenseMotocycle, String hobby, boolean q1, boolean q2, boolean q3, boolean q4, boolean q5, ArrayList<Q6> q6) {
+    public PersonalInformation(String id, String titleTH, String fNameTH, String lNameTH, String fNameEN, String lNameEN,
+                               String address, String email, String phoneNumber, Calendar dateOfBirth, String placeOfBirth,
+                               double weight, double heigth, String nationality, String race, String religion, String profNo,
+                               String militaryStatus, String maritalStatus, String emergencyContact, int toeicScore, int toeicYear, int toeflScore,
+                               int toeflYear, int word, int excel, int powerpoint, boolean driveCar, boolean ownCar,
+                               String driveLicenseCar, boolean rideMotocycle, boolean ownMotocycle,
+                               boolean driveLicenseMotocycle, String hobby,
+                               boolean q1, boolean q2, boolean q3, boolean q4, boolean q5, ArrayList<Q6> q6) {
         ID = id;
         this.titleTH = titleTH;
         this.fNameTH = fNameTH;

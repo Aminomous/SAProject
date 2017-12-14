@@ -9,14 +9,15 @@ public class Application {
     private String position1;
     private String position2;
     private boolean workInShift;
+    private String workerType;
     private double salary;
-    private Calendar startintDate;
+    private Calendar startingDate;
     private ArrayList<QH1> qh1;
     private String QH2;
     private String QH3;
-    private String relaticeWorkInHospital;
+    private String relativeWorkInHospital;
     private String additionalInformation;
-    private Apprenticeship apprenticeship;
+    private ArrayList<Apprenticeship> apprenticeship;
     private ArrayList<Education> education;
     private Employee employee;
     private ArrayList<EmploymentRecord> employmentRecords;
@@ -31,18 +32,18 @@ public class Application {
     private boolean applicationStatus4;
     private boolean applicationStatus5;
 
-    public Application(int refnum, Calendar date, String position1, String position2, boolean workInShift, double salary, Calendar startintDate, ArrayList<QH1> qh1, String qh2, String qh3, String relaticeWorkInHospital, String additionalInformation, Apprenticeship apprenticeship, ArrayList<Education> education, Employee employee, ArrayList<EmploymentRecord> employmentRecords, ArrayList<FamilyDetail> familyDetails, ArrayList<Hospital> hospitals, ArrayList<LanguageAbility> languageAbilities, PersonalInformation personalInformation, ArrayList<ReferencePerson> referencePeople, boolean applicationStatus1, boolean applicationStatus2, boolean applicationStatus3, boolean applicationStatus4, boolean applicationStatus5) {
+    public Application(int refnum, Calendar date, String position1, String position2, boolean workInShift, String workerType, double salary, Calendar startingDate, ArrayList<QH1> qh1, String qh2, String qh3, String relativeWorkInHospital, String additionalInformation, ArrayList<Apprenticeship> apprenticeship, ArrayList<Education> education, Employee employee, ArrayList<EmploymentRecord> employmentRecords, ArrayList<FamilyDetail> familyDetails, ArrayList<Hospital> hospitals, ArrayList<LanguageAbility> languageAbilities, PersonalInformation personalInformation, ArrayList<ReferencePerson> referencePeople, boolean applicationStatus1, boolean applicationStatus2, boolean applicationStatus3, boolean applicationStatus4, boolean applicationStatus5) {
         this.refnum = refnum;
         this.date = date;
         this.position1 = position1;
         this.position2 = position2;
         this.workInShift = workInShift;
         this.salary = salary;
-        this.startintDate = startintDate;
+        this.startingDate = startingDate;
         this.qh1 = qh1;
         QH2 = qh2;
         QH3 = qh3;
-        this.relaticeWorkInHospital = relaticeWorkInHospital;
+        this.relativeWorkInHospital = relativeWorkInHospital;
         this.additionalInformation = additionalInformation;
         this.apprenticeship = apprenticeship;
         this.education = education;
@@ -53,6 +54,7 @@ public class Application {
         this.languageAbilities = languageAbilities;
         this.personalInformation = personalInformation;
         this.referencePeople = referencePeople;
+        this.workerType = workerType;
         this.applicationStatus1 = false;
         this.applicationStatus2 = false;
         this.applicationStatus3 = false;
@@ -85,7 +87,7 @@ public class Application {
     }
 
     public Calendar getStartintDate() {
-        return startintDate;
+        return startingDate;
     }
 
     public ArrayList<QH1> getQh1() {
@@ -101,14 +103,14 @@ public class Application {
     }
 
     public String getRelaticeWorkInHospital() {
-        return relaticeWorkInHospital;
+        return relativeWorkInHospital;
     }
 
     public String getAdditionalInformation() {
         return additionalInformation;
     }
 
-    public Apprenticeship getApprenticeship() {
+    public ArrayList<Apprenticeship> getApprenticeship() {
         return apprenticeship;
     }
 
@@ -182,5 +184,9 @@ public class Application {
 
     public void setApplicationStatus5(boolean applicationStatus5) {
         this.applicationStatus5 = applicationStatus5;
+    }
+
+    public String getWorkerType() {
+        return workerType;
     }
 }

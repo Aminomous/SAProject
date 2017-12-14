@@ -6,14 +6,16 @@ public class FamilyDetail {
     private String lastName;
     private int age;
     private String occupation;
+    private String address;
     private String phoneNumber;
 
-    public FamilyDetail(String status, String firstName, String lastName, int age, String occupation, String phoneNumber) {
+    public FamilyDetail(String status, String firstName, String lastName, int age, String occupation, String address, String phoneNumber) {
         this.status = status;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.occupation = occupation;
+        this.address = address;
         this.phoneNumber = phoneNumber;
     }
 
@@ -39,5 +41,9 @@ public class FamilyDetail {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public String getAddress() {
+        return address;
     }
 }
