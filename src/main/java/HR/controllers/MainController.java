@@ -6,6 +6,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import services.DatabaseApplicationService;
+import services.SQLiteConnector;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -18,9 +20,12 @@ public class MainController {
     private ApplicantTableController applicantTableCtrl;
     private ApplicantFilterController applicantFilterCtrl;
     private ApplicantInfoController applicantInfoCtrl;
+    private DatabaseApplicationService applicationService;
 
     public MainController(Stage stage) throws IOException, SQLException {
         this.stage = stage;
+        //this.applicationService = new DatabaseApplicationService("//127.0.0.1:3306/saapplicationmanager", new MySQLConnector());
+        this.applicationService = new DatabaseApplicationService("saDB.db", new SQLiteConnector());
         this.loadPane();
 
     }
