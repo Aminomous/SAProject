@@ -12,13 +12,13 @@ public class ApplicantTableController {
     private MainController mainCtrl;
     private FlowPane mainPane;
     @FXML
-    private TableColumn idColumn, firstnameColumn, lastnameColumn, positionColoumn, statusColumn;
+    private TableColumn IDColumn, firstnameColumn, lastnameColumn, positionColumn, statusColumn;
 
     public void initialize() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("id"));
+        IDColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("id"));
         firstnameColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("firstName"));
         lastnameColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("lastName"));
-        positionColoumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("position"));
+        positionColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("position"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("status"));
 
     }
