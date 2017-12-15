@@ -36,7 +36,7 @@ public class MainController {
 
         loadPane();
         loadData();
-        applicantTableCtrl.showData();
+//        applicantTableCtrl.showData();
     }
 
     public void start() {
@@ -46,6 +46,9 @@ public class MainController {
         this.stage.setTitle(this.title);
         this.stage.setScene(new Scene(mainPane));
         this.stage.show();
+
+        this.applicantTableCtrl.setApplications(applications);
+        applicantTableCtrl.showData();
 
     }
 
@@ -91,6 +94,10 @@ public class MainController {
                 break;
             }
         }
+    }
+
+    public void refreshTable(){
+        applicantTableCtrl.refreshTable();
     }
 
 

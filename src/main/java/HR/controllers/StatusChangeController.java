@@ -31,7 +31,7 @@ public class StatusChangeController {
 
     }
     @FXML void cancel(){
-
+        this.status1.getScene().getWindow().hide();
     }
     public FlowPane getMainPane() {
         return mainPane;
