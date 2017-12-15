@@ -41,6 +41,11 @@
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="345.0" text="เคยประสบอุบัติเหตุร้ายแรงหรือไม่" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="345.0" text="ใน 5 ปีที่ผ่านมา ท่านเคยเจ็บป่วยร้ายแรงหรือไม่" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="345.0" text="มีโรคประจำตัวหรือไม่" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+            <Label text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+            <Label text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Label text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Label text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+            <Label text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
          </children>
       </GridPane>
       <Label alignment="CENTER" prefHeight="17.0" prefWidth="345.0" text="โรคประจำตัวที่ระบุ (ถ้ามี)" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
