@@ -1,16 +1,27 @@
 package HQ.controllers;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.FlowPane;
+import models.Application;
+import models.PersonalInformation;
+
+import java.util.ArrayList;
 
 public class ApplicantTableController {
     private MainController mainCtrl;
     private FlowPane mainPane;
     @FXML
+    private TableView<ApplicantData> applicantTable;
+    @FXML
     private TableColumn IDColumn, firstnameColumn, lastnameColumn, positionColumn, statusColumn;
+
+    private ArrayList<Application> applications;
 
     public void initialize() {
         IDColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("id"));
@@ -19,6 +30,16 @@ public class ApplicantTableController {
         positionColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("position"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("status"));
 
+    }
+
+    public void showData(){
+        applications = mainCtrl.getApplications();
+        ObservableList temp = FXCollections.observableArrayList();
+        for (Application app:applications){
+            PersonalInformation tempInformation = app.getPersonalInformation();
+            temp.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
+        }
+        applicantTable.setItems(temp);
     }
 
     public FlowPane getMainPane() {
@@ -33,19 +54,20 @@ public class ApplicantTableController {
         this.mainCtrl = mainCtrl;
     }
 
-    class ApplicantData {
+    public class ApplicantData {
         private SimpleStringProperty id;
         private SimpleStringProperty firstName;
         private SimpleStringProperty lastName;
         private SimpleStringProperty position;
         private SimpleStringProperty status;
 
-        ApplicantData(String id, String firstName, String lastName, String position, String status) {
+        ApplicantData(String id, String firstName, String lastName, String position, int status) {
             this.id = new SimpleStringProperty(id);
             this.firstName = new SimpleStringProperty(firstName);
             this.lastName = new SimpleStringProperty(lastName);
             this.position = new SimpleStringProperty(position + "");
-            this.status = new SimpleStringProperty(status);
+            this.status = new SimpleStringProperty("pass " + status);
+
         }
 
         public String getId() {

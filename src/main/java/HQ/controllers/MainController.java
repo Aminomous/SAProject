@@ -6,11 +6,13 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import models.Application;
 import services.DatabaseApplicationService;
 import services.SQLiteConnector;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class MainController {
 
@@ -22,17 +24,19 @@ public class MainController {
     private ApplicantInfoController applicantInfoCtrl;
     private ApplicantTableController applicantTableCtrl;
 
-
     private DatabaseApplicationService applicationService;
+
+    private ArrayList<Application> applications;
 
     public MainController(Stage stage) throws IOException, SQLException {
         this.stage = stage;
 //        this.applicationService = new DatabaseApplicationService("//127.0.0.1:3306/saapplicationmanager", new MySQLConnector());
 
         this.applicationService = new DatabaseApplicationService("saDB.db", new SQLiteConnector());
-        applicationService.getAll();
 
         loadPane();
+        loadData();
+        applicantTableCtrl.showData();
     }
 
     public void start() {
@@ -42,6 +46,11 @@ public class MainController {
         this.stage.setTitle(this.title);
         this.stage.setScene(new Scene(mainPane));
         this.stage.show();
+
+    }
+
+    private void loadData() {
+        applications = applicationService.getAll();
     }
 
     private void loadPane() throws IOException {
@@ -75,8 +84,11 @@ public class MainController {
     }
 
 
-    public DatabaseApplicationService getProductService() {
+    public DatabaseApplicationService getApplicationService() {
         return applicationService;
     }
 
+    public ArrayList<Application> getApplications() {
+        return applications;
+    }
 }

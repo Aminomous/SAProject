@@ -189,4 +189,19 @@ public class Application {
     public String getWorkerType() {
         return workerType;
     }
+
+    public int getLatestStatus() {
+        if (isApplicationStatus5()) {
+            return 5;
+        } else if (isApplicationStatus4()) {
+            return 4;
+        } else if (isApplicationStatus3()) {
+            return 3;
+        } else if (isApplicationStatus2()) {
+            return 2;
+        } else if (isApplicationStatus1()) {
+            return 1;
+        }
+        return 0;
+    }
 }
