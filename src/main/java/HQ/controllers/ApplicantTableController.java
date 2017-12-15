@@ -34,21 +34,27 @@ public class ApplicantTableController {
         positionColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("position"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("status"));
 
+        tableViewData = FXCollections.observableArrayList();
+
         applicantTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ApplicantData>() {
             public void changed(ObservableValue<? extends ApplicantData> observable, ApplicantData oldValue, ApplicantData newValue) {
-                System.out.println(observable.getValue());
-                mainCtrl.showApplicantInfo(observable.getValue().getId());
+                if (newValue == null){ newValue = oldValue ; }
+
+                mainCtrl.showApplicantInfo(newValue.getId());
             }
         });
 
-        tableViewData = FXCollections.observableArrayList();
+
 
 
     }
 
     public void showData() {
-        tableViewData.clear();
+
         applicantTable.getItems().removeAll();
+        tableViewData.clear();
+        tableViewData = FXCollections.observableArrayList();
+
         for (Application app : applications) {
             PersonalInformation tempInformation = app.getPersonalInformation();
             tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));

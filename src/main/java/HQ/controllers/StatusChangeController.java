@@ -14,11 +14,11 @@ public class StatusChangeController {
     private CheckBox status1, status2, status3, status4, status5;
 
     public void initialize() {
-        status1.setDisable(true);
-        status2.setDisable(true);
-        status3.setDisable(true);
-        status4.setDisable(true);
-        status5.setDisable(true);
+//        status1.setDisable(true);
+//        status2.setDisable(true);
+//        status3.setDisable(true);
+//        status4.setDisable(true);
+//        status5.setDisable(true);
     }
 
     public void start(){
