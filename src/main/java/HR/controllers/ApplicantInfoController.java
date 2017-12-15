@@ -10,6 +10,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import models.Application;
 
 import java.io.IOException;
 import java.util.GregorianCalendar;
@@ -17,15 +18,32 @@ import java.util.GregorianCalendar;
 public class ApplicantInfoController {
     private MainController mainCtrl;
     private FlowPane mainPane;
+    private Application application;
     @FXML
     private Button moreInfoButton, uploadInfoButton, changeStatusButton;
 
-    public void initialize(){
+    @FXML
+    private void initialize(){
 
     }
+    @FXML
     public void moreInfo(){
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/HR/application.fxml"));
+        stage.initOwner(mainPane.getScene().getWindow());
+        stage.initModality(Modality.APPLICATION_MODAL);
+        try {
+            stage.setScene(new Scene((Parent) loader.load()));
+            ApplicationController applicationCtrl = loader.getController();
+            applicationCtrl.setApplication(this.application);
+            applicationCtrl.showRef();
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
+    @FXML
     public void uploadInfo(){
 
     }
@@ -37,6 +55,7 @@ public class ApplicantInfoController {
         try {
             stage.setScene(new Scene((Parent) loader.load()));
             StatusChangeController statusChangeCtrl = loader.getController();
+            statusChangeCtrl.setApplication(this.application);
             stage.showAndWait();
 
 
@@ -44,6 +63,17 @@ public class ApplicantInfoController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    public void showData(Application app){
+        application = app;
+    }
+
+    public void setApplication(Application application) {
+        this.application = application;
+    }
+
+    public Application getApplication() {
+        return application;
     }
 
     public FlowPane getMainPane() {

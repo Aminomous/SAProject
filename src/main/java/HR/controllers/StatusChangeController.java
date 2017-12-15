@@ -99,6 +99,15 @@ public class StatusChangeController {
     public void cancel() {
         this.status1.getScene().getWindow().hide();
     }
+
+    public Application getApplication() {
+        return application;
+    }
+
+    public void setApplication(Application application) {
+        this.application = application;
+    }
+
     public FlowPane getMainPane() {
         return mainPane;
     }

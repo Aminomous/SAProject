@@ -39,8 +39,8 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="moreInfoButton" mnemonicParsing="false" text="ดูข้อมูลเพิ่มเติม" GridPane.halignment="CENTER" />
-                  <Button fx:id="uploadInfoButton" mnemonicParsing="false" text="uploadข้อมูล" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Button fx:id="moreInfoButton" mnemonicParsing="false" onAction="#moreInfo" text="ดูข้อมูลเพิ่มเติม" GridPane.halignment="CENTER" />
+                  <Button fx:id="uploadInfoButton" mnemonicParsing="false" onAction="#uploadInfo" text="upload ข้อมูล" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
