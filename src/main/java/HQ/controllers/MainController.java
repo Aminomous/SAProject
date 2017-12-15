@@ -83,6 +83,16 @@ public class MainController {
 //        this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
     }
 
+    public void showApplicantInfo(String id){
+        this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
+        for (Application app: applications){
+            if (app.getPersonalInformation().getID().equals(id)){
+                applicantInfoCtrl.showData(app);
+                break;
+            }
+        }
+    }
+
 
     public DatabaseApplicationService getApplicationService() {
         return applicationService;

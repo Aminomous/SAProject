@@ -1,10 +1,13 @@
 package HQ.controllers;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.FlowPane;
@@ -30,12 +33,19 @@ public class ApplicantTableController {
         positionColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("position"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("status"));
 
+        applicantTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ApplicantData>() {
+            public void changed(ObservableValue<? extends ApplicantData> observable, ApplicantData oldValue, ApplicantData newValue) {
+                System.out.println(observable.getValue());
+                mainCtrl.showApplicantInfo(observable.getValue().getId());
+            }
+        });
+
     }
 
-    public void showData(){
+    public void showData() {
         applications = mainCtrl.getApplications();
         ObservableList temp = FXCollections.observableArrayList();
-        for (Application app:applications){
+        for (Application app : applications) {
             PersonalInformation tempInformation = app.getPersonalInformation();
             temp.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
         }
@@ -116,6 +126,11 @@ public class ApplicantTableController {
 
         public void setPosition(String position) {
             this.position.set(position);
+        }
+
+        @Override
+        public String toString() {
+            return String.format("ID: %s\nNAME:%s %s\nPOSITION: %s\nSTATUS: %s", getId(), getFirstName(), getLastName(), getPosition(), getStatus());
         }
     }
 }
