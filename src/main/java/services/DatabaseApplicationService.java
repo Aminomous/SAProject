@@ -238,25 +238,25 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             String militaryStatus = result.getString(18);
             String maritalStatus = result.getString(19);
             String emergencyContact = result.getString(20);
-            int toeicScore = result.getInt(21);
-            int toeicYear = result.getInt(22);
-            int toeflScore = result.getInt(23);
-            int toeflYear = result.getInt(24);
-            int word = result.getInt(25);
-            int excel = result.getInt(26);
-            int powerpoint = result.getInt(27);
-            boolean driveCar = result.getBoolean(28);
-            boolean ownCar = result.getBoolean(29);
-            String driveLicenseCar = result.getString(30);
-            boolean rideMotocycle = result.getBoolean(31);
-            boolean ownMotocycle = result.getBoolean(32);
-            boolean driveLicenseMotocycle = result.getBoolean(33);
-            String hobby = result.getString(34);
-            boolean q1 = result.getBoolean(35);
-            boolean q2 = result.getBoolean(36);
-            boolean q3 = result.getBoolean(37);
-            boolean q4 = result.getBoolean(38);
-            boolean q5 = result.getBoolean(39);
+            int toeicScore = result.getInt(22);
+            int toeicYear = result.getInt(23);
+            int toeflScore = result.getInt(24);
+            int toeflYear = result.getInt(25);
+            int word = result.getInt(26);
+            int excel = result.getInt(27);
+            int powerpoint = result.getInt(28);
+            boolean driveCar = result.getBoolean(29);
+            boolean ownCar = result.getBoolean(30);
+            String driveLicenseCar = result.getString(31);
+            boolean rideMotocycle = result.getBoolean(32);
+            boolean ownMotocycle = result.getBoolean(33);
+            boolean driveLicenseMotocycle = result.getBoolean(34);
+            String hobby = result.getString(35);
+            boolean q1 = result.getBoolean(36);
+            boolean q2 = result.getBoolean(37);
+            boolean q3 = result.getBoolean(38);
+            boolean q4 = result.getBoolean(39);
+            boolean q5 = result.getBoolean(40);
 
             String[] temp = dateOfBirthRaw.split("-");
             GregorianCalendar dateOfBirth = new GregorianCalendar();
@@ -318,7 +318,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
         try {
             connect();
 
-            String query = "";
+            String query = String.format("update Application set applicationstatus1 = %d, applicationstatus2 = %d, applicationstatus3 = %d, applicationstatus4 = %d, applicationstatus5 = %d where refnum = %d", data.isApplicationStatus1()?1:0, data.isApplicationStatus2()?1:0, data.isApplicationStatus3()?1:0, data.isApplicationStatus4()?1:0, data.isApplicationStatus5()?1:0, data.getRefnum());
             Statement statement = conn.createStatement();
             statement.execute(query);
 
