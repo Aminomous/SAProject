@@ -3,12 +3,15 @@ package HQ.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.FlowPane;
+import models.Application;
 
 public class ApplicantInfoController {
     private MainController mainCtrl;
     private FlowPane mainPane;
     @FXML
     private Button moreInfoButton, uploadInfoButton, changeStatusButton;
+
+    private Application application;
 
     public void initialize() {
 
@@ -24,6 +27,10 @@ public class ApplicantInfoController {
 
     public void changeStatus() {
 
+    }
+
+    public void showData(Application app){
+        application = app;
     }
 
     public FlowPane getMainPane() {
