@@ -14,25 +14,61 @@ public class StatusChangeController {
     private CheckBox status1, status2, status3, status4, status5;
 
     public void initialize() {
-//        status1.setDisable(true);
-//        status2.setDisable(true);
-//        status3.setDisable(true);
-//        status4.setDisable(true);
-//        status5.setDisable(true);
+
     }
 
     public void start(){
+        status1.setDisable(true);
+        status2.setDisable(true);
+        status3.setDisable(true);
+        status4.setDisable(true);
+        status5.setDisable(true);
+
+        int lastestStatus = application.getLatestStatus() ;
+        if (lastestStatus == 0){
+            status1.setDisable(false);
+        }
+        else if (lastestStatus == 1){
+            status1.setSelected(true);
+            status1.setDisable(false);
+            status2.setDisable(false);
+        }
+        else if (lastestStatus == 2){
+            status1.setSelected(true);
+            status2.setSelected(true);
+            status2.setDisable(false);
+            status3.setDisable(false);
+        }
+        else if (lastestStatus == 3) {
+            status1.setSelected(true);
+            status2.setSelected(true);
+            status3.setSelected(true);
+            status3.setDisable(false);
+            status4.setDisable(false);
+        }
+        else if (lastestStatus == 4) {
+            status1.setSelected(true);
+            status2.setSelected(true);
+            status3.setSelected(true);
+            status4.setSelected(true);
+            status4.setDisable(false);
+            status5.setDisable(false);
+        }
+        else if (lastestStatus == 5) {
+            status1.setSelected(true);
+            status2.setSelected(true);
+            status3.setSelected(true);
+            status4.setSelected(true);
+            status5.setSelected(true);
+            status5.setDisable(false);
+        }
 
     }
 
     @FXML
     public void confirm() {
-        if (status1.isSelected()) {
-            System.out.println("WORK1");
-            application.setApplicationStatus1(true);
-        }else{
-            application.setApplicationStatus1(false);
-        }
+        if (status1.isSelected()) { System.out.println("WORK1");application.setApplicationStatus1(true); }
+        else{ application.setApplicationStatus1(false); }
         if (status2.isSelected()) {
             System.out.println("WORK2");
             application.setApplicationStatus2(true);
