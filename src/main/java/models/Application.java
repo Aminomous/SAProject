@@ -55,11 +55,11 @@ public class Application {
         this.personalInformation = personalInformation;
         this.referencePeople = referencePeople;
         this.workerType = workerType;
-        this.applicationStatus1 = false;
-        this.applicationStatus2 = false;
-        this.applicationStatus3 = false;
-        this.applicationStatus4 = false;
-        this.applicationStatus5 = false;
+        this.applicationStatus1 = applicationStatus1;
+        this.applicationStatus2 = applicationStatus2;
+        this.applicationStatus3 = applicationStatus3;
+        this.applicationStatus4 = applicationStatus4;
+        this.applicationStatus5 = applicationStatus5;
     }
 
     public int getRefnum() {
@@ -204,4 +204,5 @@ public class Application {
         }
         return 0;
     }
+
 }

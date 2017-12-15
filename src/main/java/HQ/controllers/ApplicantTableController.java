@@ -25,6 +25,7 @@ public class ApplicantTableController {
     private TableColumn IDColumn, firstnameColumn, lastnameColumn, positionColumn, statusColumn;
 
     private ArrayList<Application> applications;
+    private ObservableList tableViewData;
 
     public void initialize() {
         IDColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("id"));
@@ -33,23 +34,31 @@ public class ApplicantTableController {
         positionColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("position"));
         statusColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("status"));
 
+        tableViewData = FXCollections.observableArrayList();
+
         applicantTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ApplicantData>() {
             public void changed(ObservableValue<? extends ApplicantData> observable, ApplicantData oldValue, ApplicantData newValue) {
-                System.out.println(observable.getValue());
-                mainCtrl.showApplicantInfo(observable.getValue().getId());
+                if (newValue == null){ newValue = oldValue ; }
+
+                mainCtrl.showApplicantInfo(newValue.getId());
             }
         });
 
     }
 
     public void showData() {
-        applications = mainCtrl.getApplications();
-        ObservableList temp = FXCollections.observableArrayList();
+
+        applicantTable.getItems().removeAll();
+        tableViewData.clear();
         for (Application app : applications) {
             PersonalInformation tempInformation = app.getPersonalInformation();
-            temp.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
+            tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
         }
-        applicantTable.setItems(temp);
+        applicantTable.setItems(tableViewData);
+    }
+
+    public void refreshTable(){
+        showData();
     }
 
     public FlowPane getMainPane() {
@@ -64,6 +73,10 @@ public class ApplicantTableController {
         this.mainCtrl = mainCtrl;
     }
 
+    public void setApplications(ArrayList<Application> applications) {
+        this.applications = applications;
+    }
+
     public class ApplicantData {
         private SimpleStringProperty id;
         private SimpleStringProperty firstName;
@@ -76,8 +89,8 @@ public class ApplicantTableController {
             this.firstName = new SimpleStringProperty(firstName);
             this.lastName = new SimpleStringProperty(lastName);
             this.position = new SimpleStringProperty(position + "");
-            this.status = new SimpleStringProperty("pass " + status);
-
+            this.status = new SimpleStringProperty();
+            setStatus(status);
         }
 
         public String getId() {
@@ -112,8 +125,27 @@ public class ApplicantTableController {
             return status;
         }
 
-        public void setStatus(String status) {
-            this.status.set(status);
+        public void setStatus(int status) {
+            switch (status){
+                case 1:
+                    this.status.set("ผ่านการทดสอบ");
+                    break;
+                case 2:
+                    this.status.set("ผ่านการสัมภาษณ์รอบที่ 1");
+                    break;
+                case 3:
+                    this.status.set("ผ่านการสัมภาษณ์รอบที่ 2");
+                    break;
+                case 4:
+                    this.status.set("ยืนยันการผ่านสัมภาษณ์");
+                    break;
+                case 5:
+                    this.status.set("ผ่านการตรวจสอบร่างกาย");
+                    break;
+                default:
+                    this.status.set("รอการเปลี่ยนแปลงสถานะ");
+                    break;
+            }
         }
 
         public String getPosition() {
