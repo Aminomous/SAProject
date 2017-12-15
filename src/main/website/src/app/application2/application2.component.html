@@ -1,5 +1,11 @@
 <div class="application">
-    <div class="application-title">
-      <h3>{{title}}</h3>
-    </div>
+  <div class="application-title">
+    <h3>{{title}}</h3>
+  </div>
+  <div class="application-body">
+    <label>ตำแหน่งงานที่ต้องการสมัคร 
+      1.)<input [(ngModel)]="application.position1" (ngModelChange)="print()" />
+      2.)<input [(ngModel)]="application.position2" (ngModelChange)="print()" />
+    </label>
+  </div>
 </div>

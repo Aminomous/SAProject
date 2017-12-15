@@ -20,6 +20,9 @@ import { Application12Component } from './application12/application12.component'
 import { Application13Component } from './application13/application13.component';
 import { Application14Component } from './application14/application14.component';
 
+import { ApplicationService } from "./application.service";
+import { ApplicationComponent } from './application/application.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,14 +40,15 @@ import { Application14Component } from './application14/application14.component'
     Application11Component,
     Application12Component,
     Application13Component,
-    Application14Component
+    Application14Component,
+    ApplicationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RoutingModule
   ],
-  providers: [],
+  providers: [ApplicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

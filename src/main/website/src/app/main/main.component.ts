@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { ApplicationService } from 'app/application.service';
 
 @Component({
   selector: 'app-main',
@@ -6,33 +8,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  date: Date
-  page = 1
-  constructor() { }
+
+  constructor(private router: Router,
+  private applicationService: ApplicationService) {
+  }
 
   ngOnInit() {
   }
 
-  testDate() {
-    console.log(this.date)
-  }
-
-  back() {
-    this.page-=1
-  }
-
-  next() {
-    this.page+=1
-  }
-
-  cancel() {
-  }
-
-  submit() {
-  }
-
-  isInvalidForm() : boolean {
-    return true
+  apply() {
+    this.applicationService.createApplication()
+    this.router.navigate(['/application', {outlets: {application: '1'}}])
   }
 
 }
