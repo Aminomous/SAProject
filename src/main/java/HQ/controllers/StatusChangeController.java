@@ -24,32 +24,32 @@ public class StatusChangeController {
         status4.setDisable(true);
         status5.setDisable(true);
 
-        int lastestStatus = application.getLatestStatus();
-        if (lastestStatus == 0) {
+        int latestStatus = application.getLatestStatus();
+        if (latestStatus == 0) {
             status1.setDisable(false);
-        } else if (lastestStatus == 1) {
+        } else if (latestStatus == 1) {
             status1.setSelected(true);
             status1.setDisable(false);
             status2.setDisable(false);
-        } else if (lastestStatus == 2) {
+        } else if (latestStatus == 2) {
             status1.setSelected(true);
             status2.setSelected(true);
             status2.setDisable(false);
             status3.setDisable(false);
-        } else if (lastestStatus == 3) {
+        } else if (latestStatus == 3) {
             status1.setSelected(true);
             status2.setSelected(true);
             status3.setSelected(true);
             status3.setDisable(false);
             status4.setDisable(false);
-        } else if (lastestStatus == 4) {
+        } else if (latestStatus == 4) {
             status1.setSelected(true);
             status2.setSelected(true);
             status3.setSelected(true);
             status4.setSelected(true);
             status4.setDisable(false);
             status5.setDisable(false);
-        } else if (lastestStatus == 5) {
+        } else if (latestStatus == 5) {
             status1.setSelected(true);
             status2.setSelected(true);
             status3.setSelected(true);

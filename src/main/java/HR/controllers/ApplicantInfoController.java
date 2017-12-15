@@ -4,16 +4,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Application;
 
 import java.io.IOException;
-import java.util.GregorianCalendar;
 
 public class ApplicantInfoController {
     private MainController mainCtrl;
@@ -23,11 +20,12 @@ public class ApplicantInfoController {
     private Button moreInfoButton, uploadInfoButton, changeStatusButton;
 
     @FXML
-    private void initialize(){
+    private void initialize() {
 
     }
+
     @FXML
-    public void moreInfo(){
+    public void moreInfo() {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/HR/application.fxml"));
         stage.initOwner(mainPane.getScene().getWindow());
@@ -43,28 +41,30 @@ public class ApplicantInfoController {
         }
 
     }
+
     @FXML
-    public void uploadInfo(){
+    public void uploadInfo() {
 
     }
+
     @FXML
     public void changeStatus() {
         Stage stage = new Stage();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/HR/changeStatus.fxml"));
-        stage.initModality(Modality.APPLICATION_MODAL);
         try {
             stage.setScene(new Scene((Parent) loader.load()));
-            StatusChangeController statusChangeCtrl = loader.getController();
-            statusChangeCtrl.setApplication(this.application);
+            StatusChangeController statusCtrl = loader.getController();
+            statusCtrl.setMainCtrl(mainCtrl);
+            statusCtrl.setApplication(application);
+            statusCtrl.start();
             stage.showAndWait();
-
-
-
         } catch (IOException e) {
             e.printStackTrace();
         }
+        mainCtrl.refreshTable();
     }
-    public void showData(Application app){
+
+    public void showData(Application app) {
         application = app;
     }
 

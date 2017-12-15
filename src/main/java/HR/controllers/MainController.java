@@ -33,7 +33,6 @@ public class MainController {
         this.applicationService = new DatabaseApplicationService("saDB.db", new SQLiteConnector());
         this.loadPane();
         loadData();
-        applicantTableCtrl.showData();
 
     }
 
@@ -45,6 +44,9 @@ public class MainController {
         this.stage.setTitle(this.title);
         this.stage.setScene(new Scene(mainPane));
         this.stage.show();
+
+        this.applicantTableCtrl.setApplications(applications);
+        applicantTableCtrl.showData();
     }
 
 
@@ -88,6 +90,9 @@ public class MainController {
                 break;
             }
         }
+    }
+    public void refreshTable(){
+        applicantTableCtrl.refreshTable();
     }
 
     private void loadData() {

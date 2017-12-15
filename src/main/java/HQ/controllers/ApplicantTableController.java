@@ -44,17 +44,12 @@ public class ApplicantTableController {
             }
         });
 
-
-
-
     }
 
     public void showData() {
 
         applicantTable.getItems().removeAll();
         tableViewData.clear();
-        tableViewData = FXCollections.observableArrayList();
-
         for (Application app : applications) {
             PersonalInformation tempInformation = app.getPersonalInformation();
             tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
