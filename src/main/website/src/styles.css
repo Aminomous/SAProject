@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+div.application-title {
+    border: 5px solid #000000;
+    text-align: center;
+}
+
+div.application {
+    width: 80%;
+}

@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainComponent implements OnInit {
   date: Date
+  page = 1
   constructor() { }
 
   ngOnInit() {
@@ -14,6 +15,24 @@ export class MainComponent implements OnInit {
 
   testDate() {
     console.log(this.date)
+  }
+
+  back() {
+    this.page-=1
+  }
+
+  next() {
+    this.page+=1
+  }
+
+  cancel() {
+  }
+
+  submit() {
+  }
+
+  isInvalidForm() : boolean {
+    return true
   }
 
 }
