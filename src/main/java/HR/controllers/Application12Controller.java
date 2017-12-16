@@ -1,19 +1,27 @@
 package HR.controllers;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import models.LanguageAbility;
+import models.ReferencePerson;
+
+import java.util.ArrayList;
 
 public class Application12Controller extends AbstractApplicationController {
     private MainController mainCtrl;
     @FXML
     private GridPane mainPane;
     @FXML
-    private TableView<Application12Controller.NotRelativeData> notRelativeTable;
+    private TableView<ReferencePerson> notRelativeTable;
     @FXML
-    private TableView<Application12Controller.RelativeData> relativeTable;
+    private Label relativeWorkerLabel, additionalLabel;
     @FXML
     private TableColumn nameColumn, relationshipColumn;
     @FXML
@@ -21,6 +29,8 @@ public class Application12Controller extends AbstractApplicationController {
 
     @FXML
     private void initialize() {
+        nameColumn.setCellValueFactory(new PropertyValueFactory<ReferencePerson, String>("name"));
+        relationshipColumn.setCellValueFactory(new PropertyValueFactory<ReferencePerson, String>("relationship"));
     }
 
     public GridPane getMainPane() {
@@ -35,37 +45,19 @@ public class Application12Controller extends AbstractApplicationController {
         this.mainCtrl = mainCtrl;
     }
 
+    public void showData(){
+        ObservableList temp = FXCollections.observableArrayList();
+        ArrayList<ReferencePerson> referencePeople = application.getReferencePeople();
+        temp.addAll(referencePeople);
+        notRelativeTable.setItems(temp);
+    }
+
     public void showInfo() {
-
+        showData();
+        this.relativeWorkerLabel.setText("ชื่อเพื่อนหรือญาติที่ทำงานอยู่ในเครือโรงพยาบาลเปาโล :" + application.getRelaticeWorkInHospital());
+        this.additionalLabel.setText("บันทึกเพิ่มเติม : " + application.getAdditionalInformation() );
     }
 
-
-    public class NotRelativeData {
-        private SimpleStringProperty name;
-        private SimpleStringProperty relationship;
-
-
-        NotRelativeData(String name, String relationship) {
-            this.name = new SimpleStringProperty(name);
-            this.relationship = new SimpleStringProperty(relationship);
-        }
-
-        public void setName(String name) {
-            this.name.set(name);
-        }
-
-        public void setRelationship(String relationship) {
-            this.relationship.set(relationship);
-        }
-
-        public String getName() {
-            return name.get();
-        }
-
-        public String getRelationship() {
-            return relationship.get();
-        }
-    }
     public class RelativeData {
         private SimpleStringProperty no;
         private SimpleStringProperty name2;

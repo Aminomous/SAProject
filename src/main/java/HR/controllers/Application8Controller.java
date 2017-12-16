@@ -1,10 +1,18 @@
 package HR.controllers;
 
 import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import models.Apprenticeship;
+import models.EmploymentRecord;
+import models.FamilyDetail;
+
+import java.util.ArrayList;
 
 public class Application8Controller extends AbstractApplicationController{
     private MainController mainCtrl;
@@ -17,7 +25,12 @@ public class Application8Controller extends AbstractApplicationController{
 
     @FXML
     private void initialize() {
-
+        relationColumn.setCellValueFactory(new PropertyValueFactory<FamilyData, String>("status"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<FamilyData, String>("name"));
+        occupationColumn.setCellValueFactory(new PropertyValueFactory<FamilyData, String>("occupation"));
+        ageColumn.setCellValueFactory(new PropertyValueFactory<FamilyData, String>("age"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<FamilyData, String>("address"));
+        telColumn.setCellValueFactory(new PropertyValueFactory<FamilyData, String>("phoneNumber"));
     }
 
     public GridPane getMainPane() {
@@ -31,76 +44,38 @@ public class Application8Controller extends AbstractApplicationController{
     public void setMainCtrl(MainController mainCtrl) {
         this.mainCtrl = mainCtrl;
     }
+    public void showData(){
+        ObservableList temp = FXCollections.observableArrayList();
+        ArrayList<FamilyDetail> familyDetails = application.getFamilyDetails();
+        for (FamilyDetail familyDetail: familyDetails){
+            temp.add(new FamilyData(familyDetail));
+
+        }
+        familyTable.setItems(temp);
+    }
 
     public void showInfo() {
-
+        showData();
     }
 
 
-    public class ApprenticeshipData {
-        private SimpleStringProperty relation;
-        private SimpleStringProperty name;
-        private SimpleStringProperty age;
-        private SimpleStringProperty occupation;
-        private SimpleStringProperty address;
-        private SimpleStringProperty tel;
-
-        ApprenticeshipData(String relation, String name, String age, String occupation, String address, String tel) {
-            this.relation = new SimpleStringProperty(relation);
-            this.name = new SimpleStringProperty(name);
-            this.age = new SimpleStringProperty(age);
-            this.occupation = new SimpleStringProperty(occupation);
-            this.address = new SimpleStringProperty(address);
-            this.tel = new SimpleStringProperty(tel);
-        }
-
-        public void setRelation(String relation) {
-            this.relation.set(relation);
-        }
-
-        public String getRelation() {
-            return relation.get();
-        }
-
-        public void setName(String name) {
-            this.name.set(name);
+    public class FamilyData extends FamilyDetail{
+        private String name;
+        private FamilyDetail familyDetail;
+        FamilyData(FamilyDetail familyDetail) {
+            super(familyDetail.getStatus(), familyDetail.getFirstName(), familyDetail.getLastName(), familyDetail.getAge(), familyDetail.getAddress(),familyDetail.getOccupation(),familyDetail.getPhoneNumber());
+            this.name = this.getFirstName()+ " "+ this.getLastName();
         }
 
         public String getName() {
-            return name.get();
+            return name;
         }
 
-        public void setAge(String age) {
-            this.age.set(age);
-        }
-
-        public String getAge() {
-            return age.get();
-        }
-
-        public void setAddress(String address) {
-            this.address.set(address);
-        }
-
-        public String getAddress() {
-            return address.get();
-        }
-
-        public String getTel() {
-            return tel.get();
-        }
-
-        public void setTel(String tel) {
-            this.tel.set(tel);
-        }
-
-        public void setOccupation(String occupation) {
-            this.occupation.set(occupation);
-        }
-
-        public String getOccupation() {
-            return occupation.get();
+        public FamilyDetail getFamilyDetail() {
+            return familyDetail;
         }
     }
+
+
 
 }

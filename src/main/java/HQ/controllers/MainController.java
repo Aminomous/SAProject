@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class MainController {
 
     private Stage stage;
-    private String title = "SA";
+    private String title = "HQ";
 
     private MainPaneController mainPaneCtrl;
     private ApplicantFilterController applicantFilterCtrl;
@@ -31,8 +31,8 @@ public class MainController {
 
     public MainController(Stage stage) throws IOException, SQLException {
         this.stage = stage;
-//        this.applicationService = new DatabaseApplicationService("//127.0.0.1:3306/saapplicationmanager", new MySQLConnector());
-        this.applicationService = new DatabaseApplicationService("saDB.db", new SQLiteConnector());
+        this.applicationService = new DatabaseApplicationService("//10.2.60.249:3306/saapplicationmanager", new MySQLConnector());
+//        this.applicationService = new DatabaseApplicationService("saDB.db", new SQLiteConnector());
 
         loadPane();
         loadData();
@@ -106,5 +106,9 @@ public class MainController {
 
     public ArrayList<Application> getApplications() {
         return applications;
+    }
+
+    public ApplicantTableController getApplicantTableCtrl() {
+        return this.applicantTableCtrl;
     }
 }

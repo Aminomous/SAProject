@@ -59,6 +59,19 @@ public class ApplicantTableController {
         applicantTable.setItems(tableViewData);
     }
 
+    public void showData(ArrayList<Application> apps){
+        applicantTable.getItems().removeAll();
+        tableViewData.clear();
+        tableViewData = FXCollections.observableArrayList();
+
+        for (Application app : apps){
+            PersonalInformation tempInformation = app.getPersonalInformation();
+            tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
+        }
+        applicantTable.setItems(tableViewData);
+    }
+
+
 
     public FlowPane getMainPane() {
         return mainPane;

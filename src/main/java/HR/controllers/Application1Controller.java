@@ -1,19 +1,31 @@
 package HR.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import models.Application;
-import models.Hospital;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Application1Controller extends AbstractApplicationController {
     @FXML
     private GridPane mainPane;
     @FXML
-    private Label thaiNameLabel, engNameLabel, position1Label, position2Label, workerTypeLabel, shiftLabel, salaryLabel, startDateLabel, hospital1Label, hospital2Label, hospital3Label;
+    private Label thaiNameLabel, engNameLabel, position1Label, position2Label, workerTypeLabel, shiftLabel, salaryLabel, startDateLabel, hospital1Label, hospital2Label, hospital3Label, hospital4Label, hospital5Label, hospital6Label, hospital7Label, hospital8Label, hospital9Label, hospital10Label;
+    private ArrayList<Label> hospitals = new ArrayList<Label>();
     @FXML
     private void initialize(){
+        hospitals.add(hospital1Label);
+        hospitals.add(hospital2Label);
+        hospitals.add(hospital3Label);
+        hospitals.add(hospital4Label);
+        hospitals.add(hospital5Label);
+        hospitals.add(hospital6Label);
+        hospitals.add(hospital7Label);
+        hospitals.add(hospital8Label);
+        hospitals.add(hospital9Label);
+        hospitals.add(hospital10Label);
+
 
     }
 
@@ -30,10 +42,13 @@ public class Application1Controller extends AbstractApplicationController {
             this.shiftLabel.setText("ทำงานเป็นกะไม่ได้");
         }
         this.salaryLabel.setText(String.valueOf(application.getSalary()));
-        this.startDateLabel.setText(application.getDate().toString());
-        System.out.println(application.getHospitals().size());//this.hospital1Label.setText(application.getHospitals().get(0).getHospitalName());
-//        this.hospital2Label.setText(application.getHospitals().get(1).getHospitalName());
-//        this.hospital3Label.setText(application.getHospitals().get(2).getHospitalName());
+        this.startDateLabel.setText(application.getDate().get(Calendar.DATE)+ "/" + application.getDate().get(Calendar.MONTH) + "/" + application.getDate().get(Calendar.YEAR));
+        if(application.getHospitals().size() >0){
+            int count = application.getHospitals().size();
+            for(int i = 0 ; i < count ;i++){
+                hospitals.get(i).setText(application.getHospitals().get(i+1).getHospitalName());
+            }
+        }
 
     }
 

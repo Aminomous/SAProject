@@ -5,20 +5,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Application;
+import models.PersonalInformation;
 
 import java.io.IOException;
 
 public class ApplicantInfoController {
     private MainController mainCtrl;
+    @FXML
     private FlowPane mainPane;
     private Application application;
     @FXML
     private Button moreInfoButton, uploadInfoButton, changeStatusButton;
-
+    @FXML
+    private Label idLabel, nameLabel, telLabel;
     @FXML
     private void initialize() {
 
@@ -40,6 +44,12 @@ public class ApplicantInfoController {
             e.printStackTrace();
         }
 
+    }
+    public void setUp(){
+        PersonalInformation personalInformation = application.getPersonalInformation();
+        this.idLabel.setText(personalInformation.getID());
+        this.nameLabel.setText(personalInformation.getfNameTH()+  " "+ personalInformation.getlNameTH());
+        this.telLabel.setText(personalInformation.getPhoneNumber());
     }
 
     @FXML
