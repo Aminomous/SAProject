@@ -107,4 +107,8 @@ public class MainController {
     public ArrayList<Application> getApplications() {
         return applications;
     }
+
+    public ApplicantTableController getApplicantTableCtrl() {
+        return this.applicantTableCtrl;
+    }
 }

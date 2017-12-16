@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -10,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HQ.controllers.ApplicantFilterController">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HQ.controllers.ApplicantFilterController">
    <children>
       <GridPane prefHeight="720.0" prefWidth="400.0">
         <columnConstraints>
@@ -46,8 +47,8 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <ComboBox prefWidth="150.0" GridPane.columnIndex="1" />
-                        <TextField GridPane.columnIndex="2" />
+                        <ComboBox fx:id="filterBox" prefWidth="150.0" GridPane.columnIndex="1" />
+                        <TextField fx:id="filterField" GridPane.columnIndex="2" />
                      </children>
                      <GridPane.margin>
                         <Insets />
@@ -68,16 +69,10 @@
                       <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="153.0" vgrow="SOMETIMES" />
                     </rowConstraints>
-                     <children>
-                        <Label text="Sort by" GridPane.halignment="RIGHT">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Label>
-                     </children>
                   </GridPane>
                </children>
             </GridPane>
+            <Button mnemonicParsing="false" onAction="#handleSearchBtn" text="Search" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

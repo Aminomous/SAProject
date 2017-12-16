@@ -205,4 +205,19 @@ public class Application {
         return 0;
     }
 
+    public String getLastestStatusStr() {
+        if (isApplicationStatus5()) {
+            return "ผ่านการตรวจร่างกาย";
+        } else if (isApplicationStatus4()) {
+            return "ยืนยันการสัมภาษณ์";
+        } else if (isApplicationStatus3()) {
+            return "ผ่านการสัมภาษณ์โดยหัวหน้าแผนก";
+        } else if (isApplicationStatus2()) {
+            return "ผ่านการสัมภาษณ์โดย hr";
+        } else if (isApplicationStatus1()) {
+            return "ผ่านการทดสอบ";
+        }
+        return "รอการเปลี่ยนแปลงสถานะ";
+    }
+
 }

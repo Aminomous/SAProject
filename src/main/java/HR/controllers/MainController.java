@@ -68,6 +68,7 @@ public class MainController {
         this.applicantFilterCtrl = applicantFilterPaneLoader.getController();
         this.applicantFilterCtrl.setMainPane(appicantFliterPane);
         this.applicantFilterCtrl.setMainCtrl(this);
+//        this.applicantFilterCtrl.setTableCtrl(this.applicantTableCtrl);
 
         FXMLLoader applicantInfoPaneLoader = new FXMLLoader(getClass().getResource("/HR/applicantInfo.fxml"));
         FlowPane appicantInfoPane = applicantInfoPaneLoader.load();
@@ -75,8 +76,8 @@ public class MainController {
         this.applicantInfoCtrl.setMainPane(appicantInfoPane);
         this.applicantInfoCtrl.setMainCtrl(this);
 
-
-        this.mainPaneCtrl.getLeftPane().setCenter(this.applicantTableCtrl.getMainPane());
+        this.mainPaneCtrl.getLeftPane().setTop(this.applicantTableCtrl.getMainPane());
+//        this.mainPaneCtrl.getLeftPane().setCenter(this.applicantTableCtrl.getMainPane());
         this.mainPaneCtrl.getRightPane().getChildren().add(this.applicantFilterCtrl.getMainPane());
         //this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
     }
@@ -104,5 +105,7 @@ public class MainController {
     public DatabaseApplicationService getApplicationService() {
         return applicationService;
     }
-
+    public ApplicantTableController getApplicantTableCtrl(){
+        return this.applicantTableCtrl;
+    }
 }
