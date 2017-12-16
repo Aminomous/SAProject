@@ -1,5 +1,89 @@
 <div class="application">
-    <div class="application-title">
-      <h3>{{title}}</h3>
-    </div>
+  <div class="application-title">
+    <h3>{{title}}</h3>
+  </div>
 </div>
+<div class="application">
+  <div class="application-body container">
+    <div class="row" align="left" style="display: inline-block; border: 2px dotted grey; padding: 5px">
+      <div class="cell">
+        <p>ภาษาไทย</p>
+        <p> การพูด
+          <input type="radio" [(ngModel)]="application.languageAbilities[0].speaking" value="พอใช้" name="speaking1" />พอใช้
+          <input type="radio" [(ngModel)]="application.languageAbilities[0].speaking" value="ดี" name="speaking1" />ดี
+          <input type="radio" [(ngModel)]="application.languageAbilities[0].speaking" value="มาก" name="speaking1" />มาก
+        </p>
+        <p> การอ่าน
+          <input type="radio" [(ngModel)]="application.languageAbilities[0].reading" value="พอใช้" name="reading1" />พอใช้
+          <input type="radio" [(ngModel)]="application.languageAbilities[0].reading" value="ดี" name="reading1" />ดี
+          <input type="radio" [(ngModel)]="application.languageAbilities[0].reading" value="มาก" name="reading1" />มาก
+        </p>
+        <p> การอ่าน
+          <input type="radio" [(ngModel)]="application.languageAbilities[0].writing" value="พอใช้" name="writing1" />พอใช้
+          <input type="radio" [(ngModel)]="application.languageAbilities[0].writing" value="ดี" name="writing1" />ดี
+          <input type="radio" [(ngModel)]="application.languageAbilities[0].writing" value="มาก" name="writing1" />มาก
+        </p>
+      </div>
+    </div>
+    <div class="row" align="left" style="display: inline-block; border: 2px dotted grey; padding: 5px">
+      <div class="cell">
+        <p>ภาษาอังกฤษ</p>
+        <p> การพูด
+          <input type="radio" [(ngModel)]="application.languageAbilities[1].speaking" value="พอใช้" name="speaking2" />พอใช้
+          <input type="radio" [(ngModel)]="application.languageAbilities[1].speaking" value="ดี" name="speaking2" />ดี
+          <input type="radio" [(ngModel)]="application.languageAbilities[1].speaking" value="มาก" name="speaking2" />มาก
+        </p>
+        <p> การอ่าน
+          <input type="radio" [(ngModel)]="application.languageAbilities[1].reading" value="พอใช้" name="reading2" />พอใช้
+          <input type="radio" [(ngModel)]="application.languageAbilities[1].reading" value="ดี" name="reading2" />ดี
+          <input type="radio" [(ngModel)]="application.languageAbilities[1].reading" value="มาก" name="reading2" />มาก
+        </p>
+        <p> การอ่าน
+          <input type="radio" [(ngModel)]="application.languageAbilities[1].writing" value="พอใช้" name="writing2" />พอใช้
+          <input type="radio" [(ngModel)]="application.languageAbilities[1].writing" value="ดี" name="writing2" />ดี
+          <input type="radio" [(ngModel)]="application.languageAbilities[1].writing" value="มาก" name="writing2" />มาก
+        </p>
+      </div>
+    </div>
+    <div class="row" align="left" style="display: inline-block; border: 2px dotted grey; padding: 5px">
+      <div class="cell">
+        <p>ภาษาอื่น ๆ โปรดระบุ
+          <input [(ngModel)]="application.languageAbilities[2].language" />
+        </p>
+        <p> การพูด
+          <input type="radio" [(ngModel)]="application.languageAbilities[2].speaking" value="พอใช้" name="speaking3" />พอใช้
+          <input type="radio" [(ngModel)]="application.languageAbilities[2].speaking" value="ดี" name="speaking3" />ดี
+          <input type="radio" [(ngModel)]="application.languageAbilities[2].speaking" value="มาก" name="speaking3" />มาก
+        </p>
+        <p> การอ่าน
+          <input type="radio" [(ngModel)]="application.languageAbilities[2].reading" value="พอใช้" name="reading3" />พอใช้
+          <input type="radio" [(ngModel)]="application.languageAbilities[2].reading" value="ดี" name="reading3" />ดี
+          <input type="radio" [(ngModel)]="application.languageAbilities[2].reading" value="มาก" name="reading3" />มาก
+        </p>
+        <p> การอ่าน
+          <input type="radio" [(ngModel)]="application.languageAbilities[2].writing" value="พอใช้" name="writing3" />พอใช้
+          <input type="radio" [(ngModel)]="application.languageAbilities[2].writing" value="ดี" name="writing3" />ดี
+          <input type="radio" [(ngModel)]="application.languageAbilities[2].writing" value="มาก" name="writing3" />มาก
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <br>
+    </div>
+    <div class="row" align="center">
+      <div class="cell" style="width:100%">
+        <p>TOEIC score
+          <input [(ngModel)]="application.personalInformation.toeicScore" /> year
+          <input type="number" [(ngModel)]="application.personalInformation.toeicYear" />
+        </p>
+        <p>TOEFL score
+          <input [(ngModel)]="application.personalInformation.toeflScore" /> year
+          <input type="number" [(ngModel)]="application.personalInformation.toeflYear" />
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<br>
+<br>

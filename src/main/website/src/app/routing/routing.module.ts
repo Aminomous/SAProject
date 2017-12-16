@@ -26,17 +26,16 @@ import { MainComponent } from 'app/main/main.component';
         { path: '1', component: Application1Component, outlet: "application" },
         { path: '2', component: Application2Component, outlet: "application" },
         { path: '3', component: Application3Component, outlet: "application" },
-        { path: '4', component: Application4Component, outlet: "application" },
-        { path: '5', component: Application5Component, outlet: "application" },
-        { path: '6', component: Application6Component, outlet: "application" },
-        { path: '7', component: Application7Component, outlet: "application" },
-        { path: '8', component: Application8Component, outlet: "application" },
-        { path: '9', component: Application9Component, outlet: "application" },
-        { path: '10', component: Application10Component, outlet: "application" },
-        { path: '11', component: Application11Component, outlet: "application" },
-        { path: '12', component: Application12Component, outlet: "application" },
-        { path: '13', component: Application13Component, outlet: "application" },
-        { path: '14', component: Application14Component, outlet: "application" }
+        { path: '4', component: Application5Component, outlet: "application" },
+        { path: '5', component: Application6Component, outlet: "application" },
+        { path: '6', component: Application7Component, outlet: "application" },
+        { path: '7', component: Application8Component, outlet: "application" },
+        { path: '8', component: Application9Component, outlet: "application" },
+        { path: '9', component: Application10Component, outlet: "application" },
+        { path: '10', component: Application11Component, outlet: "application" },
+        { path: '11', component: Application12Component, outlet: "application" },
+        { path: '12', component: Application13Component, outlet: "application" },
+        { path: '13', component: Application14Component, outlet: "application" }
       ]}
     ])
   ],

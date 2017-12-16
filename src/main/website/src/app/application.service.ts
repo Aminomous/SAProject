@@ -8,6 +8,9 @@ import { Education } from 'app/models/education';
 
 import { Http, RequestOptions, Headers } from "@angular/http";
 import 'rxjs/add/operator/map'
+import { EmploymentRecord } from 'app/models/employmentRecord';
+import { LanguageAbility } from 'app/models/languageAbility';
+import { Apprenticeship } from 'app/models/apprenticeship';
 
 @Injectable()
 export class ApplicationService {
@@ -66,6 +69,13 @@ export class ApplicationService {
     this.application.hospitals = []
     this.application.educations = []
     this.application.educations.splice(0, 0, new Education())
+    this.application.employmentRecords = []
+    this.application.employmentRecords.splice(0, 0, new EmploymentRecord())
+    this.application.languageAbilities = [ new LanguageAbility(), new LanguageAbility(), new LanguageAbility()]
+    this.application.languageAbilities[0].language = "ภาษาไทย"
+    this.application.languageAbilities[1].language = "ภาษาอังกฤษ"
+    this.application.apprenticeships = []
+    this.application.apprenticeships.splice(0, 0, new Apprenticeship())
   }
 
 }

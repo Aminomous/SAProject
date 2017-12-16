@@ -2,4 +2,33 @@
     <div class="application-title">
       <h3>{{title}}</h3>
     </div>
-</div>
+  </div>
+  <div class="application">
+    <div class="application-body container">
+      <div class="row" align="center">
+        <div class="cell" style="width:100%">
+          <div >
+            <div style="display: inline-block; vertical-align: top">
+              <div style="width: 165px; display: inline-block">ชื่อหลักสูตร</div>
+              <div style="width: 165px; display: inline-block">ชื่อสถาบัน</div>
+              <div style="width: 165px; display: inline-block">วุฒิบัตรที่ได้รับ</div>
+              <div style="width: 165px; display: inline-block">ระยะเวลา</div>
+              <br>
+              <div *ngFor="let i of numbers">
+                <input [(ngModel)]="application.apprenticeships[i].course" />
+                <input [(ngModel)]="application.apprenticeships[i].instituteName" />
+                <input [(ngModel)]="application.apprenticeships[i].certificate" />
+                <input type="number" [(ngModel)]="application.apprenticeships[i].period" />
+              </div>
+            </div>
+            <div style="display: inline-block; vertical-align: top">
+              <button (click)="addRow()">new row</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
