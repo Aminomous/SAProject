@@ -4,6 +4,7 @@ import { Application } from 'app/models/application';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { PersonalInformation } from 'app/models/personalInformation';
+import { Education } from 'app/models/education';
 
 @Injectable()
 export class ApplicationService {
@@ -26,6 +27,8 @@ export class ApplicationService {
     this.application = new Application()
     this.application.personalInformation = new PersonalInformation()
     this.application.hospitals = []
+    this.application.educations = []
+    this.application.educations.splice(0, 0, new Education())
   }
 
 }

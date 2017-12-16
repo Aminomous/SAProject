@@ -45,6 +45,7 @@ export class ApplicationComponent implements OnInit {
   next() {
     this.router.navigate(['/application', { outlets: { application: [this.page+1] }}]).then(() => {
       let urls = this.router.url.split("/")
+      console.log(urls);
       urls = urls[urls.length-1].split(":")
       let p = urls[urls.length-1].replace(')', '')
       if (p == "") {
@@ -52,6 +53,7 @@ export class ApplicationComponent implements OnInit {
       } else {
         this.page = +p
       }
+      
     })
   }
 

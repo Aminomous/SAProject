@@ -2,4 +2,35 @@
     <div class="application-title">
       <h3>{{title}}</h3>
     </div>
-</div>
+  </div>
+  <div class="application">
+    <div class="application-body container">
+      <div class="row">
+        <div class="cell" align="left">
+          <div style="width: 165px; display: inline-block">ระดับการศึกษา</div>
+          <div style="width: 165px; display: inline-block">ชื่อสถานศึกษา</div>
+          <div style="width: 165px; display: inline-block">วุฒิที่ได้รับ</div>
+          <div style="width: 165px; display: inline-block">สาขา</div>
+          <div style="width: 165px; display: inline-block">ตั้งแต่ปี</div>
+          <div style="width: 165px; display: inline-block">ถึงปี</div>
+          <div style="width: 165px; display: inline-block">คะแนนเฉลี่ย</div>
+          
+          <button (click)="addRow()">new row</button>
+          <br>
+          <div *ngFor="let i of numbers">
+            <input [(ngModel)]="application.educations[i].level" />
+            <input [(ngModel)]="application.educations[i].instituteName" />
+            <input [(ngModel)]="application.educations[i].degreeOrCertificate" />
+            <input [(ngModel)]="application.educations[i].major" />
+            <input type="month" [(ngModel)]="application.educations[i].studyFrom"/>
+            <input type="month" [(ngModel)]="application.educations[i].studyTo"/>
+            <input type="number" min="0.00" max="4.00" [(ngModel)]="application.educations[i].gpa" width="10px"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+    

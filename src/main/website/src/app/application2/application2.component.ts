@@ -22,8 +22,4 @@ export class Application2Component implements OnInit {
 
   ngOnInit() {
   }
-
-  print() {
-    console.log(this.application)
-  }
 }

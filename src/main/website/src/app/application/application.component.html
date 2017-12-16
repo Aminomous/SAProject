@@ -1,24 +1,26 @@
 <div class="header" align="center" style="width:100%">
-    <h1>ใบสมัครงาน</h1>
-  </div>
-  <div align="center">
-    <router-outlet name="application"></router-outlet>
-  </div>
-  <br>
-  <br>
-  <br>
-  <div align="center">
+  <h1>ใบสมัครงาน</h1>
+</div>
+<div align="center">
+  <router-outlet name="application"></router-outlet>
+</div>
+<br>
+<br>
+<br>
+<div align="center" style="width:100%">
+  <div style="width:340px">
     <h4>{{page}}/14</h4>
-    <div style="width:30px;display: inline-block">
+    <div style="width:60px;display: inline-block">
         <button *ngIf="page > 1" (click)="back()"><</button>
     </div>
-    <div style="width:60px;display: inline-block">
+    <div style="width:90px;display: inline-block">
       <button (click)="cancel()">cancel</button>
     </div>
-    <div style="width:60px;display: inline-block">
+    <div style="width:90px;display: inline-block">
       <button [disabled]="isInvalidForm()" (click)="submit()">submit</button>
     </div>
-    <div style="width:30px;display: inline-block">
+    <div style="width:60px;display: inline-block">
       <button *ngIf="page < 14" (click)="next()">></button>
     </div>
   </div>
+</div>
