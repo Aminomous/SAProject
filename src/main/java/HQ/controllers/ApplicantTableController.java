@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class ApplicantTableController {
     private MainController mainCtrl;
+    @FXML
     private FlowPane mainPane;
     @FXML
     private TableView<ApplicantData> applicantTable;
@@ -51,8 +52,10 @@ public class ApplicantTableController {
         applicantTable.getItems().removeAll();
         tableViewData.clear();
         for (Application app : applications) {
-            PersonalInformation tempInformation = app.getPersonalInformation();
-            tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
+            if (app.isApplicationStatus3()){
+                PersonalInformation tempInformation = app.getPersonalInformation();
+                tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
+            }
         }
         applicantTable.setItems(tableViewData);
     }

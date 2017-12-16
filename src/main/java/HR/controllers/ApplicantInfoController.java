@@ -15,6 +15,8 @@ import models.PersonalInformation;
 
 import javax.swing.text.html.ImageView;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class ApplicantInfoController {
     private MainController mainCtrl;
@@ -24,7 +26,7 @@ public class ApplicantInfoController {
     @FXML
     private Button moreInfoButton, uploadInfoButton, changeStatusButton;
     @FXML
-    private Label idLabel, nameLabel, telLabel;
+    private Label idLabel, nameLabel, telLabel, ageLabel;
     @FXML
     private Button imageButton;
     @FXML
@@ -56,6 +58,9 @@ public class ApplicantInfoController {
         this.idLabel.setText(personalInformation.getID());
         this.nameLabel.setText(personalInformation.getfNameTH()+  " "+ personalInformation.getlNameTH());
         this.telLabel.setText(personalInformation.getPhoneNumber());
+        Calendar calendar  = new GregorianCalendar();
+        int age = calendar.get(Calendar.YEAR)-personalInformation.getDateOfBirth().get(Calendar.YEAR);
+        this.ageLabel.setText(age+"");
     }
 
     @FXML

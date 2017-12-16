@@ -10,9 +10,9 @@ public class MainPaneController {
     private MainController mainCtrl;
     private GridPane mainPane;
     @FXML
-    private BorderPane leftPane;
+    private BorderPane leftPanel;
     @FXML
-    private FlowPane rightPane;
+    private FlowPane rightPanel;
 
     public void initialize() {
     }
@@ -27,11 +27,11 @@ public class MainPaneController {
     }
 
     public BorderPane getLeftPane() {
-        return leftPane;
+        return leftPanel;
     }
 
     public FlowPane getRightPane() {
-        return rightPane;
+        return rightPanel;
     }
 
     public void setMainCtrl(MainController mainCtrl) {
