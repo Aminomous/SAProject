@@ -4,3 +4,47 @@
       <h3>{{subtitle}}</h3>
     </div>
 </div>
+
+<div class="application">
+  <div class="application-body container">
+    <div class="row">
+      <div class="cell">
+        <label>ชื่อ-สกุล <input type="text" name="name1" [(ngModel)]=referencePerson.name/>   </label>
+        <label>ความสัมพันธ์ <input type="text" name="relative1" size="5">   </label>
+        <label>
+          ที่อยู่ <input type="text" name="address1" size="71"/>
+        </label>
+        <br>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="cell">
+        <label>ชื่อ-สกุล <input type="text" name="name2" />   </label>
+        <label>ความสัมพันธ์ <input type="text" name="relative2" size="5">   </label>
+        <label>
+          ที่อยู่ <input type="text" name="address2" size="71"/>
+        </label>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="cell">
+          <br>
+          <br>
+          <label> ระบุชื่อญาติ/เพื่อน ที่ทำงานอยู่ในเครือโรงพยาบาลพญาไทและเครือโรงพยาบาลเปาโล ซึ่งท่านรู้จักดี</label>
+          <input type="text" name="wellKnownRelative" size="50">
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="cell">
+            <br>
+            <br>
+            <label> บันทึกเพิ่มเติมซึ่งท่านคิดว่าเป็นประโยชน์ต่อการสมัครงาน</label>
+            <input type="text" name="additionalInformation" [(ngModel)]="application.additionalInformation" size="100">
+          </div>
+      </div>
+
+  </div>
+</div>
