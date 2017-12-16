@@ -250,13 +250,13 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             String driveLicenseCar = result.getString(30);
             boolean rideMotocycle = result.getBoolean(31);
             boolean ownMotocycle = result.getBoolean(32);
-            boolean driveLicenseMotocycle = result.getBoolean(33);
+            String driveLicenseMotocycle = result.getString(33);
             String hobby = result.getString(34);
             boolean q1 = result.getBoolean(35);
             boolean q2 = result.getBoolean(36);
             boolean q3 = result.getBoolean(37);
             boolean q4 = result.getBoolean(38);
-            boolean q5 = result.getBoolean(39);
+            String q5 = result.getString(39);
 
             String[] temp = dateOfBirthRaw.split("-");
             GregorianCalendar dateOfBirth = new GregorianCalendar();

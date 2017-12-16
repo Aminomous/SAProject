@@ -1,11 +1,10 @@
 package HR.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import models.Application;
-import models.Hospital;
+
+import java.util.Calendar;
 
 public class Application1Controller extends AbstractApplicationController {
     @FXML
@@ -30,8 +29,9 @@ public class Application1Controller extends AbstractApplicationController {
             this.shiftLabel.setText("ทำงานเป็นกะไม่ได้");
         }
         this.salaryLabel.setText(String.valueOf(application.getSalary()));
-        this.startDateLabel.setText(application.getDate().toString());
-        System.out.println(application.getHospitals().size());//this.hospital1Label.setText(application.getHospitals().get(0).getHospitalName());
+        this.startDateLabel.setText(application.getDate().get(Calendar.DATE)+ "/" + application.getDate().get(Calendar.MONTH) + "/" + application.getDate().get(Calendar.YEAR));
+        System.out.println(application.getHospitals().size());
+        //this.hospital1Label.setText(application.getHospitals().get(0).getHospitalName());
 //        this.hospital2Label.setText(application.getHospitals().get(1).getHospitalName());
 //        this.hospital3Label.setText(application.getHospitals().get(2).getHospitalName());
 

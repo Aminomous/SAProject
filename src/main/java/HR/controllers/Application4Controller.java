@@ -31,12 +31,14 @@ public class Application4Controller extends AbstractApplicationController {
         salaryColumn.setCellValueFactory(new PropertyValueFactory<EmploymentData, Double>("salary"));
         reasonColumn.setCellValueFactory(new PropertyValueFactory<EmploymentData, String>("reasonForLeaving"));
 
+
     }
     public void showData(){
         ObservableList temp = FXCollections.observableArrayList();
         ArrayList<EmploymentRecord> employmentRecords = application.getEmploymentRecords();
         for (EmploymentRecord employmentRecord: employmentRecords){
             temp.add(new EmploymentData(employmentRecord));
+
         }
         employmentTable.setItems(temp);
     }

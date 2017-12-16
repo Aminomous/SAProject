@@ -1,22 +1,33 @@
 package HR.controllers;
 
-import javafx.beans.property.SimpleStringProperty;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
+import models.Apprenticeship;
+
+
+import java.util.ArrayList;
 
 public class Application7Controller extends  AbstractApplicationController {
     private MainController mainCtrl;
     @FXML
     private GridPane mainPane;
     @FXML
-    private TableView<HR.controllers.Application7Controller.ApprenticeshipData> apprenticeshipTable;
+    private TableView<Apprenticeship> apprenticeshipTable;
     @FXML
     private TableColumn fromToColumn, courseColumn, instituteColumn, certificateColumn;
 
     @FXML
     private void initialize() {
+        fromToColumn.setCellValueFactory(new PropertyValueFactory<Apprenticeship, String>("period"));
+        courseColumn.setCellValueFactory(new PropertyValueFactory<Apprenticeship, String>("course"));
+        instituteColumn.setCellValueFactory(new PropertyValueFactory<Apprenticeship, String>("instituteName"));
+        certificateColumn.setCellValueFactory(new PropertyValueFactory<Apprenticeship, String>("certificate"));
 
     }
 
@@ -31,56 +42,25 @@ public class Application7Controller extends  AbstractApplicationController {
     public void setMainCtrl(MainController mainCtrl) {
         this.mainCtrl = mainCtrl;
     }
-
+    public void showData(){
+        ObservableList temp = FXCollections.observableArrayList();
+        ArrayList<Apprenticeship> apprenticeships = application.getApprenticeship();
+        temp.addAll(apprenticeships);
+//        for (Apprenticeship apprenticeshipData: apprenticeships){
+//            temp.add(new Apprenticeship(apprenticeshipData));
+//
+//        }
+        apprenticeshipTable.setItems(temp);
+    }
     public void showInfo() {
-
+        showData();
     }
 
 
-    public class ApprenticeshipData {
-        private SimpleStringProperty fromTo;
-        private SimpleStringProperty course;
-        private SimpleStringProperty institute;
-        private SimpleStringProperty certificate;
 
-        ApprenticeshipData(String fromTo, String course, String institute, String certificate) {
-            this.fromTo = new SimpleStringProperty(fromTo);
-            this.course = new SimpleStringProperty(course);
-            this.institute = new SimpleStringProperty(institute);
-            this.certificate = new SimpleStringProperty(certificate);
-        }
 
-        public void setFromTo(String fromTo) {
-            this.fromTo.set(fromTo);
-        }
 
-        public String getFromTo() {
-            return fromTo.get();
-        }
 
-        public void setCourse(String course) {
-            this.course.set(course);
-        }
 
-        public String getCourse() {
-            return course.get();
-        }
-
-        public void setInstitute(String institute) {
-            this.institute.set(institute);
-        }
-
-        public String getInstitute() {
-            return institute.get();
-        }
-
-        public void setCertificate(String certificate) {
-            this.certificate.set(certificate);
-        }
-
-        public String getCertificate() {
-            return certificate.get();
-        }
-    }
 
 }

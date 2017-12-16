@@ -37,10 +37,10 @@ public class Application3Controller extends  AbstractApplicationController {
         gpaColumn.setCellValueFactory(new PropertyValueFactory<EducationData, Double>("GPA"));
 
     }
-    public void showData(){
+    public void showData() {
         ObservableList temp = FXCollections.observableArrayList();
         ArrayList<Education> educations = application.getEducation();
-        for (Education education:educations){
+        for (Education education : educations) {
             temp.add(new EducationData(education));
         }
         educationTable.setItems(temp);

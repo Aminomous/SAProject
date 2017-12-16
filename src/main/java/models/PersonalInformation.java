@@ -36,13 +36,13 @@ public class PersonalInformation {
     private String driveLicenseCar;
     private boolean rideMotocycle;
     private boolean ownMotocycle;
-    private boolean driveLicenseMotocycle;
+    private String driveLicenseMotocycle;
     private String hobby;
     private boolean q1;
     private boolean q2;
     private boolean q3;
     private boolean q4;
-    private boolean q5;
+    private String q5;
     private ArrayList<Q6> q6;
 
     public PersonalInformation(String id, String titleTH, String fNameTH, String lNameTH, String fNameEN, String lNameEN,
@@ -51,8 +51,8 @@ public class PersonalInformation {
                                String militaryStatus, String maritalStatus, String emergencyContact, int toeicScore, int toeicYear, int toeflScore,
                                int toeflYear, int word, int excel, int powerpoint, boolean driveCar, boolean ownCar,
                                String driveLicenseCar, boolean rideMotocycle, boolean ownMotocycle,
-                               boolean driveLicenseMotocycle, String hobby,
-                               boolean q1, boolean q2, boolean q3, boolean q4, boolean q5, ArrayList<Q6> q6) {
+                               String driveLicenseMotocycle, String hobby,
+                               boolean q1, boolean q2, boolean q3, boolean q4, String q5, ArrayList<Q6> q6) {
         ID = id;
         this.titleTH = titleTH;
         this.fNameTH = fNameTH;
@@ -228,7 +228,7 @@ public class PersonalInformation {
         return hobby;
     }
 
-    public boolean isDriveLicenseMotocycle() {
+    public String getDriveLicenseMotocycle() {
         return driveLicenseMotocycle;
     }
 
@@ -248,7 +248,7 @@ public class PersonalInformation {
         return q4;
     }
 
-    public boolean isQ5() {
+    public String getQ5() {
         return q5;
     }
 
