@@ -20,7 +20,6 @@ public class ApplicantFilterController {
 
 
     public void initialize(){
-        System.out.println(filterBox);
         filterBox.getItems().addAll(" ", "id", "first name", "last name", "position", "status");
     }
 
