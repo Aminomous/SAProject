@@ -21,4 +21,8 @@ export class MainComponent implements OnInit {
     this.router.navigate(['/application', {outlets: {application: '1'}}])
   }
 
+  testPost() {
+    this.applicationService.testPost()
+  }
+
 }
