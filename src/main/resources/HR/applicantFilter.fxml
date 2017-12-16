@@ -69,10 +69,12 @@
                       <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
                         <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="153.0" vgrow="SOMETIMES" />
                     </rowConstraints>
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#handleSearchBtn" text="Search" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                     </children>
                   </GridPane>
                </children>
             </GridPane>
-            <Button mnemonicParsing="false" onAction="#handleSearchBtn" text="Search" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>
