@@ -319,8 +319,12 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
         try {
             connect();
 
-            String query = "";
+            String query = String.format("update Application set applicationstatus1 = %d, applicationstatus2 = %d, applicationstatus3 = %d, applicationstatus4 = %d, applicationstatus5 = %d where refnum = %d", data.isApplicationStatus1()?1:0, data.isApplicationStatus2()?1:0, data.isApplicationStatus3()?1:0, data.isApplicationStatus4()?1:0, data.isApplicationStatus5()?1:0, data.getRefnum());
             Statement statement = conn.createStatement();
+            statement.execute(query);
+
+
+//            Statement statement = conn.createStatement();
             statement.execute(query);
 
             close();
