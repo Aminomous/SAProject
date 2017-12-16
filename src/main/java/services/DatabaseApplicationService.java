@@ -258,6 +258,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             boolean q4 = result.getBoolean(39);
             String q5 = result.getString(40);
 
+            
             String[] temp = dateOfBirthRaw.split("-");
             GregorianCalendar dateOfBirth = new GregorianCalendar();
             dateOfBirth.set(Integer.valueOf(temp[0]), Integer.valueOf(temp[1]), Integer.valueOf(temp[2]));
