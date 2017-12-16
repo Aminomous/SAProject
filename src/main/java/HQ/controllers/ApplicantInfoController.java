@@ -37,6 +37,7 @@ public class ApplicantInfoController {
         try {
             stage.setScene(new Scene((Parent) loader.load()));
             StatusChangeController statusCtrl = loader.getController();
+            statusCtrl.setMainCtrl(mainCtrl);
             statusCtrl.setApplication(application);
             statusCtrl.start();
             stage.showAndWait();

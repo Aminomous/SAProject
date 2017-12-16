@@ -17,44 +17,39 @@ public class StatusChangeController {
 
     }
 
-    public void start(){
+    public void start() {
         status1.setDisable(true);
         status2.setDisable(true);
         status3.setDisable(true);
         status4.setDisable(true);
         status5.setDisable(true);
 
-        int lastestStatus = application.getLatestStatus() ;
-        if (lastestStatus == 0){
+        int latestStatus = application.getLatestStatus();
+        if (latestStatus == 0) {
             status1.setDisable(false);
-        }
-        else if (lastestStatus == 1){
+        } else if (latestStatus == 1) {
             status1.setSelected(true);
             status1.setDisable(false);
             status2.setDisable(false);
-        }
-        else if (lastestStatus == 2){
+        } else if (latestStatus == 2) {
             status1.setSelected(true);
             status2.setSelected(true);
             status2.setDisable(false);
             status3.setDisable(false);
-        }
-        else if (lastestStatus == 3) {
+        } else if (latestStatus == 3) {
             status1.setSelected(true);
             status2.setSelected(true);
             status3.setSelected(true);
             status3.setDisable(false);
             status4.setDisable(false);
-        }
-        else if (lastestStatus == 4) {
+        } else if (latestStatus == 4) {
             status1.setSelected(true);
             status2.setSelected(true);
             status3.setSelected(true);
             status4.setSelected(true);
             status4.setDisable(false);
             status5.setDisable(false);
-        }
-        else if (lastestStatus == 5) {
+        } else if (latestStatus == 5) {
             status1.setSelected(true);
             status2.setSelected(true);
             status3.setSelected(true);
@@ -67,32 +62,33 @@ public class StatusChangeController {
 
     @FXML
     public void confirm() {
-        if (status1.isSelected()) { System.out.println("WORK1");application.setApplicationStatus1(true); }
-        else{ application.setApplicationStatus1(false); }
+        if (status1.isSelected()) {
+            application.setApplicationStatus1(true);
+        } else {
+            application.setApplicationStatus1(false);
+        }
         if (status2.isSelected()) {
-            System.out.println("WORK2");
             application.setApplicationStatus2(true);
-        }else{
+        } else {
             application.setApplicationStatus2(false);
         }
         if (status3.isSelected()) {
-            System.out.println("WORK3");
             application.setApplicationStatus3(true);
-        }else{
+        } else {
             application.setApplicationStatus3(false);
         }
         if (status4.isSelected()) {
-            System.out.println("WORK4");
             application.setApplicationStatus4(true);
-        }else{
+        } else {
             application.setApplicationStatus4(false);
         }
         if (status5.isSelected()) {
-            System.out.println("WORK5");
             application.setApplicationStatus5(true);
-        }else{
+        } else {
             application.setApplicationStatus5(false);
         }
+
+        mainCtrl.getApplicationService().update(application);
         cancel();
 
     }
@@ -114,7 +110,7 @@ public class StatusChangeController {
         this.mainCtrl = mainCtrl;
     }
 
-    public Application getApplication(){
+    public Application getApplication() {
         return application;
     }
 

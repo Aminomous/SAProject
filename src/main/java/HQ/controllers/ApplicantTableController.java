@@ -44,17 +44,12 @@ public class ApplicantTableController {
             }
         });
 
-
-
-
     }
 
     public void showData() {
 
         applicantTable.getItems().removeAll();
         tableViewData.clear();
-        tableViewData = FXCollections.observableArrayList();
-
         for (Application app : applications) {
             PersonalInformation tempInformation = app.getPersonalInformation();
             tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
@@ -136,13 +131,13 @@ public class ApplicantTableController {
                     this.status.set("ผ่านการทดสอบ");
                     break;
                 case 2:
-                    this.status.set("ผ่านการสัมพาษณ์รอบที่ 1");
+                    this.status.set("ผ่านการสัมภาษณ์รอบที่ 1");
                     break;
                 case 3:
-                    this.status.set("ผ่านการสัมพาษณ์รอบที่ 2");
+                    this.status.set("ผ่านการสัมภาษณ์รอบที่ 2");
                     break;
                 case 4:
-                    this.status.set("ยืนยันการผ่านสัมพาษณ์");
+                    this.status.set("ยืนยันการผ่านสัมภาษณ์");
                     break;
                 case 5:
                     this.status.set("ผ่านการตรวจสอบร่างกาย");

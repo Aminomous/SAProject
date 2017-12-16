@@ -4,6 +4,31 @@ div.application-title {
     text-align: center;
 }
 
+div.application-body {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 div.application {
     width: 80%;
+}
+
+div.container {
+    display: block;
+}
+
+div.row {
+    clear: both;
+}
+
+
+div.cell {
+    float: left;
+    overflow: hidden;
+}
+
+div.cell2 {
+    overflow: hidden;
+    float: left;
+    padding-right: 20px;
 }

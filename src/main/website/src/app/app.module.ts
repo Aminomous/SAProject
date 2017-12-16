@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { RoutingModule } from "./routing/routing.module";
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
 import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
@@ -20,6 +21,9 @@ import { Application12Component } from './application12/application12.component'
 import { Application13Component } from './application13/application13.component';
 import { Application14Component } from './application14/application14.component';
 
+import { ApplicationService } from "./application.service";
+import { ApplicationComponent } from './application/application.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,14 +41,17 @@ import { Application14Component } from './application14/application14.component'
     Application11Component,
     Application12Component,
     Application13Component,
-    Application14Component
+    Application14Component,
+    ApplicationComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    Ng2SmartTableModule,
     RoutingModule
+    
   ],
-  providers: [],
+  providers: [ApplicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

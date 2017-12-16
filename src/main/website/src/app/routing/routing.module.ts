@@ -14,25 +14,30 @@ import { Application11Component } from "../application11/application11.component
 import { Application12Component } from "../application12/application12.component";
 import { Application13Component } from "../application13/application13.component";
 import { Application14Component } from "../application14/application14.component";
+import { ApplicationComponent } from 'app/application/application.component';
+import { MainComponent } from 'app/main/main.component';
 
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      { path: '', redirectTo: 'application/1', pathMatch: "full" },
-      { path: 'application/1', component: Application1Component },
-      { path: 'application/2', component: Application2Component },
-      { path: 'application/3', component: Application3Component },
-      { path: 'application/4', component: Application4Component },
-      { path: 'application/5', component: Application5Component },
-      { path: 'application/6', component: Application6Component },
-      { path: 'application/7', component: Application7Component },
-      { path: 'application/8', component: Application8Component },
-      { path: 'application/9', component: Application9Component },
-      { path: 'application/10', component: Application10Component },
-      { path: 'application/11', component: Application11Component },
-      { path: 'application/12', component: Application12Component },
-      { path: 'application/13', component: Application13Component },
-      { path: 'application/14', component: Application14Component }
+      { path: '', redirectTo: '/main', pathMatch: "full"},
+      { path: 'main', component: MainComponent},
+      { path: 'application', component: ApplicationComponent, children: [
+        { path: '1', component: Application1Component, outlet: "application" },
+        { path: '2', component: Application2Component, outlet: "application" },
+        { path: '3', component: Application3Component, outlet: "application" },
+        { path: '4', component: Application4Component, outlet: "application" },
+        { path: '5', component: Application5Component, outlet: "application" },
+        { path: '6', component: Application6Component, outlet: "application" },
+        { path: '7', component: Application7Component, outlet: "application" },
+        { path: '8', component: Application8Component, outlet: "application" },
+        { path: '9', component: Application9Component, outlet: "application" },
+        { path: '10', component: Application10Component, outlet: "application" },
+        { path: '11', component: Application11Component, outlet: "application" },
+        { path: '12', component: Application12Component, outlet: "application" },
+        { path: '13', component: Application13Component, outlet: "application" },
+        { path: '14', component: Application14Component, outlet: "application" }
+      ]}
     ])
   ],
   exports: [

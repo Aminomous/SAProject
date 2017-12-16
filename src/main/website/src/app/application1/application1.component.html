@@ -1,5 +1,116 @@
 <div class="application">
-    <div class="application-title">
-      <h3>{{title}}</h3>
-    </div>
+  <div class="application-title">
+    <h3>{{title}}</h3>
+  </div>
 </div>
+<div class="application">
+  <div class="application-body container">
+    <div class="row">
+      <div class="cell">
+        <label>ตำแหน่งงานที่ต้องการสมัคร 
+          1.)<input [(ngModel)]="application.position1" (ngModelChange)="print()" />
+          2.)<input [(ngModel)]="application.position2" (ngModelChange)="print()" />
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <label>
+          <input type="radio" [(ngModel)]="application.workerType" value="พนักงานประจำ" name="workerType" />
+          พนักงานประจำ
+        </label>
+        <label>
+          <input type="radio" [(ngModel)]="application.workerType" value="พนักงานชั่วคราว" name="workerType" />
+          พนักงานชั่วคราว
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <p>สามารถปฏิบัติงานเป็นกะได้หรือไม่</p>
+        <label>
+          <input type="radio" [(ngModel)]="application.workInShift" value="True" name="workInShift" />
+          ได้
+        </label>
+        <label>
+          <input type="radio" [(ngModel)]="application.workInShift" value="False" name="workInShift" />
+          ไม่ได้
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <p>เครือโรงพยาบาลพญาไทและเครือโรงพยาบาลเปาโลที่ประสงค์จะสมัครเข้าปฎิบัติงาน (เลือกได้มากกว่า 1 ข้อ)</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell2">
+        <label>
+          <input type="checkbox" (change)="chooseHospital($event, 0)" name="้hospital" />
+          โรงพยาบาลพญาไท 1           
+        </label>
+      <div class="cell2">
+        <label>
+          <input type="checkbox" (change)="chooseHospital($event, 1)" name="้hospital" />
+          โรงพยาบาลพญาไท 2           
+        </label>
+      </div>
+      <div class="cell2">
+        <label>
+          <input type="checkbox" (change)="chooseHospital($event, 2)" name="้hospital" />
+          โรงพยาบาลพญาไท 3           
+        </label>
+      </div>
+      <div class="cell2">
+        <label>
+          <input type="checkbox" (change)="chooseHospital($event, 3)" name="้hospital" />
+          โรงพยาบาลพญาไท นวมินทร์
+        </label>
+      </div>
+      <div class="cell2">
+        <label>
+          <input type="checkbox" (change)="chooseHospital($event, 4)" name="้hospital" />
+          โรงพยาบาลพญาไท ศรีราชา
+        </label>
+      </div>
+      <div class="cell2">
+        <label>
+          <input type="checkbox" (change)="chooseHospital($event, 5)" name="้hospital" />
+          โรงพยาบาลพญาไท พหลโยธิน
+        </label>
+      </div>
+      <div class="cell2">
+        <label>
+          <input type="checkbox" (change)="chooseHospital($event, 6)" name="้hospital" />
+          โรงพยาบาลพญาไท สมุทรปราการ
+        </label>
+      </div>
+      <div class="cell2">
+        <label>
+          <input type="checkbox" (change)="chooseHospital($event, 7)" name="้hospital" />
+          โรงพยาบาลเปาโล โชคชัย4
+        </label>
+      </div>
+      <div class="cell2">
+        <label>
+          <input type="checkbox" (change)="chooseHospital($event, 8)" name="้hospital" />
+          โรงพยาบาลเปาโล รังสิต
+        </label>
+      </div>
+      <div class="cell2">
+        <label>
+          <input type="checkbox" (change)="chooseHospital($event, 9)" name="้hospital" />
+          โรงพยาบาลเปาโล เกษตร
+        </label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="cell">
+        <p>เงินเดือนที่ต้องการ 
+          <input type="number" min="0" [(ngModel)]="application.salary" />
+          บาท/เดือน    วันที่พร้อมจะเริ่มทำงานได้ <input type="date" [(ngModel)]="application.startingDate"></p>
+      </div>
+    </div>
+  </div>
+</div>
+  
