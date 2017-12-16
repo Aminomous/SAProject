@@ -64,7 +64,7 @@ public class Application4Controller extends AbstractApplicationController {
         private String fromTo;
         private EmploymentRecord employmentRecord;
         EmploymentData(EmploymentRecord employmentRecord) {
-            super(employmentRecord.getFromM(),employmentRecord.getFromY(),employmentRecord.getToM(),employmentRecord.getToY(),employmentRecord.getCompany(),employmentRecord.getWorkerType(),employmentRecord.getSalary(), employmentRecord.getReasonForLeaving());
+            super(employmentRecord.getFromM(),employmentRecord.getFromY(),employmentRecord.getToM(),employmentRecord.getToY(),employmentRecord.getCompany(),employmentRecord.getPosition(),employmentRecord.getSalary(), employmentRecord.getReasonForLeaving());
             this.fromTo = this.getFromM()+"/"+ this.getFromY() + " - " +this.getToM()+"/"+ this.getToY();
         }
 
