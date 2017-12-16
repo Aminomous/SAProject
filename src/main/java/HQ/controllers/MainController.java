@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class MainController {
 
     private Stage stage;
-    private String title = "SA";
+    private String title = "HQ";
 
     private MainPaneController mainPaneCtrl;
     private ApplicantFilterController applicantFilterCtrl;
