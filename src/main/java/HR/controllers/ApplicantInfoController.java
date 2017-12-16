@@ -6,12 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Application;
 import models.PersonalInformation;
 
+import javax.swing.text.html.ImageView;
 import java.io.IOException;
 
 public class ApplicantInfoController {
@@ -24,7 +26,11 @@ public class ApplicantInfoController {
     @FXML
     private Label idLabel, nameLabel, telLabel;
     @FXML
+    private Button imageButton;
+    @FXML
     private void initialize() {
+        Image test = new Image(getClass().getResourceAsStream("/asset/kiiroitori2.png"));
+        imageButton.setGraphic(new javafx.scene.image.ImageView(test));
 
     }
 
