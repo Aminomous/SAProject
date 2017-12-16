@@ -16,9 +16,8 @@
       <RowConstraints />
       <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="489.0" minHeight="10.0" prefHeight="283.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="30.0" minHeight="30.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="489.0" minHeight="10.0" prefHeight="283.0" vgrow="SOMETIMES" />
-      <RowConstraints maxHeight="60.0" minHeight="60.0" prefHeight="60.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="115.0" minHeight="30.0" prefHeight="96.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="79.0" minHeight="60.0" prefHeight="79.0" vgrow="SOMETIMES" />
    </rowConstraints>
    <children>
       <TableView fx:id="notRelativeTable" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
@@ -33,17 +32,11 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="428.0" text="ชื่อญาติ / เพื่อน ที่รู้จักดี ที่ทำงานอยู่ในโรงพยาบาล" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+      <Label fx:id="relativeWorkerLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="428.0" text="ชื่อญาติ / เพื่อน ที่รู้จักดี ที่ทำงานอยู่ในโรงพยาบาล" textAlignment="CENTER" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
          <font>
             <Font size="20.0" />
          </font>
       </Label>
-      <TableView fx:id="relativeTable" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="4">
-        <columns>
-          <TableColumn fx:id="noColumn" prefWidth="136.0" text="ลำดับ" />
-            <TableColumn fx:id="name2Column" prefWidth="613.0" text="ชื่อ" />
-        </columns>
-      </TableView>
-      <Label text="บันทึกเพิ่มเติมที่ผู้สมัครระบุ" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="CENTER" />
+      <Label fx:id="additionalLabel" text="บันทึกเพิ่มเติมที่ผู้สมัครระบุ" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
    </children>
 </GridPane>

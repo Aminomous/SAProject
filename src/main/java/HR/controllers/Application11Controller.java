@@ -12,6 +12,7 @@ public class Application11Controller extends  AbstractApplicationController{
     @FXML
     private void initialize(){
 
+
     }
 
 
@@ -28,6 +29,13 @@ public class Application11Controller extends  AbstractApplicationController{
     }
 
     public void showInfo() {
+        //Qh1
+        if(application.getQh1().size() >0){
+            this.q1Label.setText(application.getQh1().get(0).getType() + " " + application.getQh1().get(0).getDetail());
+        }
+
+        this.q2Label.setText(application.getQH2());
+        this.q3Label.setText(application.getQH3());
 
     }
 }

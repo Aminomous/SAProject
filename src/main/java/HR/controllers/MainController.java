@@ -88,6 +88,7 @@ public class MainController {
             if (app.getPersonalInformation().getID().equals(id)){
                 this.applicantInfoCtrl.showData(app);
                 this.applicantInfoCtrl.setApplication(app);
+                this.applicantInfoCtrl.setUp();
                 break;
             }
         }

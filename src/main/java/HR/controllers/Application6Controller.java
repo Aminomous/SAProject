@@ -42,9 +42,6 @@ public class Application6Controller extends AbstractApplicationController {
             excel = "Excel";
             pww = "Power point";
         }
-        System.out.println(personalInformation.getWord());
-        System.out.println(personalInformation.getExcel());
-        System.out.println(personalInformation.getPowerpoint());
         this.comLabel.setText(word + " " + excel + " " + pww);
         //car
         String isDrivecar = "";
