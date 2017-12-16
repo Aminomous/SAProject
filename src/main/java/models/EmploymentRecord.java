@@ -6,18 +6,18 @@ public class EmploymentRecord {
     private String toM;
     private String toY;
     private String company;
-    private String workerType;
+    private String position;
     private double salary;
     private String reasonForLeaving;
 
 
-    public EmploymentRecord(String fromM, String fromY, String toM, String toY, String company, String workerType, double salary, String reasonForLeaving) {
+    public EmploymentRecord(String fromM, String fromY, String toM, String toY, String company, String position, double salary, String reasonForLeaving) {
         this.fromM = fromM;
         this.fromY = fromY;
         this.toM = toM;
         this.toY = toY;
         this.company = company;
-        this.workerType = workerType;
+        this.position = position;
         this.salary = salary;
         this.reasonForLeaving = reasonForLeaving;
     }
@@ -42,8 +42,8 @@ public class EmploymentRecord {
         return company;
     }
 
-    public String getWorkerType() {
-        return workerType;
+    public String getPosition() {
+        return position;
     }
 
     public double getSalary() {
