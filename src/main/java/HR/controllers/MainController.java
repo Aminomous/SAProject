@@ -76,7 +76,7 @@ public class MainController {
         this.applicantInfoCtrl.setMainPane(appicantInfoPane);
         this.applicantInfoCtrl.setMainCtrl(this);
 
-        this.mainPaneCtrl.getLeftPane().setCenter(this.applicantTableCtrl.getMainPane());
+        this.mainPaneCtrl.getLeftPane().setTop(this.applicantTableCtrl.getMainPane());
 //        this.mainPaneCtrl.getLeftPane().setCenter(this.applicantTableCtrl.getMainPane());
         this.mainPaneCtrl.getRightPane().getChildren().add(this.applicantFilterCtrl.getMainPane());
         //this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());

@@ -13,11 +13,16 @@
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
-    <RowConstraints maxHeight="120.0" minHeight="10.0" prefHeight="105.33333587646484" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="100.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="600.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <GridPane fx:id="mainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" GridPane.rowIndex="1">
+      <Label text="โปรแกรมจัดการผู้สมัครงานโรงพยาบาล ABC Hospital" GridPane.halignment="CENTER">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <GridPane fx:id="mainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="620.0" prefWidth="1000.0" GridPane.rowIndex="1">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="400.0" minWidth="10.0" prefWidth="400.0" />
@@ -26,14 +31,9 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <BorderPane fx:id="leftPanel" prefHeight="600.0" prefWidth="600.0" />
             <FlowPane fx:id="rightPanel" prefHeight="600.0" prefWidth="400.0" GridPane.columnIndex="1" />
+            <BorderPane fx:id="leftPanel" prefHeight="600.0" prefWidth="600.0" />
          </children>
       </GridPane>
-      <Label text="โปรแกรมจัดการผู้สมัครงานโรงพยาบาล ABC Hospital" GridPane.halignment="CENTER">
-         <font>
-            <Font name="System Bold" size="40.0" />
-         </font>
-      </Label>
    </children>
 </GridPane>
