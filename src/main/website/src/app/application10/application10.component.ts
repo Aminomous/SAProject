@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class Application10Component implements OnInit {
 
   title = "รายละเอียดเกี่ยวกับครอบครัว (Family Details)"
+  numbers = 0
 
   constructor() { }
 

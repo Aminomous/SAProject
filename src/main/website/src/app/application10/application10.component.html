@@ -1,5 +1,141 @@
 <div class="application">
-    <div class="application-title">
-      <h3>{{title}}</h3>
+  <div class="application-title">
+    <h3>{{title}}</h3>
+  </div>
+</div>
+
+<div class="application">
+  <div class="application-body container">
+
+    <div class="row" align="left">
+      <div class="cell">
+        <label>บิดา ชื่อ-สกุล
+          <input type="text" name="name1" /> </label>
+        <label>อายุ
+          <input type="number" name="age1" size="10"> </label>
+        <label>
+          เบอร์โทรศัพท์
+          <input type="text" name="address1" />
+        </label>
+        <br>
+        <label>
+          ที่อยู่/สถานที่ทำงาน
+          <input type="text" name="address1" size="100" />
+        </label>
+        <br>
+        <label>
+          อาชีพ/ตำแหน่ง
+          <input type="text" name="occupation1" />
+        </label>
+        <br>
+      </div>
     </div>
+    <br>
+
+    <div class="row" align="left">
+      <div class="cell">
+        <label>มารดา ชื่อ-สกุล
+          <input type="text" name="name2" /> </label>
+        <label>อายุ
+          <input type="number" name="age2" size="10"> </label>
+        <label>
+          เบอร์โทรศัพท์
+          <input type="text" name="address2" />
+        </label>
+        <br>
+        <label>
+          ที่อยู่/สถานที่ทำงาน
+          <input type="text" name="phoneNumber2" size="100" />
+        </label>
+        <br>
+        <label>
+          อาชีพ/ตำแหน่ง
+          <input type="text" name="occupation2" />
+        </label>
+        <br>
+      </div>
+    </div>
+    <br>
+    <div class="row" *ngFor="let i of numbers" align="left">
+      <div class="cell">
+        <label>พี่น้อง ชื่อ-สกุล
+          <input type="text" name="name3" /> </label>
+        <label>อายุ
+          <input type="number" name="age3" size="10"> </label>
+        <label>
+          เบอร์โทรศัพท์
+          <input type="text" name="phoneNumber3" />
+        </label>
+        <br>
+        <label>
+          ที่อยู่/สถานที่ทำงาน
+          <input type="text" name="address3" size="100" />
+        </label>
+        <label>
+          อาชีพ/ตำแหน่ง
+          <input type="text" name="occupation3" />
+        </label>
+        <br>
+      </div>
+    </div>
+    <br>
+
+    <div class="row" align="left">
+      <div class="cell">
+        <label>ภรรยา/สามี ชื่อ-สกุล
+          <input type="text" name="name1" /> </label>
+        <label>อายุ
+          <input type="number" name="age1" size="10"> </label>
+        <label>
+          เบอร์โทรศัพท์
+          <input type="text" name="phoneNumber1" />
+        </label>
+        <br>
+        <label>
+          ที่อยู่/สถานที่ทำงาน
+          <input type="text" name="address1" size="100" />
+        </label>
+        <br>
+        <label>
+          อาชีพ/ตำแหน่ง
+          <input type="text" name="occupation1" />
+        </label>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row" align="left">
+      <div class="cell">
+        <label> จำนวนบุตร
+          <input type="number" [(ngModel)]="numbers">คน</label>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row" *ngFor="let i of numbers" align="left">
+      <div class="cell">
+        <label>ชื่อ-สกุล
+          <input type="text" name="name1" /> </label>
+        <label>อายุ
+          <input type="number" name="age1" size="10"> </label>
+        <label>
+          เบอร์โทรศัพท์
+          <input type="text" name="phoneNumber1" />
+        </label>
+        <br>
+        <label>
+          ที่อยู่/สถานที่ทำงาน
+          <input type="text" name="address1" size="100" />
+        </label>
+        <br>
+        <label>
+          อาชีพ/ตำแหน่ง
+          <input type="text" name="occupation1" />
+        </label>
+        <br>
+      </div>
+    </div>
+  </div>
 </div>

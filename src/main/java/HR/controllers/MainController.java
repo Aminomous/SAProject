@@ -29,7 +29,7 @@ public class MainController {
 
     public MainController(Stage stage) throws IOException, SQLException {
         this.stage = stage;
-//        this.applicationService = new DatabaseApplicationService("//127.0.0.1:3306/saapplicationmanager", new MySQLConnector());
+//        this.applicationService = new DatabaseApplicationService("//10.2.60.249:3306/saapplicationmanager", new MySQLConnector());
         this.applicationService = new DatabaseApplicationService("saDB.db", new SQLiteConnector());
         this.loadPane();
         loadData();
@@ -76,7 +76,7 @@ public class MainController {
         this.applicantInfoCtrl.setMainPane(appicantInfoPane);
         this.applicantInfoCtrl.setMainCtrl(this);
 
-        this.mainPaneCtrl.getLeftPane().setTop(this.applicantTableCtrl.getMainPane());
+        this.mainPaneCtrl.getLeftPane().setCenter(this.applicantTableCtrl.getMainPane());
 //        this.mainPaneCtrl.getLeftPane().setCenter(this.applicantTableCtrl.getMainPane());
         this.mainPaneCtrl.getRightPane().getChildren().add(this.applicantFilterCtrl.getMainPane());
         //this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
