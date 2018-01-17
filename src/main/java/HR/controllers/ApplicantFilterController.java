@@ -1,10 +1,7 @@
 package HR.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.FlowPane;
 import models.Application;
 
@@ -31,6 +28,11 @@ public class ApplicantFilterController {
     private CheckBox filter4;
     @FXML
     private CheckBox filter5;
+    @FXML
+    private CheckBox filter6;
+    @FXML
+    private CheckBox filter7;
+
 
 
     public void initialize(){
@@ -116,6 +118,12 @@ public class ApplicantFilterController {
         if (filter5.isSelected()){
             filteredApplications = checkFilterN(filteredApplications,tempApplications,5);
         }
+        if (filter6.isSelected()) {
+            filteredApplications = checkFilterN(filteredApplications, tempApplications, 6);
+        }
+        if (filter7.isSelected()) {
+            filteredApplications = checkFilterN(filteredApplications, tempApplications, 7);
+        }
         else {
             filteredApplications = tempApplications ;
         }
@@ -126,12 +134,17 @@ public class ApplicantFilterController {
 
 
     private ArrayList<Application> checkFilterN(ArrayList<Application> filtered,ArrayList<Application> apps,int n) {
-        for (Application app : apps){
-            if ((app.getLatestStatus() == n) && (!(filtered.contains(app)))){
-                filtered.add(app);
+        for (Application app : apps) {
+            if (!(filtered.contains(app))) {
+                if (n <= 5) {
+                    if ((app.getLatestStatus() == n)) { filtered.add(app); }
+                } else {
+                    if ((n==6) && (app.getApplicationStatus6()== 1)){ filtered.add(app); }
+                    else if ((n==7) && (app.getApplicationStatus6()== 2)){ filtered.add(app); }
+                }
             }
         }
-        return filtered ;
+        return filtered;
     }
     @FXML
     private void handleApplyBtn(){
