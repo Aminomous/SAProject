@@ -37,13 +37,16 @@ public class ApplicantTableController {
 
         applicantTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ApplicantData>() {
             public void changed(ObservableValue<? extends ApplicantData> observable, ApplicantData oldValue, ApplicantData newValue) {
-                if (newValue == null){ newValue = oldValue ; }
+                if (newValue == null) {
+                    newValue = oldValue;
+                }
 
                 mainCtrl.showApplicantInfo(newValue.getId());
             }
         });
     }
-    public void refreshTable(){
+
+    public void refreshTable() {
         showData();
     }
 
@@ -53,24 +56,24 @@ public class ApplicantTableController {
         tableViewData = FXCollections.observableArrayList();
 
         for (Application app : applications) {
+            System.out.println("This is result of status 6 :" + app.getApplicationStatus6());
+
             PersonalInformation tempInformation = app.getPersonalInformation();
             tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
         }
         applicantTable.setItems(tableViewData);
     }
 
-    public void showData(ArrayList<Application> apps){
+    public void showData(ArrayList<Application> apps) {
         applicantTable.getItems().removeAll();
         tableViewData.clear();
         tableViewData = FXCollections.observableArrayList();
-
-        for (Application app : apps){
+        for (Application app : apps) {
             PersonalInformation tempInformation = app.getPersonalInformation();
             tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
         }
         applicantTable.setItems(tableViewData);
     }
-
 
 
     public FlowPane getMainPane() {

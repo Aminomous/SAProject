@@ -31,9 +31,9 @@ public class Application {
     private boolean applicationStatus3;
     private boolean applicationStatus4;
     private boolean applicationStatus5;
-    private boolean applicationStatus6;
+    private int applicationStatus6;
 
-    public Application(int refnum, Calendar date, String position1, String position2, boolean workInShift, String workerType, double salary, Calendar startingDate, ArrayList<QH1> qh1, String qh2, String qh3, String relativeWorkInHospital, String additionalInformation, ArrayList<Apprenticeship> apprenticeship, ArrayList<Education> education, Employee employee, ArrayList<EmploymentRecord> employmentRecords, ArrayList<FamilyDetail> familyDetails, ArrayList<Hospital> hospitals, ArrayList<LanguageAbility> languageAbilities, PersonalInformation personalInformation, ArrayList<ReferencePerson> referencePeople, boolean applicationStatus1, boolean applicationStatus2, boolean applicationStatus3, boolean applicationStatus4, boolean applicationStatus5, boolean applicationStatus6) {
+    public Application(int refnum, Calendar date, String position1, String position2, boolean workInShift, String workerType, double salary, Calendar startingDate, ArrayList<QH1> qh1, String qh2, String qh3, String relativeWorkInHospital, String additionalInformation, ArrayList<Apprenticeship> apprenticeship, ArrayList<Education> education, Employee employee, ArrayList<EmploymentRecord> employmentRecords, ArrayList<FamilyDetail> familyDetails, ArrayList<Hospital> hospitals, ArrayList<LanguageAbility> languageAbilities, PersonalInformation personalInformation, ArrayList<ReferencePerson> referencePeople, boolean applicationStatus1, boolean applicationStatus2, boolean applicationStatus3, boolean applicationStatus4, boolean applicationStatus5, int applicationStatus6) {
         this.refnum = refnum;
         this.date = date;
         this.position1 = position1;
@@ -61,6 +61,8 @@ public class Application {
         this.applicationStatus3 = applicationStatus3;
         this.applicationStatus4 = applicationStatus4;
         this.applicationStatus5 = applicationStatus5;
+        System.out.println();
+        System.out.println("status + " + applicationStatus6);
         this.applicationStatus6 = applicationStatus6;
     }
 
@@ -222,11 +224,11 @@ public class Application {
         return "รอการเปลี่ยนแปลงสถานะ";
     }
 
-    public boolean isApplicationStatus6() {
+    public int getApplicationStatus6() {
         return applicationStatus6;
     }
 
-    public void setApplicationStatus6(boolean applicationStatus6) {
+    public void setApplicationStatus6(int applicationStatus6) {
         this.applicationStatus6 = applicationStatus6;
     }
 }

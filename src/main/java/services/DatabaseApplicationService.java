@@ -49,7 +49,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
                 boolean status3 = result.getBoolean(16);
                 boolean status4 = result.getBoolean(17);
                 boolean status5 = result.getBoolean(18);
-                boolean status6 = result.getBoolean(19);
+                int status6 = result.getInt(19);
 
                 ArrayList<Apprenticeship> apprenticeships = getApprenticeship(citizeniD);
                 ArrayList<Education> educations = getEducation(citizeniD);

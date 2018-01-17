@@ -110,12 +110,12 @@ public class StatusChangeController {
             application.setApplicationStatus5(false);
         }
 
-        if (buttonGroup.getSelectedToggle().isSelected()){
-            System.out.println("Toggle is selected");
-            if (declineButton.isSelected()){
-
-            }
-        }
+//        if (buttonGroup.getSelectedToggle().isSelected()){
+//            System.out.println("Toggle is selected");
+//            if (declineButton.isSelected()){
+//
+//            }
+//        }
 
 
         mainCtrl.getApplicationService().update(application);
