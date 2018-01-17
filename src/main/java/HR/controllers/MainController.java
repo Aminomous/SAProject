@@ -64,16 +64,16 @@ public class MainController {
         this.applicantTableCtrl.setMainCtrl(this);
 
         FXMLLoader applicantFilterPaneLoader = new FXMLLoader(getClass().getResource("/HR/applicantFilter.fxml"));
-        FlowPane appicantFliterPane = applicantFilterPaneLoader.load();
+        FlowPane applicantFilterPane = applicantFilterPaneLoader.load();
         this.applicantFilterCtrl = applicantFilterPaneLoader.getController();
-        this.applicantFilterCtrl.setMainPane(appicantFliterPane);
+        this.applicantFilterCtrl.setMainPane(applicantFilterPane);
         this.applicantFilterCtrl.setMainCtrl(this);
 //        this.applicantFilterCtrl.setTableCtrl(this.applicantTableCtrl);
 
         FXMLLoader applicantInfoPaneLoader = new FXMLLoader(getClass().getResource("/HR/applicantInfo.fxml"));
-        FlowPane appicantInfoPane = applicantInfoPaneLoader.load();
+        FlowPane applicantInfoPane = applicantInfoPaneLoader.load();
         this.applicantInfoCtrl = applicantInfoPaneLoader.getController();
-        this.applicantInfoCtrl.setMainPane(appicantInfoPane);
+        this.applicantInfoCtrl.setMainPane(applicantInfoPane);
         this.applicantInfoCtrl.setMainCtrl(this);
 
         this.mainPaneCtrl.getLeftPane().setTop(this.applicantTableCtrl.getMainPane());
@@ -93,6 +93,7 @@ public class MainController {
             }
         }
     }
+
     public void refreshTable(){
         applicantTableCtrl.refreshTable();
     }

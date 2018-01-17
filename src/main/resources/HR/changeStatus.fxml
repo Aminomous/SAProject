@@ -83,7 +83,7 @@
               </rowConstraints>
                <children>
                   <Button mnemonicParsing="false" onAction="#confirm" text="Confirm" GridPane.halignment="CENTER" />
-                  <Button mnemonicParsing="false" onAction="#cancel" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                  <Button mnemonicParsing="false" onAction="#closeWindow" text="Cancel" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                </children>
             </GridPane>
             <GridPane GridPane.rowIndex="6">

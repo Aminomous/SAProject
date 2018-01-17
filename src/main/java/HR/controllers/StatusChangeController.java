@@ -108,12 +108,12 @@ public class StatusChangeController {
         }
 
         mainCtrl.getApplicationService().update(application);
-        cancel();
+        closeWindow();
 
     }
 
     @FXML
-    public void cancel() {
+    public void closeWindow() {
         this.status1.getScene().getWindow().hide();
     }
 
