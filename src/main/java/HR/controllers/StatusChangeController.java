@@ -1,8 +1,12 @@
 package HR.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import models.Application;
 
 public class StatusChangeController {
@@ -12,9 +16,20 @@ public class StatusChangeController {
 
     @FXML
     private CheckBox status1, status2, status3, status4, status5;
+    @FXML
+    private GridPane container;
+    @FXML
+    private RadioButton acceptButton, declineButton;
+
+    private ToggleGroup buttonGroup;
 
     public void initialize() {
+        buttonGroup = new ToggleGroup();
 
+        acceptButton.setToggleGroup(buttonGroup);
+        declineButton.setToggleGroup(buttonGroup);
+
+        acceptButtonDisabling();
     }
 
     public void start() {
@@ -58,6 +73,10 @@ public class StatusChangeController {
             status5.setDisable(false);
         }
 
+    }
+
+    private void acceptButtonDisabling(){
+        acceptButton.setDisable(status5.isSelected());
     }
 
     @FXML
