@@ -1,6 +1,7 @@
 package HR.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
@@ -18,6 +19,18 @@ public class ApplicantFilterController {
     private ComboBox<String> filterBox;
     @FXML
     private TextField filterField;
+    @FXML
+    private CheckBox filter0;
+    @FXML
+    private CheckBox filter1;
+    @FXML
+    private CheckBox filter2;
+    @FXML
+    private CheckBox filter3;
+    @FXML
+    private CheckBox filter4;
+    @FXML
+    private CheckBox filter5;
 
 
     public void initialize(){
@@ -74,7 +87,66 @@ public class ApplicantFilterController {
                 }
             }
         }
+        else {
+            for (Application item : applications){
+                tempApplications.add(item);
+            }
+        }
         mainCtrl.getApplicantTableCtrl().showData(tempApplications);
+    }
+
+    private void showFilteredApplication(){
+        ArrayList<Application> tempApplications = mainCtrl.getApplications() ;
+        ArrayList<Application> filteredApplications = new ArrayList<Application>() ;
+        if (filter0.isSelected()){
+            filteredApplications = checkFilterN(filteredApplications,tempApplications,0);
+        }
+        if (filter1.isSelected()){
+            filteredApplications = checkFilterN(filteredApplications,tempApplications,1);
+        }
+        if (filter2.isSelected()){
+            filteredApplications = checkFilterN(filteredApplications,tempApplications,2);
+        }
+        if (filter3.isSelected()){
+            filteredApplications = checkFilterN(filteredApplications,tempApplications,3);
+        }
+        if (filter4.isSelected()){
+            filteredApplications = checkFilterN(filteredApplications,tempApplications,4);
+        }
+        if (filter5.isSelected()){
+            filteredApplications = checkFilterN(filteredApplications,tempApplications,5);
+        }
+        else {
+            filteredApplications = tempApplications ;
+        }
+
+
+        mainCtrl.getApplicantTableCtrl().showData(filteredApplications);
+    }
+
+
+    private ArrayList<Application> checkFilterN(ArrayList<Application> filtered,ArrayList<Application> apps,int n) {
+        for (Application app : apps){
+            if ((app.getLatestStatus() == n) && (!(filtered.contains(app)))){
+                filtered.add(app);
+            }
+        }
+        return filtered ;
+    }
+    @FXML
+    private void handleApplyBtn(){
+        showFilteredApplication();
+    }
+
+    @FXML
+    private void handleClearFilterBtn(){
+        filter0.setSelected(false);
+        filter1.setSelected(false);
+        filter2.setSelected(false);
+        filter3.setSelected(false);
+        filter4.setSelected(false);
+        filter5.setSelected(false);
+        showFilteredApplication();
     }
     public FlowPane getMainPane() {
         return mainPane;
