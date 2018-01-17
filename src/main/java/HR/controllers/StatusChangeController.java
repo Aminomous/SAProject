@@ -1,10 +1,13 @@
 package HR.controllers;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.GridPane;
 import models.Application;
@@ -106,6 +109,14 @@ public class StatusChangeController {
         } else {
             application.setApplicationStatus5(false);
         }
+
+        if (buttonGroup.getSelectedToggle().isSelected()){
+            System.out.println("Toggle is selected");
+            if (declineButton.isSelected()){
+
+            }
+        }
+
 
         mainCtrl.getApplicationService().update(application);
         closeWindow();

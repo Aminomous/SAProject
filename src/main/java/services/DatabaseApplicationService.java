@@ -49,6 +49,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
                 boolean status3 = result.getBoolean(16);
                 boolean status4 = result.getBoolean(17);
                 boolean status5 = result.getBoolean(18);
+                boolean status6 = result.getBoolean(19);
 
                 ArrayList<Apprenticeship> apprenticeships = getApprenticeship(citizeniD);
                 ArrayList<Education> educations = getEducation(citizeniD);
@@ -68,7 +69,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
                 temp = statingDateRaw.split("-");
                 startingDate.set(Integer.valueOf(temp[0]), Integer.valueOf(temp[1]), Integer.valueOf(temp[2]));
 
-                applications.add(new Application(refnum, date, position1, position2, workInShift, workerType, salary, startingDate, qh1, qh2, qh3, relativeWorkInHospital, additionalInformation, apprenticeships, educations, employee, employmentRecords, familyDetails, hospitals, languageAbilities, personalInformation, referencePeople, status1, status2, status3, status4, status5));
+                applications.add(new Application(refnum, date, position1, position2, workInShift, workerType, salary, startingDate, qh1, qh2, qh3, relativeWorkInHospital, additionalInformation, apprenticeships, educations, employee, employmentRecords, familyDetails, hospitals, languageAbilities, personalInformation, referencePeople, status1, status2, status3, status4, status5, status6));
             }
 
             close();
