@@ -125,7 +125,7 @@ public class ApplicantFilterController {
             filteredApplications = checkFilterN(filteredApplications, tempApplications, 7);
         }
         else {
-            filteredApplications = tempApplications ;
+            for (int i=0 ; i<=5 ; i++){  filteredApplications = checkFilterN(filteredApplications, tempApplications, i);}
         }
 
 
