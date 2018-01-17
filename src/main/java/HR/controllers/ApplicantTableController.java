@@ -56,10 +56,10 @@ public class ApplicantTableController {
         tableViewData = FXCollections.observableArrayList();
 
         for (Application app : applications) {
-            System.out.println("This is result of status 6 :" + app.getApplicationStatus6());
-
-            PersonalInformation tempInformation = app.getPersonalInformation();
-            tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
+            if (app.getApplicationStatus6() == 0) {
+                PersonalInformation tempInformation = app.getPersonalInformation();
+                tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus(), app.getApplicationStatus6()));
+            }
         }
         applicantTable.setItems(tableViewData);
     }
@@ -70,7 +70,7 @@ public class ApplicantTableController {
         tableViewData = FXCollections.observableArrayList();
         for (Application app : apps) {
             PersonalInformation tempInformation = app.getPersonalInformation();
-            tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
+            tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus(), app.getApplicationStatus6()));
         }
         applicantTable.setItems(tableViewData);
     }
@@ -100,13 +100,18 @@ public class ApplicantTableController {
         private SimpleStringProperty position;
         private SimpleStringProperty status;
 
-        ApplicantData(String id, String firstName, String lastName, String position, int status) {
+        ApplicantData(String id, String firstName, String lastName, String position, int status, int status2) {
             this.id = new SimpleStringProperty(id);
             this.firstName = new SimpleStringProperty(firstName);
             this.lastName = new SimpleStringProperty(lastName);
             this.position = new SimpleStringProperty(position + "");
+
             this.status = new SimpleStringProperty();
-            setStatus(status);
+            if (status2 != 0) {
+                setStatus(status2);
+            } else {
+                setStatus(status);
+            }
         }
 
         public String getId() {

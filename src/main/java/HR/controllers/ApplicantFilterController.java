@@ -125,10 +125,10 @@ public class ApplicantFilterController {
             filteredApplications = checkFilterN(filteredApplications, tempApplications, 7);
         }
         else {
-            for (int i=0 ; i<=5 ; i++){  filteredApplications = checkFilterN(filteredApplications, tempApplications, i);}
+            for (int i=0 ;i<=5;i++){
+                filteredApplications = checkFilterN(filteredApplications, tempApplications, i);
+            }
         }
-
-
         mainCtrl.getApplicantTableCtrl().showData(filteredApplications);
     }
 
@@ -137,7 +137,7 @@ public class ApplicantFilterController {
         for (Application app : apps) {
             if (!(filtered.contains(app))) {
                 if (n <= 5) {
-                    if ((app.getLatestStatus() == n)) { filtered.add(app); }
+                    if ((app.getLatestStatus() == n) && (app.getApplicationStatus6()==0)) { filtered.add(app); }
                 } else {
                     if ((n==6) && (app.getApplicationStatus6()== 1)){ filtered.add(app); }
                     else if ((n==7) && (app.getApplicationStatus6()== 2)){ filtered.add(app); }
@@ -159,6 +159,8 @@ public class ApplicantFilterController {
         filter3.setSelected(false);
         filter4.setSelected(false);
         filter5.setSelected(false);
+        filter6.setSelected(false);
+        filter7.setSelected(false);
         showFilteredApplication();
     }
     public FlowPane getMainPane() {
