@@ -61,8 +61,6 @@ public class Application {
         this.applicationStatus3 = applicationStatus3;
         this.applicationStatus4 = applicationStatus4;
         this.applicationStatus5 = applicationStatus5;
-        System.out.println();
-        System.out.println("status + " + applicationStatus6);
         this.applicationStatus6 = applicationStatus6;
     }
 
@@ -209,19 +207,24 @@ public class Application {
         return 0;
     }
 
-    public String getLastestStatusStr() {
-        if (isApplicationStatus5()) {
-            return "ผ่านการตรวจร่างกาย";
-        } else if (isApplicationStatus4()) {
-            return "ยืนยันการสัมภาษณ์";
-        } else if (isApplicationStatus3()) {
-            return "ผ่านการสัมภาษณ์โดยหัวหน้าแผนก";
-        } else if (isApplicationStatus2()) {
-            return "ผ่านการสัมภาษณ์โดย hr";
-        } else if (isApplicationStatus1()) {
-            return "ผ่านการทดสอบ";
+    public String getLatestStatusStr() {
+        if (getApplicationStatus6() == 0) {
+
+            if (isApplicationStatus5()) {
+                return "ผ่านการตรวจร่างกาย";
+            } else if (isApplicationStatus4()) {
+                return "ยืนยันการสัมภาษณ์";
+            } else if (isApplicationStatus3()) {
+                return "ผ่านการสัมภาษณ์โดยหัวหน้าแผนก";
+            } else if (isApplicationStatus2()) {
+                return "ผ่านการสัมภาษณ์โดย hr";
+            } else if (isApplicationStatus1()) {
+                return "ผ่านการทดสอบ";
+            }
+            return "รอการเปลี่ยนแปลงสถานะ";
+        }else{
+            return getApplicationStatus6()==1?"ผ่านการพิจารณา":"ไม่ผ่านการพิจาณรา";
         }
-        return "รอการเปลี่ยนแปลงสถานะ";
     }
 
     public int getApplicationStatus6() {
@@ -230,5 +233,13 @@ public class Application {
 
     public void setApplicationStatus6(int applicationStatus6) {
         this.applicationStatus6 = applicationStatus6;
+    }
+
+    public boolean equals(Object o1, Object o2){
+        Application app1 = (Application) o1;
+        Application app2 = (Application) o2;
+
+        return app1.getRefnum() == app2.getRefnum();
+
     }
 }

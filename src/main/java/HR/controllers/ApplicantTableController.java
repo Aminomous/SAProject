@@ -46,8 +46,12 @@ public class ApplicantTableController {
         });
     }
 
-    public void refreshTable() {
-        showData();
+    public void refreshTable(boolean isFilterOn) {
+        if (isFilterOn) {
+            mainCtrl.getApplicantFilterCtrl().showFilteredApplication();
+        } else {
+            this.showData();
+        }
     }
 
     public void showData() {
@@ -108,7 +112,7 @@ public class ApplicantTableController {
 
             this.status = new SimpleStringProperty();
             if (status2 != 0) {
-                setStatus(status2);
+                setStatus(status2 + 5);
             } else {
                 setStatus(status);
             }
@@ -162,6 +166,12 @@ public class ApplicantTableController {
                     break;
                 case 5:
                     this.status.set("ผ่านการตรวจสอบร่างกาย");
+                    break;
+                case 6:
+                    this.status.set("ผ่านการพิจารณา");
+                    break;
+                case 7:
+                    this.status.set("ไม่ผ่านการพิจารณา");
                     break;
                 default:
                     this.status.set("รอการเปลี่ยนแปลงสถานะ");

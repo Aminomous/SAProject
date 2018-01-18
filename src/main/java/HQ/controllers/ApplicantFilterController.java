@@ -68,7 +68,7 @@ public class ApplicantFilterController {
 
         else if ("status".equals(filter)){
             for (Application item : applications){
-                if(item.getLastestStatusStr().contains(text)) {
+                if(item.getLatestStatusStr().contains(text)) {
                     tempApplications.add(item);
                 }
             }

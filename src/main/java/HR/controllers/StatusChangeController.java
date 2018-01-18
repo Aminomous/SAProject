@@ -31,55 +31,36 @@ public class StatusChangeController {
 
         acceptButton.setToggleGroup(buttonGroup);
         declineButton.setToggleGroup(buttonGroup);
-
-        acceptButtonDisabling();
     }
 
     public void start() {
-        status1.setDisable(true);
-        status2.setDisable(true);
-        status3.setDisable(true);
-        status4.setDisable(true);
-        status5.setDisable(true);
-
-        int latestStatus = application.getLatestStatus();
-        if (latestStatus == 0) {
-            status1.setDisable(false);
-        } else if (latestStatus == 1) {
-            status1.setSelected(true);
-            status1.setDisable(false);
-            status2.setDisable(false);
-        } else if (latestStatus == 2) {
-            status1.setSelected(true);
-            status2.setSelected(true);
-            status2.setDisable(false);
-            status3.setDisable(false);
-        } else if (latestStatus == 3) {
-            status1.setSelected(true);
-            status2.setSelected(true);
-            status3.setSelected(true);
-            status3.setDisable(false);
-            status4.setDisable(false);
-        } else if (latestStatus == 4) {
-            status1.setSelected(true);
-            status2.setSelected(true);
-            status3.setSelected(true);
-            status4.setSelected(true);
-            status4.setDisable(false);
-            status5.setDisable(false);
-        } else if (latestStatus == 5) {
-            status1.setSelected(true);
-            status2.setSelected(true);
-            status3.setSelected(true);
-            status4.setSelected(true);
-            status5.setSelected(true);
-            status5.setDisable(false);
+        CheckBox[] statuses = {status1, status2, status3, status4, status5};
+        for (CheckBox status:statuses){
+            status.setDisable(true);
         }
 
-    }
+        int latestStatus = application.getLatestStatus();
 
-    private void acceptButtonDisabling(){
-        acceptButton.setDisable(status5.isSelected());
+        for (int i = 0; i< latestStatus; i++){
+            statuses[i].setSelected(true);
+            if (i == latestStatus-1){
+                statuses[i].setDisable(false);
+                statuses[Math.min(i+1, 4)].setDisable(false);
+            }
+        }
+
+        if(application.getApplicationStatus6() == 0){
+            acceptButton.setDisable(status5.isSelected());
+        }else {
+            if(application.getApplicationStatus6() == 1){
+                acceptButton.setSelected(true);
+            }else{
+                declineButton.setSelected(true);
+            }
+            acceptButton.setDisable(true);
+            declineButton.setDisable(true);
+        }
+
     }
 
     @FXML
@@ -111,7 +92,6 @@ public class StatusChangeController {
         }
 
         if (declineButton.isSelected()){
-            System.out.println("DECLINE IS SELECTED");
             application.setApplicationStatus6(2);
         }
         if (acceptButton.isSelected()){

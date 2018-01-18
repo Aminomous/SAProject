@@ -82,7 +82,7 @@ public class ApplicantInfoController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mainCtrl.refreshTable();
+        mainCtrl.refreshTable(mainCtrl.getApplicantFilterCtrl().isFilterOn());
     }
 
     public void showData(Application app) {

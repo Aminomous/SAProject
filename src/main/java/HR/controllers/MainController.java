@@ -94,8 +94,13 @@ public class MainController {
         }
     }
 
-    public void refreshTable(){
-        applicantTableCtrl.refreshTable();
+    public void refreshTable(boolean isFilterOn){
+        applicantTableCtrl.refreshTable(isFilterOn);
+    }
+
+    public void resetInfoSection(){
+        this.mainPaneCtrl.getLeftPane().setBottom(null);
+
     }
 
     private void loadData() {
@@ -109,5 +114,9 @@ public class MainController {
     }
     public ApplicantTableController getApplicantTableCtrl(){
         return this.applicantTableCtrl;
+    }
+
+    public ApplicantFilterController getApplicantFilterCtrl() {
+        return applicantFilterCtrl;
     }
 }

@@ -33,7 +33,7 @@ public class ApplicantFilterController {
     @FXML
     private CheckBox filter7;
 
-
+    private boolean isFilterOn;
 
     public void initialize(){
         filterBox.getItems().addAll(" ", "id", "first name", "last name", "position", "status");
@@ -84,7 +84,7 @@ public class ApplicantFilterController {
 
         else if ("status".equals(filter)){
             for (Application item : applications){
-                if(item.getLastestStatusStr().contains(text)) {
+                if(item.getLatestStatusStr().contains(text)) {
                     tempApplications.add(item);
                 }
             }
@@ -97,7 +97,7 @@ public class ApplicantFilterController {
         mainCtrl.getApplicantTableCtrl().showData(tempApplications);
     }
 
-    private void showFilteredApplication(){
+    public void showFilteredApplication(){
         ArrayList<Application> tempApplications = mainCtrl.getApplications() ;
         ArrayList<Application> filteredApplications = new ArrayList<Application>() ;
         if (filter0.isSelected()){
@@ -124,7 +124,8 @@ public class ApplicantFilterController {
         if (filter7.isSelected()) {
             filteredApplications = checkFilterN(filteredApplications, tempApplications, 7);
         }
-        else {
+        if(!(filter0.isSelected() || filter1.isSelected() || filter2.isSelected() || filter3.isSelected() || filter4.isSelected() || filter5.isSelected() || filter6.isSelected() || filter7.isSelected())) {
+            isFilterOn = false;
             for (int i=0 ;i<=5;i++){
                 filteredApplications = checkFilterN(filteredApplications, tempApplications, i);
             }
@@ -148,6 +149,7 @@ public class ApplicantFilterController {
     }
     @FXML
     private void handleApplyBtn(){
+        isFilterOn = true;
         showFilteredApplication();
     }
 
@@ -175,4 +177,7 @@ public class ApplicantFilterController {
         this.mainCtrl = mainCtrl;
     }
 
+    public boolean isFilterOn() {
+        return isFilterOn;
+    }
 }
