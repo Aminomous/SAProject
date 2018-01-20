@@ -20,7 +20,5 @@ public class MainHR extends Application {
 //        primaryStage.show();
         MainController main = new MainController(primaryStage);
         main.start();
-
-
     }
 }

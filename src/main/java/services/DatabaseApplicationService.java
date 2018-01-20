@@ -2,9 +2,9 @@ package services;
 
 import models.*;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.io.File;
+import java.io.FileInputStream;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -213,7 +213,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
     }
 
     private PersonalInformation getPersonalInformation(String citizenID) throws ClassNotFoundException, SQLException {
-        PersonalInformation personalInformation = null;
+        PersonalInformation personalInformation = new PersonalInformation();
         String query = "select * from PersonalInformation where (citizenID = " + citizenID + ")";
         Statement statement = conn.createStatement();
         ResultSet result = statement.executeQuery(query);
@@ -231,7 +231,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             String dateOfBirthRaw = result.getString(10);
             String placeOfBirth = result.getString(11);
             double weight = result.getDouble(12);
-            double heigth = result.getDouble(13);
+            double height = result.getDouble(13);
             String nationality = result.getString(14);
             String race = result.getString(15);
             String religion = result.getString(16);
@@ -249,8 +249,8 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             boolean driveCar = result.getBoolean(29);
             boolean ownCar = result.getBoolean(30);
             String driveLicenseCar = result.getString(31);
-            boolean rideMotocycle = result.getBoolean(32);
-            boolean ownMotocycle = result.getBoolean(33);
+            boolean rideMotorcycle = result.getBoolean(32);
+            boolean ownMotorcycle = result.getBoolean(33);
             String driveLicenseMotocycle = result.getString(34);
             String hobby = result.getString(35);
             boolean q1 = result.getBoolean(36);
@@ -259,19 +259,19 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             boolean q4 = result.getBoolean(39);
             String q5 = result.getString(40);
 
-            
+
             String[] temp = dateOfBirthRaw.split("-");
             GregorianCalendar dateOfBirth = new GregorianCalendar();
             dateOfBirth.set(Integer.valueOf(temp[0]), Integer.valueOf(temp[1]), Integer.valueOf(temp[2]));
             ArrayList<Q6> q6s = getQ6(citizenID);
 
 
-            personalInformation = new PersonalInformation(ID, titleTH, fNameTH, lNameTH, fNameEN, lNameEN, address, email, phoneNumber, dateOfBirth, placeOfBirth, weight, heigth, nationality, race, religion, profNo, militaryStatus, maritalStatus, emergencyContact, toeicScore, toeicYear, toeflScore, toeflYear, word, excel, powerpoint, driveCar, ownCar, driveLicenseCar, rideMotocycle, ownMotocycle, driveLicenseMotocycle, hobby, q1, q2, q3, q4, q5, q6s);
+            personalInformation = new PersonalInformation(ID, titleTH, fNameTH, lNameTH, fNameEN, lNameEN, address, email, phoneNumber, dateOfBirth, placeOfBirth, weight, height, nationality, race, religion, profNo, militaryStatus, maritalStatus, emergencyContact, toeicScore, toeicYear, toeflScore, toeflYear, word, excel, powerpoint, driveCar, ownCar, driveLicenseCar, rideMotorcycle, ownMotorcycle, driveLicenseMotocycle, hobby, q1, q2, q3, q4, q5, q6s);
         }
         return personalInformation;
     }
 
-    private ArrayList<Q6> getQ6(String citizenID) throws ClassNotFoundException, SQLException{
+    private ArrayList<Q6> getQ6(String citizenID) throws ClassNotFoundException, SQLException {
         ArrayList<Q6> q6s = new ArrayList<Q6>();
         String query = "select * from Q6 where (citizenID = " + citizenID + ")";
         Statement statement = conn.createStatement();
@@ -285,7 +285,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
         return q6s;
     }
 
-    private ArrayList<QH1> getQH1(int refnum) throws ClassNotFoundException, SQLException{
+    private ArrayList<QH1> getQH1(int refnum) throws ClassNotFoundException, SQLException {
         ArrayList<QH1> qh1s = new ArrayList<QH1>();
         String query = "select * from QH1 where (refnum = " + refnum + ")";
         Statement statement = conn.createStatement();
@@ -299,7 +299,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
         return qh1s;
     }
 
-    private ArrayList<ReferencePerson> getReferencePerson(int refnum) throws ClassNotFoundException, SQLException{
+    private ArrayList<ReferencePerson> getReferencePerson(int refnum) throws ClassNotFoundException, SQLException {
         ArrayList<ReferencePerson> getReferencePeople = new ArrayList<ReferencePerson>();
         String query = "select * from QH1 where (refnum = " + refnum + ")";
         Statement statement = conn.createStatement();
@@ -320,7 +320,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
         try {
             connect();
 
-            String query = String.format("update Application set applicationstatus1 = %d, applicationstatus2 = %d, applicationstatus3 = %d, applicationstatus4 = %d, applicationstatus5 = %d, applicationstatus6 = %d where refnum = %d", data.isApplicationStatus1()?1:0, data.isApplicationStatus2()?1:0, data.isApplicationStatus3()?1:0, data.isApplicationStatus4()?1:0, data.isApplicationStatus5()?1:0, data.getApplicationStatus6(), data.getRefnum());
+            String query = String.format("update Application set applicationstatus1 = %d, applicationstatus2 = %d, applicationstatus3 = %d, applicationstatus4 = %d, applicationstatus5 = %d, applicationstatus6 = %d where refnum = %d", data.isApplicationStatus1() ? 1 : 0, data.isApplicationStatus2() ? 1 : 0, data.isApplicationStatus3() ? 1 : 0, data.isApplicationStatus4() ? 1 : 0, data.isApplicationStatus5() ? 1 : 0, data.getApplicationStatus6(), data.getRefnum());
             Statement statement = conn.createStatement();
             statement.execute(query);
 
@@ -328,6 +328,53 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
 //            Statement statement = conn.createStatement();
             statement.execute(query);
 
+            close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) try {
+                conn.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public void upload(Application application, String description, byte[] content, String contentType) {
+
+        try {
+
+            connect();
+            Blob blob = new javax.sql.rowset.serial.SerialBlob(content);
+            if (contentType.equals("photo")) {
+                String query = "update personalinformation set photo=? where citizenid=?";
+                PreparedStatement p = conn.prepareStatement(query);
+
+                try {
+                    p.setBlob(1, blob);
+                }catch (SQLException e){
+                    System.out.println("Using Sqlite");
+                    p.setBytes(1, content);
+                }
+                p.setString(2, application.getPersonalInformation().getID());
+                p.executeUpdate();
+            } else {
+                String query = "insert into applicant_documents (refnum, document, description) values(?, ?, ?)";
+
+                PreparedStatement p = conn.prepareStatement(query);
+                p.setInt(1, application.getRefnum());
+                p.setString(3, description);
+                try {
+                    p.setBlob(2, blob);
+                }catch (SQLException e){
+                    System.out.println("Using Sqlite");
+                    p.setBytes(1, content);
+                }
+                p.setString(2, application.getPersonalInformation().getID());
+                p.executeUpdate();
+            }
             close();
         } catch (SQLException e) {
             e.printStackTrace();

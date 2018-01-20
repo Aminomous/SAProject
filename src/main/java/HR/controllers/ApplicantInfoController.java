@@ -8,15 +8,19 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Application;
 import models.PersonalInformation;
 
-import javax.swing.text.html.ImageView;
+import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ApplicantInfoController {
     private MainController mainCtrl;
@@ -29,11 +33,13 @@ public class ApplicantInfoController {
     private Label idLabel, nameLabel, telLabel, ageLabel;
     @FXML
     private Button imageButton;
+
+    private Desktop desktop = Desktop.getDesktop();
+
     @FXML
     private void initialize() {
         Image test = new Image(getClass().getResourceAsStream("/asset/kiiroitori2.png"));
         imageButton.setGraphic(new javafx.scene.image.ImageView(test));
-
     }
 
     @FXML
@@ -53,19 +59,43 @@ public class ApplicantInfoController {
         }
 
     }
-    public void setUp(){
+
+    public void setUp() {
         PersonalInformation personalInformation = application.getPersonalInformation();
         this.idLabel.setText(personalInformation.getID());
-        this.nameLabel.setText(personalInformation.getfNameTH()+  " "+ personalInformation.getlNameTH());
+        this.nameLabel.setText(personalInformation.getfNameTH() + " " + personalInformation.getlNameTH());
         this.telLabel.setText(personalInformation.getPhoneNumber());
-        Calendar calendar  = new GregorianCalendar();
-        int age = calendar.get(Calendar.YEAR)-personalInformation.getDateOfBirth().get(Calendar.YEAR);
-        this.ageLabel.setText(age+"");
+        Calendar calendar = new GregorianCalendar();
+        int age = calendar.get(Calendar.YEAR) - personalInformation.getDateOfBirth().get(Calendar.YEAR);
+        this.ageLabel.setText(age + "");
     }
 
     @FXML
     public void uploadInfo() {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/HR/dataUpload.fxml"));
+        try {
+            stage.setScene(new Scene((Parent) loader.load()));
+            DataUploadController dataUploadCtrl = loader.getController();
+            dataUploadCtrl.setMainCtrl(mainCtrl);
+            dataUploadCtrl.setApplication(application);
+//            dataUploadCtrl.start();
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
+    }
+
+    private void openFile(File file) {
+        try {
+            desktop.open(file);
+        } catch (IOException ex) {
+            Logger.getLogger(
+                    ApplicantInfoController.class.getName()).log(
+                    Level.SEVERE, null, ex
+            );
+        }
     }
 
     @FXML

@@ -45,6 +45,8 @@ public class PersonalInformation {
     private String q5;
     private ArrayList<Q6> q6;
 
+    public PersonalInformation() {}
+
     public PersonalInformation(String id, String titleTH, String fNameTH, String lNameTH, String fNameEN, String lNameEN,
                                String address, String email, String phoneNumber, Calendar dateOfBirth, String placeOfBirth,
                                double weight, double heigth, String nationality, String race, String religion, String profNo,

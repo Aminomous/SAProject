@@ -62,6 +62,8 @@ public class ApplicantTableController {
         for (Application app : applications) {
             if (app.getApplicationStatus6() == 0) {
                 PersonalInformation tempInformation = app.getPersonalInformation();
+                System.out.println("This is temp " + tempInformation);
+                System.out.println("IN TABLE " + app.getApplicationStatus6());
                 tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus(), app.getApplicationStatus6()));
             }
         }
