@@ -1,3 +1,45 @@
-<p>
-  information7 works!
-</p>
+<div class="container">
+    <div class="row">
+      <div class="col-12 form-header">
+        <h3>รายละเอียดเกี่ยวกับครอบครัว</h3>
+      </div>
+    </div>
+    <div class="row table-header">
+      <div class="col-1">เกี่ยวข้องเป็น</div>
+      <div class="col-2">ชื่อ</div>
+      <div class="col-2">นามสกุล</div>
+      <div class="col-1">อายุ</div>
+      <div class="col-1">อาชีพ</div>
+      <div class="col-2">ที่อยู่</div>
+      <div class="col-2">เบอร์โทรศัพท์</div>
+      <div class="col-1 out-table">
+        <button class="btn btn-outline-primary" (click)="newRow()">+ เพิ่มข้อมูล</button>
+      </div>
+    </div>
+    <div class="row table-content" *ngFor="let fam of familyDetails">
+        <div class="col-1">
+          <input type="text" [(ngModel)]="fam.status">
+        </div>
+        <div class="col-2">
+          <input type="text" [(ngModel)]="fam.firstName">
+        </div>
+        <div class="col-2">
+          <input type="text" [(ngModel)]="fam.lastName">
+        </div>
+        <div class="col-1">
+          <input type="number" min="0" [(ngModel)]="fam.age">
+        </div>
+        <div class="col-1">
+          <input type="text" [(ngModel)]="fam.occupation">
+        </div>
+        <div class="col-2">
+          <input type="text" [(ngModel)]="fam.address">
+        </div>
+        <div class="col-2">
+          <input type="tel" [(ngModel)]="fam.phoneNumber">
+        </div>
+      <div class="col-1 out-table">
+        <button class="btn btn-danger" (click)="remove(fam)">X</button>
+      </div>
+    </div>
+  </div>

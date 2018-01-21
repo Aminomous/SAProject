@@ -1,3 +1,49 @@
-<p>
-  information2 works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 form-header">
+      <h3>ประวัติการศึกษา</h3>
+    </div>
+  </div>
+  <div class="row table-header">
+    <div class="col-2">ระดับการศึกษา</div>
+    <div class="col-2">ชื่อสถานศึกษา</div>
+    <div class="col-1">วุฒิที่ได้รับ</div>
+    <div class="col-1">สาขา</div>
+    <div class="col-2">ตั้งแต่ปี</div>
+    <div class="col-2">ถึงปี</div>
+    <div class="col-1">คะแนนเฉลี่ย</div>
+    <div class="col-1 out-table">
+      <button class="btn btn-outline-primary" (click)="newRow()">+ เพิ่มข้อมูล</button>
+    </div>
+  </div>
+  <div class="row table-content" *ngFor="let edu of educations">
+    <div class="col-2">
+      <select [(ngModel)]="edu.level" style="width: 90%">
+        <option *ngFor="let level of levels" [value]="level">
+          {{level}}
+        </option>
+      </select>
+    </div>
+    <div class="col-2">
+      <input type="text" [(ngModel)]="edu.instituteName">
+    </div>
+    <div class="col-1">
+        <input type="text" [(ngModel)]="edu.degreeOrCertificate">
+    </div>
+    <div class="col-1">
+      <input type="text" [(ngModel)]="edu.major">
+    </div>
+    <div class="col-2">
+      <input type="month" [(ngModel)]="edu.studyFrom">
+    </div>
+    <div class="col-2">
+      <input type="month" [(ngModel)]="edu.studyTo">
+    </div>
+    <div class="col-1">
+      <input type="number" step="0.01" max="4" min="0" [(ngModel)]="edu.gpa">
+    </div>
+    <div class="col-1 out-table">
+      <button class="btn btn-danger" (click)="remove(edu)">X</button>
+    </div>
+  </div>
+</div>

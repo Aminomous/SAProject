@@ -1,6 +1,8 @@
 export class EmploymentRecord {
-    from: Date;
-    to: Date;
+    fromM: number;
+    fromY: number;
+    toM: number;
+    toY: number;
     company: string;
     position: string;
     salary: number;

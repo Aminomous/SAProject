@@ -1,3 +1,49 @@
-<p>
-  information3 works!
-</p>
+<div class="container">
+    <div class="row">
+      <div class="col-12 form-header">
+        <h3>ประวัติการทำงาน</h3>
+      </div>
+    </div>
+    <div class="row table-header">
+      <div class="col-2">ชื่อบริษัท</div>
+      <div class="col-2">ตำแหน่ง</div>
+      <div class="col-1">เงินเดือน</div>
+      <div class="col-1">เดือนที่เริ่มงาน</div>
+      <div class="col-1">ปีที่เริ่มงาน</div>
+      <div class="col-1">เดือนที่ออกจากงาน</div>
+      <div class="col-1">ปีที่ออกจากงาน</div>
+      <div class="col-2">เหตุผลที่ออกจากงาน</div>
+      <div class="col-1 out-table">
+        <button class="btn btn-outline-primary" (click)="newRow()">+ เพิ่มข้อมูล</button>
+      </div>
+    </div>
+    <div class="row table-content" *ngFor="let rec of employmentRecords">
+        <div class="col-2">
+          <input type="text" [(ngModel)]="rec.company">
+        </div>
+        <div class="col-2">
+          <input type="text" [(ngModel)]="rec.position">
+        </div>
+        <div class="col-1">
+          <input type="number" min="0" [(ngModel)]="rec.salary">
+        </div>
+        <div class="col-1">
+          <input type="number" min="1" max="12" [(ngModel)]="rec.fromM">
+        </div>
+        <div class="col-1">
+          <input type="number" [(ngModel)]="rec.fromY">
+        </div>
+        <div class="col-1">
+          <input type="number" min="1" max="12" [(ngModel)]="rec.toM">
+        </div>
+        <div class="col-1">
+          <input type="number" [(ngModel)]="rec.toY">
+        </div>
+        <div class="col-2">
+          <input type="text" [(ngModel)]="rec.reasonForLeaving">
+        </div>
+      <div class="col-1 out-table">
+        <button class="btn btn-danger" (click)="remove(rec)">X</button>
+      </div>
+    </div>
+  </div>

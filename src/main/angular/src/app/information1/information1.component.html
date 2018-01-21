@@ -9,7 +9,7 @@
       <label for="nameth" class="control-label-required">ชื่อ-นามสกุล</label>
     </div>
     <div class="col-2">
-      <select #selectPrefix [(ngModel)]="pi.titleTH" (change)="print()">
+      <select #selectPrefix [(ngModel)]="pi.titleTH">
         <option *ngFor="let prefix of prefixes" [value]="prefix">
           {{prefix}}
         </option>
@@ -46,66 +46,60 @@
       <label for="mobile" class="control-label-required">โทรศัพท์มือถือ</label>
     </div>
     <div class="col-2">
-      <input id="mobile" maxlength="10" pattern="[0-9]">
+      <input id="mobile" maxlength="10" pattern="[0-9]{10}" [(ngModel)]="pi.phoneNumber">
     </div>
     <div class="col-1">
       <label for="email" class="control-label-required">อีเมล</label>
     </div>
     <div class="col-3">
-      <input id="email" type="email" disabled>
+      <input id="email" type="email" disabled [(ngModel)]="pi.email">
     </div>
     <div class="col-1">
-      <div style="white-space:nowrap">
-        <label for="age" class="control-label-required">อายุ</label>
-        <input type="number" id="age"> ปี
-      </div>
+      <label for="placeofbirth" class="control-label-required">ภูมิลำเนา</label>
+    </div>
+    <div class="col-2">
+      <input type="text" id="placeofbirth" [(ngModel)]="pi.placeOfBirth">
     </div>
   </div>
   <div class="row">
     <div class="col-2">
       <label for="birthdate" class="control-label-required">เดือน/วัน/ปีเกิด</label>
     </div>
-    <div class="col-2">
-      <input type="date" id="birthdate">
+    <div class="col-3">
+      <input type="date" id="birthdate" [(ngModel)]="pi.dateOfBirth">
     </div>
     <div class="col-1">
       <div style="white-space:nowrap">
         <label for="weight" class="control-label-required">น้ำหนัก</label>
-        <input type="number" id="weight"> kg.
+        <input type="number" id="weight" [(ngModel)]="pi.weight"> kg.
       </div>
     </div>
     <div class="col-2"></div>
     <div class="col-1">
       <div style="white-space:nowrap">
         <label for="height" class="control-label-required">ส่วนสูง</label>
-        <input type="number" id="height"> cm.
+        <input type="number" id="height" [(ngModel)]="pi.height"> cm.
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-2">
-      <label for="placeofbirth" class="control-label-required">ภูมิลำเนา</label>
-    </div>
-    <div class="col-2">
-      <input type="text" id="placeofbirth">
-    </div>
-    <div class="col-1">
       <label for="race" class="control-label-required">เชื้อชาติ</label>
     </div>
     <div class="col-2">
-      <input type="text" id="race">
+      <input type="text" id="race" [(ngModel)]="pi.race">
     </div>
     <div class="col-1">
       <label for="nationality" class="control-label-required">สัญชาติ</label>
     </div>
     <div class="col-2">
-      <input type="text" id="nationallity">
+      <input type="text" id="nationallity" [(ngModel)]="pi.nationallity">
     </div>
     <div class="col-1">
       <label for="religion" class="control-label-required">ศาสนา</label>
     </div>
-    <div class="col-1">
-      <input type="text" id="religion">
+    <div class="col-2">
+      <input type="text" id="religion" [(ngModel)]="pi.religion">
     </div>
   </div>
   <div class="row">
@@ -113,19 +107,68 @@
       <label for="citzenID" class="control-label-required">เลขที่บัตรประชาชน</label>
     </div>
     <div class="col-2">
-      <input type="text" maxlength="13" pattern="[0-9]" id="citzenID" disabled>
+      <input type="text" maxlength="13" pattern="[0-9]*" id="citzenID" disabled [(ngModel)]="pi.citizenID">
     </div>
-    <!-- <div class="col-1"></div> -->
     <div class="col-5">
       <div style="white-space:nowrap">
         <label for="certificate" class="control-label-required">
           เลขที่ใบประกอบวิชาชีพ
         </label>
-        <input type="text" id="certificate">
+        <input type="text" id="certificate" [(ngModel)]="pi.profNo">
       </div>
     </div>
   </div>
   <div class="row">
-
+    <div class="col-2">
+      <label class="control-label-required">สถานภาพทางทหาร</label>
+    </div>
+    <div class="col-3">
+      <div class="radio">
+        <label>
+          <input type="radio" [(ngModel)]="pi.militaryStatus" value="ผ่านการเกณฑ์ทหาร" name="militaryStatus"> ผ่านการเกณฑ์ทหาร</label>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="radio">
+        <label>
+          <input type="radio" [(ngModel)]="pi.militaryStatus" value="ยังไม่ผ่านการเกณฑ์ทหาร" name="militaryStatus"> ยังไม่ผ่านการเกณฑ์ทหาร</label>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="radio">
+        <label>
+          <input type="radio" [(ngModel)]="pi.militaryStatus" value="ได้รับการยกเว้น" name="militaryStatus"> ได้รับการยกเว้น</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <label class="control-label-required">สถานภาพสมรส</label>
+    </div>
+    <div class="col-1">
+      <div class="radio">
+        <label><input type="radio" [(ngModel)]="pi.maritalStatus" value="โสด" name="maritalStatus"> โสด</label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="radio">
+        <label><input type="radio" [(ngModel)]="pi.maritalStatus" value="แต่งงานแล้ว" name="maritalStatus"> แต่งงานแล้ว</label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="radio">
+        <label><input type="radio" [(ngModel)]="pi.maritalStatus" value="แยกกันอยู่" name="maritalStatus"> แยกกันอยู่</label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="radio">
+        <label><input type="radio" [(ngModel)]="pi.maritalStatus" value="หม้าย" name="maritalStatus"> หม้าย</label>
+      </div>
+    </div>
+    <div class="col-2">
+      <div class="radio">
+        <label><input type="radio" [(ngModel)]="pi.maritalStatus" value="หย่า" name="maritalStatus"> หย่า</label>
+      </div>
+    </div>
   </div>
 </div>

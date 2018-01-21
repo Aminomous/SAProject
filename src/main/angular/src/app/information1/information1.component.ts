@@ -10,7 +10,7 @@ import { PersonalInformation } from '../models/personalInformation';
 export class Information1Component implements OnInit {
 
   prefixes = ["นาย", "นางสาว", "นาง"]
-  pi: PersonalInformation
+  pi: PersonalInformation = new PersonalInformation()
   constructor(private userService: UserService) { 
     this.userService.getPersonalInformation().then((pi)=>{
       this.pi = pi
@@ -18,10 +18,6 @@ export class Information1Component implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  print() {
-    console.log(this.pi)
   }
 
 }

@@ -9,7 +9,17 @@
 
 .footer {
   position: fixed;
-  bottom: 20px;
+  bottom: -10px;
+  padding-bottom: 10px;
   display: block;
-  width: 80%;
+  width: 100%;
+  text-align: center;
+  background-color: #2254A9;
+  border-radius: 5px;
+}
+
+.form-header {
+  border: 5px solid black;
+  width: 100%;
+  margin-bottom: 10px;
 }

@@ -1,3 +1,33 @@
-<p>
-  information6 works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-12 form-header">
+      <h3>ประวัติการอบรม, ดูงาน, ฝึกงาน</h3>
+    </div>
+  </div>
+  <div class="row table-header">
+    <div class="col-3">ชื่อหลักสูตร</div>
+    <div class="col-3">ชื่อสถาบัน</div>
+    <div class="col-3">วุฒิบัตร/เกียรติบัตรที่ได้รับ</div>
+    <div class="col-2">ช่วงเวลา</div>
+    <div class="col-1 out-table">
+      <button class="btn btn-outline-primary" (click)="newRow()">+ เพิ่มข้อมูล</button>
+    </div>
+  </div>
+  <div class="row table-content" *ngFor="let rec of apprenticeships">
+    <div class="col-3">
+      <input type="text" [(ngModel)]="rec.course">
+    </div>
+    <div class="col-3">
+      <input type="text" [(ngModel)]="rec.instituteName">
+    </div>
+    <div class="col-3">
+      <input type="text" [(ngModel)]="rec.certificate">
+    </div>
+    <div class="col-2">
+      <input type="text" [(ngModel)]="rec.period">
+    </div>
+    <div class="col-1 out-table">
+      <button class="btn btn-danger" (click)="remove(rec)">X</button>
+    </div>
+  </div>
+</div>

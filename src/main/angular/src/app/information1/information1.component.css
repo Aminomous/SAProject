@@ -30,3 +30,7 @@ textarea {
 .row {
     margin-bottom: 5px;
 }
+
+label > input[type="radio"] {
+    width: 10px;
+}

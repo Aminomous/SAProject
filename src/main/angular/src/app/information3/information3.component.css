@@ -1,0 +1,14 @@
+.table-header div:not(.out-table) {
+    background-color: rgb(159, 197, 255);
+    padding: 10px;
+    border: 2px solid black;
+}
+.table-content div:not(.out-table){
+    background-color: rgb(220, 231, 248);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.table-content input {
+    width: 90%
+}

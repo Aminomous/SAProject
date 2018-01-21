@@ -20,7 +20,7 @@ export class UserService {
 
   async loadPersonalInformation() {
     let email = localStorage.getItem('user')
-    console.log(email)
+    // console.log(email)
     let res = await this.http.post("http://localhost/testauthapp/get_info.php", JSON.stringify(email), {headers: this.headers}).toPromise()
     this.personalInformation = JSON.parse(res.text())
     return this.personalInformation
