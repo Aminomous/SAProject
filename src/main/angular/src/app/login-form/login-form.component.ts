@@ -24,7 +24,7 @@ export class LoginFormComponent implements OnInit {
   loginUser(e) {
     this.authService.login(this.user)
     .subscribe((data)=>{
-      console.log(data);
+      // console.log(data);
       
       if (data.text()=="true") {
         localStorage.setItem('user', this.user.email)
