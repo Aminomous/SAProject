@@ -12,13 +12,16 @@ export class Information1Component implements OnInit {
   prefixes = ["นาย", "นางสาว", "นาง"]
   pi: PersonalInformation
   constructor(private userService: UserService) { 
-    this.userService.getPersonalInformation().subscribe((pi)=>{
+    this.userService.getPersonalInformation().then((pi)=>{
       this.pi = pi
-      this.pi.titleTH = this.prefixes[0]
     })
   }
 
   ngOnInit() {
+  }
+
+  print() {
+    console.log(this.pi)
   }
 
 }

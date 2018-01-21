@@ -66,15 +66,15 @@ export class RegisterComponent implements OnInit {
       this.pi.lastName = this.signupForm.value.lastName
       this.pi.c_ID = this.signupForm.value.citizenID
       this.pi.email = this.signupForm.value.email
-      console.log(this.pi, this.user)
+      // console.log(this.pi, this.user)
       this.userService.createUser({user: this.user, pi:this.pi})
       .subscribe((data) => {
-        console.log(data)
+        // console.log(data)
         let res = data.text()
         if (res == "0") {
           this.authService.login(this.user)
           .subscribe((data) => {
-            console.log(data)
+            // console.log(data)
             if (data.text()=="true") {
               localStorage.setItem('user', this.user.email)
               this.router.navigate(['/'])

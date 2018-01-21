@@ -9,7 +9,7 @@
       <label for="nameth" class="control-label-required">ชื่อ-นามสกุล</label>
     </div>
     <div class="col-2">
-      <select #selectPrefix>
+      <select #selectPrefix [(ngModel)]="pi.titleTH" (change)="print()">
         <option *ngFor="let prefix of prefixes" [value]="prefix">
           {{prefix}}
         </option>
@@ -19,7 +19,7 @@
       <input id="nameth" type="text" placeholder="ชื่อจริง" [(ngModel)]="pi.fNameTH">
     </div>
     <div class="col-4">
-      <input type="text" placeholder="นามสกุล">
+      <input type="text" placeholder="นามสกุล" [(ngModel)]="pi.lNameTH">
     </div>
   </div>
   <div class="row">
@@ -27,10 +27,10 @@
       <label for="nameen" class="control-label-required">Full Name</label>
     </div>
     <div class="col-4">
-      <input id="nameen" placeholder="First Name">
+      <input id="nameen" placeholder="First Name" [(ngModel)]="pi.fNameEN">
     </div>
     <div class="col-4">
-      <input placeholder="Last Name">
+      <input placeholder="Last Name" [(ngModel)]="pi.lNameEN">
     </div>
   </div>
   <div class="row">
@@ -38,16 +38,10 @@
       <label for="address" class="control-label-required">ที่อยู่ที่สามารถติดต่อได้</label>
     </div>
     <div class="col-10">
-      <textarea id="address"></textarea>
+      <textarea id="address" [(ngModel)]="pi.address"></textarea>
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
-      <label for="phone">โทรศัพท์</label>
-    </div>
-    <div class="col-2">
-      <input id="phone" maxlength="10" pattern="[0-9]">
-    </div>
     <div class="col-2">
       <label for="mobile" class="control-label-required">โทรศัพท์มือถือ</label>
     </div>
@@ -60,6 +54,12 @@
     <div class="col-3">
       <input id="email" type="email" disabled>
     </div>
+    <div class="col-1">
+      <div style="white-space:nowrap">
+        <label for="age" class="control-label-required">อายุ</label>
+        <input type="number" id="age"> ปี
+      </div>
+    </div>
   </div>
   <div class="row">
     <div class="col-2">
@@ -69,30 +69,15 @@
       <input type="date" id="birthdate">
     </div>
     <div class="col-1">
-      <div class="right">
-        <label for="age" class="control-label-required">อายุ</label>
-      </div>
-    </div>
-    <div class="col-1">
-      <input type="number" id="age">
-    </div>
-    <div class="col-1">
-      <div class="right">
-        <label for="weight" class="control-label-required">น้ำหนัก</label>
-      </div>
-    </div>
-    <div class="col-1">
       <div style="white-space:nowrap">
+        <label for="weight" class="control-label-required">น้ำหนัก</label>
         <input type="number" id="weight"> kg.
       </div>
     </div>
-    <div class="col-1">
-      <div class="right">
-        <label for="height" class="control-label-required">ส่วนสูง</label>
-      </div>
-    </div>
+    <div class="col-2"></div>
     <div class="col-1">
       <div style="white-space:nowrap">
+        <label for="height" class="control-label-required">ส่วนสูง</label>
         <input type="number" id="height"> cm.
       </div>
     </div>
@@ -122,5 +107,25 @@
     <div class="col-1">
       <input type="text" id="religion">
     </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <label for="citzenID" class="control-label-required">เลขที่บัตรประชาชน</label>
+    </div>
+    <div class="col-2">
+      <input type="text" maxlength="13" pattern="[0-9]" id="citzenID" disabled>
+    </div>
+    <!-- <div class="col-1"></div> -->
+    <div class="col-5">
+      <div style="white-space:nowrap">
+        <label for="certificate" class="control-label-required">
+          เลขที่ใบประกอบวิชาชีพ
+        </label>
+        <input type="text" id="certificate">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+
   </div>
 </div>

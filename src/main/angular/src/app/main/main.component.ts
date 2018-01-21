@@ -23,10 +23,10 @@ export class MainComponent implements OnInit {
 
   async loadData() {
     this.pi = await this.userService.loadPersonalInformation()
-    console.log(this.pi)
+    // console.log(this.pi)
     this.name = this.pi.fNameTH != "" ? this.pi.fNameTH : this.pi.fNameEN != "" ? this.pi.fNameEN : this.pi.email
     this.app = await this.userService.loadApplication()
-    console.log(this.app)
+    // console.log(this.app)
   }
 
   editPersonalInfo() {
