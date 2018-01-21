@@ -48,7 +48,33 @@ export class UserService {
     return this.application
   }
 
-  checkPersonalInformation() {
+  updatePersonalInformation() {
+    console.log(this.personalInformation)
+    this.http.post("http://localhost/testauthapp/update_info.php", JSON.stringify(this.personalInformation), {headers: this.headers})
+    .subscribe()
+  }
 
+  checkPersonalInformation() {
+    return (this.checkNull(this.personalInformation.titleTH)) &&
+      (this.checkNull(this.personalInformation.fNameTH)) &&
+      (this.checkNull(this.personalInformation.lNameTH)) &&
+      (this.checkNull(this.personalInformation.address)) &&
+      (this.checkNull(this.personalInformation.phoneNumber)) &&
+      (this.checkNull(this.personalInformation.email)) &&
+      (this.checkNull(this.personalInformation.dateOfBirth)) &&
+      (this.checkNull(this.personalInformation.weight)) &&
+      (this.checkNull(this.personalInformation.heigth)) &&
+      (this.checkNull(this.personalInformation.placeOfBirth)) &&
+      (this.checkNull(this.personalInformation.race)) &&
+      (this.checkNull(this.personalInformation.nationality)) &&
+      (this.checkNull(this.personalInformation.religion)) &&
+      (this.checkNull(this.personalInformation.citizenID)) &&
+      (this.checkNull(this.personalInformation.profNo)) &&
+      (this.checkNull(this.personalInformation.militaryStatus)) &&
+      (this.checkNull(this.personalInformation.maritalStatus))
+  }
+
+  private checkNull(field) {
+    return field != "" && field != null
   }
 }

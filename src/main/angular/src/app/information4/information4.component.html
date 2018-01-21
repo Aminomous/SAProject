@@ -20,37 +20,37 @@
     <div class="row">
       <div class="col-1"></div>
       
-      <div class="col-4">
+      <div class="col-2">
         <label> การพูด</label> 
       </div>
       <div class="col-5">
-        <label for="thai-speaking-best"> ดีมาก <input type="checkbox" id="thai-speaking-best"> </label>
-        <label for="thai-speaking-good"> ดี <input type="checkbox" id="thai-speaking-good"> </label>
-        <label for="thai-speaking-common"> พอใช้ <input type="checkbox" id="thai-speaking-common"> </label>
+        <label for="thai-speaking-best"> ดีมาก <input type="radio" name="thai-speaking" value="2" id="thai-speaking-best" [(ngModel)]="langs[0].speaking"> </label>
+        <label for="thai-speaking-good"> ดี <input type="radio" name="thai-speaking" value="1" id="thai-speaking-good" [(ngModel)]="langs[0].speaking"> </label>
+        <label for="thai-speaking-common"> พอใช้ <input type="radio" name="thai-speaking" value="0" id="thai-speaking-common" [(ngModel)]="langs[0].speaking"> </label>
       </div>
     </div>
     <div class="row">
       <div class="col-1"></div>
       
-      <div class="col-4">
+      <div class="col-2">
         <label> การอ่าน</label> 
       </div>
       <div class="col-6">
-        <label for="thai-reading-best"> ดีมาก <input type="checkbox" id="thai-reading-best"> </label>
-        <label for="thai-reading-good"> ดี <input type="checkbox" id="thai-reading-good"> </label>
-        <label for="thai-reading-common"> พอใช้ <input type="checkbox" id="thai-reading-common"> </label>
+        <label for="thai-reading-best"> ดีมาก <input type="radio" name="thai-reading" value="2" id="thai-reading-best" [(ngModel)]="langs[0].reading"> </label>
+        <label for="thai-reading-good"> ดี <input type="radio" name="thai-reading" value="1" id="thai-reading-good" [(ngModel)]="langs[0].reading"> </label>
+        <label for="thai-reading-common"> พอใช้ <input type="radio" name="thai-reading" value="0" id="thai-reading-common" [(ngModel)]="langs[0].reading"> </label>
       </div>
     </div>
     <div class="row">
       <div class="col-1"></div>
       
-      <div class="col-4">
+      <div class="col-2">
         <label> การเขียน</label> 
       </div>
       <div class="col-6">
-        <label for="thai-writing-best"> ดีมาก <input type="checkbox" id="thai-writing-best"> </label>
-        <label for="thai-writing-good"> ดี <input type="checkbox" id="thai-writing-good"> </label>
-        <label for="thai-writing-common"> พอใช้ <input type="checkbox" id="thai-writing-common"> </label>
+        <label for="thai-writing-best"> ดีมาก <input type="radio" name="thai-writing" value="2" id="thai-writing-best" [(ngModel)]="langs[0].writing"> </label>
+        <label for="thai-writing-good"> ดี <input type="radio" name="thai-writing" value="1" id="thai-writing-good" [(ngModel)]="langs[0].writing"> </label>
+        <label for="thai-writing-common"> พอใช้ <input type="radio" name="thai-writing" value="0" id="thai-writing-common" [(ngModel)]="langs[0].writing"> </label>
       </div>
     </div>
     
@@ -67,37 +67,37 @@
     <div class="row">
       <div class="col-1"></div>
       
-      <div class="col-4">
+      <div class="col-2">
         <label> การพูด</label> 
       </div>
       <div class="col-6">
-        <label for="english-speaking-best"> ดีมาก <input type="checkbox" id="english-speaking-best"> </label>
-        <label for="english-speaking-good"> ดี <input type="checkbox" id="english-speaking-good"> </label>
-        <label for="english-speaking-common"> พอใช้ <input type="checkbox" id="english-speaking-common"> </label>
+        <label for="english-speaking-best"> ดีมาก <input type="radio" name="english-speaking" value="2" id="english-speaking-best" [(ngModel)]="langs[1].speaking"> </label>
+        <label for="english-speaking-good"> ดี <input type="radio" name="english-speaking" value="1" id="english-speaking-good" [(ngModel)]="langs[1].speaking"> </label>
+        <label for="english-speaking-common"> พอใช้ <input type="radio" name="english-speaking" value="0" id="english-speaking-common" [(ngModel)]="langs[1].speaking"> </label>
       </div>
     </div>
     <div class="row">
       <div class="col-1"></div>
       
-      <div class="col-4">
+      <div class="col-2">
         <label> การอ่าน</label> 
       </div>
       <div class="col-6">
-        <label for="english-reading-best"> ดีมาก <input type="checkbox" id="english-reading-best"> </label>
-        <label for="english-reading-good"> ดี <input type="checkbox" id="english-reading-good"> </label>
-        <label for="english-reading-common"> พอใช้ <input type="checkbox" id="english-reading-common"> </label>
+        <label for="english-reading-best"> ดีมาก <input type="radio" name="english-reading" value="2" id="english-reading-best" [(ngModel)]="langs[1].reading"> </label>
+        <label for="english-reading-good"> ดี <input type="radio" name="english-reading" value="1" id="english-reading-good" [(ngModel)]="langs[1].reading"> </label>
+        <label for="english-reading-common"> พอใช้ <input type="radio" name="english-reading" value="0" id="english-reading-common" [(ngModel)]="langs[1].reading"> </label>
       </div>
     </div>
     <div class="row">
       <div class="col-1"></div>
       
-      <div class="col-4">
+      <div class="col-2">
         <label> การเขียน</label> 
       </div>
       <div class="col-6">
-        <label for="english-writing-best"> ดีมาก <input type="checkbox" id="english-writing-best"> </label>
-        <label for="english-writing-good"> ดี <input type="checkbox" id="english-writing-good"> </label>
-        <label for="english-writing-common"> พอใช้ <input type="checkbox" id="english-writing-common"> </label>
+        <label for="english-writing-best"> ดีมาก <input type="radio" name="english-writing" value="2" id="english-writing-best" [(ngModel)]="langs[1].writing"> </label>
+        <label for="english-writing-good"> ดี <input type="radio" name="english-writing" value="1" id="english-writing-good" [(ngModel)]="langs[1].writing"> </label>
+        <label for="english-writing-common"> พอใช้ <input type="radio" name="english-writing" value="0" id="english-writing-common" [(ngModel)]="langs[1].writing"> </label>
       </div>
     </div>
     
@@ -108,44 +108,44 @@
         <h4>
           ภาษาอื่น ๆ
         </h4>
-        <label for="other-language">โปรดระบุ <input type="text" id="other-language"> </label>
+        <label for="other-language">โปรดระบุ <input type="text" id="other-language" [(ngModel)]="langs[2].language"> </label>
       </div>
       
     </div>
     <div class="row">
       <div class="col-1"></div>
       
-      <div class="col-4">
+      <div class="col-2">
         <label> การพูด</label> 
       </div>
       <div class="col-6">
-        <label for="other-speaking-best"> ดีมาก <input type="checkbox" id="other-speaking-best"> </label>
-        <label for="other-speaking-good"> ดี <input type="checkbox" id="other-speaking-good"> </label>
-        <label for="other-speaking-common"> พอใช้ <input type="checkbox" id="other-speaking-common"> </label>
+        <label for="other-speaking-best"> ดีมาก <input type="radio" name="other-speaking" value="2" id="other-speaking-best" [(ngModel)]="langs[2].speaking"> </label>
+        <label for="other-speaking-good"> ดี <input type="radio" name="other-speaking" value="1" id="other-speaking-good" [(ngModel)]="langs[2].speaking"> </label>
+        <label for="other-speaking-common"> พอใช้ <input type="radio" name="other-speaking" value="0" id="other-speaking-common" [(ngModel)]="langs[2].speaking"> </label>
       </div>
     </div>
     <div class="row">
       <div class="col-1"></div>
       
-      <div class="col-4">
+      <div class="col-2">
         <label> การอ่าน</label> 
       </div>
       <div class="col-6">
-        <label for="other-reading-best"> ดีมาก <input type="checkbox" id="other-reading-best"> </label>
-        <label for="other-reading-good"> ดี <input type="checkbox" id="other-reading-good"> </label>
-        <label for="other-reading-common"> พอใช้ <input type="checkbox" id="other-reading-common"> </label>
+        <label for="other-reading-best"> ดีมาก <input type="radio" name="other-reading" value="2" id="other-reading-best" [(ngModel)]="langs[2].reading"> </label>
+        <label for="other-reading-good"> ดี <input type="radio" name="other-reading" value="1" id="other-reading-good" [(ngModel)]="langs[2].reading"> </label>
+        <label for="other-reading-common"> พอใช้ <input type="radio" name="other-reading" value="0" id="other-reading-common" [(ngModel)]="langs[2].reading"> </label>
       </div>
     </div>
     <div class="row">
       <div class="col-1"></div>
       
-      <div class="col-4">
+      <div class="col-2">
         <label> การเขียน</label> 
       </div>
       <div class="col-6">
-        <label for="other-writing-best"> ดีมาก <input type="checkbox" id="other-writing-best"> </label>
-        <label for="other-writing-good"> ดี <input type="checkbox" id="other-writing-good"> </label>
-        <label for="other-writing-common"> พอใช้ <input type="checkbox" id="other-writing-common"> </label>
+        <label for="other-writing-best"> ดีมาก <input type="radio" name="other-writing" value="2" id="other-writing-best" [(ngModel)]="langs[2].writing"> </label>
+        <label for="other-writing-good"> ดี <input type="radio" name="other-writing" value="1" id="other-writing-good" [(ngModel)]="langs[2].writing"> </label>
+        <label for="other-writing-common"> พอใช้ <input type="radio" name="other-writing" value="0" id="other-writing-common" [(ngModel)]="langs[2].writing"> </label>
       </div>
     </div>
     
@@ -153,14 +153,14 @@
   
   <div class="row">
     <div class="col-8">
-      <label for="toeic-score">TOEIC score <input type="text" id="toeic-score" > </label>
-      <label for="toeic-year"> year <input type="text" id="toeic-year"> </label>
+      <label for="toeic-score">TOEIC score <input type="text" id="toeic-score" [(ngModel)]="pi.toeicScore"> </label>
+      <label for="toeic-year"> year <input type="text" id="toeic-year" [(ngModel)]="pi.toeicYear"> </label>
     </div>
   </div>
   <div class="row">
     <div class="col-8">
-      <label for="toefl-score"> TOEFL score <input type="text" id="toefl-score"> </label>
-      <label for="toefl-year"> year <input type="text" id="toefl-year"> </label>
+      <label for="toefl-score"> TOEFL score <input type="text" id="toefl-score" [(ngModel)]="pi.toeflScore"> </label>
+      <label for="toefl-year"> year <input type="text" id="toefl-year" [(ngModel)]="pi.toeflYear"> </label>
     </div>
   </div>
 </div>
