@@ -1,0 +1,17 @@
+.form-header{
+    border: 5px solid black;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+[class*="col-"]:not(.form-header) {
+    text-align: left;
+}
+
+.row {
+    margin-bottom: 5px;
+}
+
+.choice{
+    /* margin-right: 20px; */
+}
