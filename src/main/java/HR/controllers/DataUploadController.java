@@ -3,12 +3,13 @@ package HR.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
+import javafx.stage.Modality;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import models.Application;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 
 public class DataUploadController {
     private MainController mainCtrl;
@@ -44,25 +45,40 @@ public class DataUploadController {
                 new FileChooser.ExtensionFilter("JPG", "*.jpeg", "*.jpg"),
                 new FileChooser.ExtensionFilter("PDF", "*.pdf"));
         file = fileChooser.showOpenDialog(new Stage());
-
-        fileDestination.setText(file.getPath());
+        if (file != null) {
+            fileDestination.setText(file.getPath());
+        } else {
+            fileDestination.setText("...");
+        }
     }
 
 
     @FXML
     public void confirm() throws FileNotFoundException {
-        if (file != null) {
+        Alert alert = new Alert(Alert.AlertType.NONE);
+        if (applicantDocument.isSelected() || applicantPhoto.isSelected()) {
+            if (file != null) {
 
 //            FileOutputStream fos = new FileOutputStream(file.getPath());
 //            mainCtrl.getApplicationService().upload(application, descriptionBox.getText(), fileContent, applicantPhoto.isSelected()?"Photo":"Document");
 
-            mainCtrl.getApplicationService().upload(application, descriptionBox.getText(), applicantPhoto.isSelected()?"Photo":"Document", file);
+                mainCtrl.getApplicationService().upload(application, descriptionBox.getText(), applicantPhoto.isSelected() ? "Photo" : "Document", file);
 
-        } else {
-            System.out.println("NO FILE HAS BEEN UPLOADED");
+            } else {
+                alert.setAlertType(Alert.AlertType.WARNING);
+                alert.setHeaderText("Warning");
+                alert.setContentText("NO FILE HAS BEEN UPLOADED");
+                alert.initModality(Modality.APPLICATION_MODAL);
+                alert.showAndWait();
+            }
+            closeWindow();
+        }else{
+            alert.setAlertType(Alert.AlertType.ERROR);
+            alert.setContentText("Please specify document type");
+            alert.setHeaderText("ERROR");
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.show();
         }
-        System.out.println("DATAUPLOAD: CONFIRM WORK");
-        closeWindow();
     }
 
     @FXML

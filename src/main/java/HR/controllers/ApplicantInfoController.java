@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -14,7 +15,10 @@ import javafx.stage.Stage;
 import models.Application;
 import models.PersonalInformation;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
@@ -61,6 +65,20 @@ public class ApplicantInfoController {
     }
 
     public void setUp() {
+        BufferedImage img;
+        try {
+            img = ImageIO.read(new ByteArrayInputStream(mainCtrl.getApplicationService().getApplicantPhoto(application)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Image test = new Image(new ByteArrayInputStream(mainCtrl.getApplicationService().getApplicantPhoto(application)), 100, 100, false, false);
+        imageButton.setGraphic(new javafx.scene.image.ImageView(test));
+        imageButton.prefHeight(100);
+        imageButton.prefWidth(100);
+        imageButton.setMaxWidth(100);
+        imageButton.setMaxHeight(100);
+
         PersonalInformation personalInformation = application.getPersonalInformation();
         this.idLabel.setText(personalInformation.getID());
         this.nameLabel.setText(personalInformation.getfNameTH() + " " + personalInformation.getlNameTH());

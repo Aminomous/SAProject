@@ -3,7 +3,10 @@ package services;
 import models.*;
 
 import java.io.*;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -59,11 +62,6 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             while (result.next()) {
                 try {
 
-//                    Blob blob = result.getBlob("document");
-//
-//                    InputStream in = blob.getBinaryStream();
-//                    System.out.println("blob length" + blob.length());
-//                    return in;
                     byte[] buffer = result.getBytes(1);
                     InputStream in = result.getBinaryStream(1);
                     return buffer;
@@ -80,12 +78,31 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
         return null;
     }
 
+    public byte[] getApplicantPhoto(Application application) {
+        byte[] buffer = null;
+        try {
+            connect();
+
+            String query = "select photo from personalinformation where citizenID=" + application.getPersonalInformation().getID();
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(query);
+
+            while (result.next()) {
+                buffer = result.getBytes(1);
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return buffer;
+    }
 
     public ArrayList<Application> getAll() {
         ArrayList<Application> applications = new ArrayList<Application>();
         try {
             connect();
-            String query = "select * from Application";
+            String query = "select * from Application where (applicationStatus6 != -1)";
             Statement statement = conn.createStatement();
             ResultSet result = statement.executeQuery(query);
             while (result.next()) {
@@ -97,7 +114,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
                 String workerType = result.getString(6);
                 double salary = result.getDouble(7);
                 String statingDateRaw = result.getString(8);
-                String citizeniD = result.getString(9);
+                String citizenID = result.getString(9);
                 String qh2 = result.getString(10);
                 String qh3 = result.getString(11);
                 String relativeWorkInHospital = result.getString(12);
@@ -109,14 +126,14 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
                 boolean status5 = result.getBoolean(18);
                 int status6 = result.getInt(19);
 
-                ArrayList<Apprenticeship> apprenticeships = getApprenticeship(citizeniD);
-                ArrayList<Education> educations = getEducation(citizeniD);
-                Employee employee = getEmployee(citizeniD);
-                ArrayList<EmploymentRecord> employmentRecords = getEmploymentRecords(citizeniD);
-                ArrayList<FamilyDetail> familyDetails = getFamilyDetail(citizeniD);
+                ArrayList<Apprenticeship> apprenticeships = getApprenticeship(citizenID);
+                ArrayList<Education> educations = getEducation(citizenID);
+                Employee employee = getEmployee(citizenID);
+                ArrayList<EmploymentRecord> employmentRecords = getEmploymentRecords(citizenID);
+                ArrayList<FamilyDetail> familyDetails = getFamilyDetail(citizenID);
                 ArrayList<Hospital> hospitals = getHospital(refnum);
-                ArrayList<LanguageAbility> languageAbilities = getLanguageAbility(citizeniD);
-                PersonalInformation personalInformation = getPersonalInformation(citizeniD);
+                ArrayList<LanguageAbility> languageAbilities = getLanguageAbility(citizenID);
+                PersonalInformation personalInformation = getPersonalInformation(citizenID);
                 ArrayList<QH1> qh1 = getQH1(refnum);
                 ArrayList<ReferencePerson> referencePeople = getReferencePerson(refnum);
 
@@ -316,7 +333,6 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             boolean q3 = result.getBoolean(38);
             boolean q4 = result.getBoolean(39);
             String q5 = result.getString(40);
-
 
             String[] temp = dateOfBirthRaw.split("-");
             GregorianCalendar dateOfBirth = new GregorianCalendar();

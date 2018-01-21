@@ -151,6 +151,7 @@ public class ApplicantFilterController {
     private void handleApplyBtn(){
         isFilterOn = true;
         showFilteredApplication();
+        mainCtrl.resetInfoSection();
     }
 
     @FXML

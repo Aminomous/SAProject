@@ -82,10 +82,10 @@ public class MainController {
         //this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
     }
 
-    public void showApplicantInfo(String id){
+    public void showApplicantInfo(String id) {
         this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
-        for (Application app: applications){
-            if (app.getPersonalInformation().getID().equals(id)){
+        for (Application app : applications) {
+            if (app.getPersonalInformation().getID().equals(id)) {
                 this.applicantInfoCtrl.showData(app);
                 this.applicantInfoCtrl.setApplication(app);
                 this.applicantInfoCtrl.setUp();
@@ -94,11 +94,11 @@ public class MainController {
         }
     }
 
-    public void refreshTable(boolean isFilterOn){
+    public void refreshTable(boolean isFilterOn) {
         applicantTableCtrl.refreshTable(isFilterOn);
     }
 
-    public void resetInfoSection(){
+    public void resetInfoSection() {
         this.mainPaneCtrl.getLeftPane().setBottom(null);
 
     }
@@ -106,13 +106,16 @@ public class MainController {
     private void loadData() {
         applications = applicationService.getAll();
     }
+
     public ArrayList<Application> getApplications() {
         return applications;
     }
+
     public DatabaseApplicationService getApplicationService() {
         return applicationService;
     }
-    public ApplicantTableController getApplicantTableCtrl(){
+
+    public ApplicantTableController getApplicantTableCtrl() {
         return this.applicantTableCtrl;
     }
 
