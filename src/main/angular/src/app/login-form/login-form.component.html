@@ -1,0 +1,22 @@
+<form #loginForm="ngForm" (submit)="loginUser($event)">
+  <div class="form">
+    <div class="alert alert-danger" *ngIf="error">
+      {{error}}
+    </div>
+    <div class="input form-group">
+      <label>E-mail</label>
+      <input class="form-control" type="email" [(ngModel)]="user.email" name="email" email required>
+    </div>
+    <div class="input form-group">
+      <label>Password</label>
+      <input class="form-control" type="password" [(ngModel)]="user.password" name="password" required>
+    </div>
+    <div class="input">
+      <button class="btn btn-primary" type="submit" [disabled]="!loginForm.form.valid">Login</button>
+      <button class="btn btn-outline-info" type="reset" (click)="reset()">Reset</button>
+    </div>
+    <p>
+      Don't have an account? <a routerLink="/signup">create one!</a>
+    </p>
+  </div>
+</form>

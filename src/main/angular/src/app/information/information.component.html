@@ -1,0 +1,25 @@
+<div class="form-container">
+  <h1>
+    ข้อมูลส่วนตัว
+  </h1>
+  <div [hidden]="true" class="alert alert-warning">
+    กรุณากรอกช่องที่มี * (ดอกจัน) สีแดงให้ครบ
+  </div>
+  <div class="form">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="footer">
+    <button class="btn btn-success" (click)="previous()" [disabled]="page<=1">
+      &laquo; Previous
+    </button>
+    <button class="btn btn-primary">
+      save
+    </button>
+    <button class="btn btn-secondary" (click)="cancel()">
+      cancel
+    </button>
+    <button class="btn btn-success" (click)="next()" [disabled]="page>=8">
+      Next &raquo;
+    </button>
+  </div>
+</div>

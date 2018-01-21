@@ -1,0 +1,52 @@
+:host {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    background: white;
+    padding: 10px 100px 10px 100px;
+    margin: 10px;
+    border-right: 3px solid #b4dff0;
+    border-bottom: 3px solid #b4dff0;
+    width: 900px;
+}
+
+.form h1 {
+    display: block;
+    text-align: center;
+}
+
+div.input {
+    display: inline-block;
+    position: relative;
+    width: 70%
+}
+
+div.input label {
+    position: absolute;
+    top: 0;
+    transform: translateY(-50%);
+    left: 10px;
+    background: white;
+    padding: 5px 2px;
+}
+
+div.input input {
+    padding: 10px 20px;
+    font-size: 25px;
+    outline: 0;
+}
+
+div.input {
+    margin-top: 20px;
+}
+
+.error {
+    display: inline-block;
+    width:29%;
+    color: red;
+    border-radius: 2px;
+}

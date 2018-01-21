@@ -1,0 +1,126 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 form-header">
+      <h3>ข้อมูลทั่วไป</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <label for="nameth" class="control-label-required">ชื่อ-นามสกุล</label>
+    </div>
+    <div class="col-2">
+      <select #selectPrefix>
+        <option *ngFor="let prefix of prefixes" [value]="prefix">
+          {{prefix}}
+        </option>
+      </select>
+    </div>
+    <div class="col-4">
+      <input id="nameth" type="text" placeholder="ชื่อจริง" [(ngModel)]="pi.fNameTH">
+    </div>
+    <div class="col-4">
+      <input type="text" placeholder="นามสกุล">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <label for="nameen" class="control-label-required">Full Name</label>
+    </div>
+    <div class="col-4">
+      <input id="nameen" placeholder="First Name">
+    </div>
+    <div class="col-4">
+      <input placeholder="Last Name">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <label for="address" class="control-label-required">ที่อยู่ที่สามารถติดต่อได้</label>
+    </div>
+    <div class="col-10">
+      <textarea id="address"></textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <label for="phone">โทรศัพท์</label>
+    </div>
+    <div class="col-2">
+      <input id="phone" maxlength="10" pattern="[0-9]">
+    </div>
+    <div class="col-2">
+      <label for="mobile" class="control-label-required">โทรศัพท์มือถือ</label>
+    </div>
+    <div class="col-2">
+      <input id="mobile" maxlength="10" pattern="[0-9]">
+    </div>
+    <div class="col-1">
+      <label for="email" class="control-label-required">อีเมล</label>
+    </div>
+    <div class="col-3">
+      <input id="email" type="email" disabled>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <label for="birthdate" class="control-label-required">เดือน/วัน/ปีเกิด</label>
+    </div>
+    <div class="col-2">
+      <input type="date" id="birthdate">
+    </div>
+    <div class="col-1">
+      <div class="right">
+        <label for="age" class="control-label-required">อายุ</label>
+      </div>
+    </div>
+    <div class="col-1">
+      <input type="number" id="age">
+    </div>
+    <div class="col-1">
+      <div class="right">
+        <label for="weight" class="control-label-required">น้ำหนัก</label>
+      </div>
+    </div>
+    <div class="col-1">
+      <div style="white-space:nowrap">
+        <input type="number" id="weight"> kg.
+      </div>
+    </div>
+    <div class="col-1">
+      <div class="right">
+        <label for="height" class="control-label-required">ส่วนสูง</label>
+      </div>
+    </div>
+    <div class="col-1">
+      <div style="white-space:nowrap">
+        <input type="number" id="height"> cm.
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      <label for="placeofbirth" class="control-label-required">ภูมิลำเนา</label>
+    </div>
+    <div class="col-2">
+      <input type="text" id="placeofbirth">
+    </div>
+    <div class="col-1">
+      <label for="race" class="control-label-required">เชื้อชาติ</label>
+    </div>
+    <div class="col-2">
+      <input type="text" id="race">
+    </div>
+    <div class="col-1">
+      <label for="nationality" class="control-label-required">สัญชาติ</label>
+    </div>
+    <div class="col-2">
+      <input type="text" id="nationallity">
+    </div>
+    <div class="col-1">
+      <label for="religion" class="control-label-required">ศาสนา</label>
+    </div>
+    <div class="col-1">
+      <input type="text" id="religion">
+    </div>
+  </div>
+</div>

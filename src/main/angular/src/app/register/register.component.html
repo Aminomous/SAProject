@@ -1,0 +1,69 @@
+<form class="form" [formGroup]="signupForm" (ngSubmit)="onFormSubmit()">
+  <h1>
+    Sign up
+  </h1>
+  <div class="alert alert-danger" [hidden]="!formSubmitted">
+    {{mainError}}
+  </div>
+  <div class="input form-group">
+    <label for="firstName">FirstName</label>
+    <input type="text" class="form-control" formControlName="firstName">
+  </div>
+  <div class="error" [hidden]="signupForm.get('firstName').valid">
+    required
+  </div>
+  <div class="input form-group">
+    <label for="lastName">LastName</label>
+    <input type="text" class="form-control" formControlName="lastName">
+  </div>
+  <div class="error" [hidden]="signupForm.get('lastName').valid">
+    required
+  </div>
+  <div class="input form-group">
+    <label for="citizenID">Citizen ID</label>
+    <input type="text" class="form-control" formControlName="citizenID">
+  </div>
+  <div class="error" [hidden]="signupForm.get('citizenID').valid">
+    <div [hidden]="signupForm.get('citizenID').touched">
+      required
+    </div>
+    <div [hidden]="signupForm.get('citizenID').valid || signupForm.get('citizenID').untouched">
+      {{idError}}
+    </div>
+  </div>
+  <div class="input form-group">
+    <label for="email">E-mail</label>
+    <input type="email" class="form-control" formControlName="email">
+  </div>
+  <div class="error" [hidden]="signupForm.get('email').valid">
+    <div [hidden]="signupForm.get('email').touched">
+      required
+    </div>
+    <div [hidden]="signupForm.get('email').valid || signupForm.get('email').untouched">
+      {{emailError}}
+    </div>
+  </div>
+  <div class="input form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" formControlName="password">
+  </div>
+  <div class="error" [hidden]="signupForm.get('password').valid">
+    required
+  </div>
+  <div class="input form-group">
+    <label for="passwordConfirm">Confirm Password</label>
+    <input type="password" class="form-control" formControlName="passwordConfirm">
+  </div>
+  <div class="error" [hidden]="signupForm.get('passwordConfirm').valid">
+    <div [hidden]="signupForm.get('passwordConfirm').touched">
+      required
+    </div>
+    <div [hidden]="signupForm.get('passwordConfirm').valid" *ngIf="signupForm.get('passwordConfirm').touched">
+      {{passwordMatchError}}
+    </div>
+  </div>
+  <div class="input form-group">
+    <button class="btn btn-primary" type="submit" [disabled]="!signupForm.valid">Sign up</button>
+    <button class="btn btn-outline-info" (click)="cancel()">Cancel</button>
+  </div>
+</form>
