@@ -14,10 +14,6 @@ public class MainPaneController {
     @FXML
     private FlowPane rightPanel;
 
-    public void initialize() {
-    }
-
-
     public GridPane getMainPane() {
         return mainPane;
     }

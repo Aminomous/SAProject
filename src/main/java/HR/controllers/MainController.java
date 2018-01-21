@@ -122,4 +122,5 @@ public class MainController {
     public ApplicantFilterController getApplicantFilterCtrl() {
         return applicantFilterCtrl;
     }
+
 }

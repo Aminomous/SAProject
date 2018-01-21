@@ -1,8 +1,15 @@
 package HQ.controllers;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.ToggleGroup;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.GridPane;
 import models.Application;
 
 public class StatusChangeController {
@@ -12,51 +19,47 @@ public class StatusChangeController {
 
     @FXML
     private CheckBox status1, status2, status3, status4, status5;
+    @FXML
+    private GridPane container;
+    @FXML
+    private RadioButton acceptButton, declineButton;
+
+    private ToggleGroup buttonGroup;
 
     public void initialize() {
+        buttonGroup = new ToggleGroup();
 
+        acceptButton.setToggleGroup(buttonGroup);
+        declineButton.setToggleGroup(buttonGroup);
     }
 
     public void start() {
-        status1.setDisable(true);
-        status2.setDisable(true);
-        status3.setDisable(true);
-        status4.setDisable(true);
-        status5.setDisable(true);
+        CheckBox[] statuses = {status1, status2, status3, status4, status5};
+        for (CheckBox status:statuses){
+            status.setDisable(true);
+        }
 
         int latestStatus = application.getLatestStatus();
-        if (latestStatus == 0) {
-            status1.setDisable(false);
-        } else if (latestStatus == 1) {
-            status1.setSelected(true);
-            status1.setDisable(false);
-            status2.setDisable(false);
-        } else if (latestStatus == 2) {
-            status1.setSelected(true);
-            status2.setSelected(true);
-            status2.setDisable(false);
-            status3.setDisable(false);
-        } else if (latestStatus == 3) {
-            status1.setSelected(true);
-            status2.setSelected(true);
-            status3.setSelected(true);
-            status3.setDisable(false);
-            status4.setDisable(false);
-        } else if (latestStatus == 4) {
-            status1.setSelected(true);
-            status2.setSelected(true);
-            status3.setSelected(true);
-            status4.setSelected(true);
-            status4.setDisable(false);
-            status5.setDisable(false);
-        } else if (latestStatus == 5) {
-            status1.setSelected(true);
-            status2.setSelected(true);
-            status3.setSelected(true);
-            status4.setSelected(true);
-            status5.setSelected(true);
-            status5.setDisable(false);
+
+        for (int i = 0; i< latestStatus; i++){
+            statuses[i].setSelected(true);
+            if (i == latestStatus-1){
+                statuses[i].setDisable(false);
+                statuses[Math.min(i+1, 4)].setDisable(false);
+            }
         }
+
+//        if(application.getApplicationStatus6() == 0){
+//            acceptButton.setDisable(status5.isSelected());
+//        }else {
+            if(application.getApplicationStatus6() == 1){
+                acceptButton.setSelected(true);
+            }else{
+                declineButton.setSelected(true);
+            }
+//            acceptButton.setDisable(true);
+//            declineButton.setDisable(true);
+//        }
 
     }
 
@@ -88,14 +91,30 @@ public class StatusChangeController {
             application.setApplicationStatus5(false);
         }
 
+        if (declineButton.isSelected()){
+            application.setApplicationStatus6(2);
+        }
+        if (acceptButton.isSelected()){
+            application.setApplicationStatus6(1);
+        }
+
+
         mainCtrl.getApplicationService().update(application);
-        cancel();
+        closeWindow();
 
     }
 
     @FXML
-    public void cancel() {
+    public void closeWindow() {
         this.status1.getScene().getWindow().hide();
+    }
+
+    public Application getApplication() {
+        return application;
+    }
+
+    public void setApplication(Application application) {
+        this.application = application;
     }
 
     public FlowPane getMainPane() {
@@ -108,13 +127,5 @@ public class StatusChangeController {
 
     public void setMainCtrl(MainController mainCtrl) {
         this.mainCtrl = mainCtrl;
-    }
-
-    public Application getApplication() {
-        return application;
-    }
-
-    public void setApplication(Application application) {
-        this.application = application;
     }
 }

@@ -1,23 +1,30 @@
 package HQ.controllers;
 
-import HQ.controllers.MainController;
-import HQ.controllers.StatusChangeController;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.FlowPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Application;
 import models.PersonalInformation;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ApplicantInfoController {
     private MainController mainCtrl;
@@ -30,10 +37,10 @@ public class ApplicantInfoController {
     private Label idLabel, nameLabel, telLabel, ageLabel;
     @FXML
     private Button imageButton;
+
+
     @FXML
     private void initialize() {
-        Image test = new Image(getClass().getResourceAsStream("/asset/kiiroitori2.png"));
-        imageButton.setGraphic(new javafx.scene.image.ImageView(test));
 
     }
 
@@ -47,25 +54,56 @@ public class ApplicantInfoController {
             stage.setScene(new Scene((Parent) loader.load()));
             ApplicationController applicationCtrl = loader.getController();
             applicationCtrl.setApplication(this.application);
+            applicationCtrl.setMainCtrl(mainCtrl);
             applicationCtrl.showRef();
             stage.showAndWait();
+            if (application.getLatestStatus() < 3){
+                mainCtrl.resetInfoSection();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
-    public void setUp(){
+
+    public void setUp() {
+        BufferedImage img;
+        try {
+            img = ImageIO.read(new ByteArrayInputStream(mainCtrl.getApplicationService().getApplicantPhoto(application)));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Image test = new Image(new ByteArrayInputStream(mainCtrl.getApplicationService().getApplicantPhoto(application)), 100, 100, false, false);
+        imageButton.setGraphic(new javafx.scene.image.ImageView(test));
+        imageButton.prefHeight(100);
+        imageButton.prefWidth(100);
+        imageButton.setMaxWidth(100);
+        imageButton.setMaxHeight(100);
+
         PersonalInformation personalInformation = application.getPersonalInformation();
         this.idLabel.setText(personalInformation.getID());
-        this.nameLabel.setText(personalInformation.getfNameTH()+  " "+ personalInformation.getlNameTH());
+        this.nameLabel.setText(personalInformation.getfNameTH() + " " + personalInformation.getlNameTH());
         this.telLabel.setText(personalInformation.getPhoneNumber());
-        Calendar calendar  = new GregorianCalendar();
-        int age = calendar.get(Calendar.YEAR)-personalInformation.getDateOfBirth().get(Calendar.YEAR);
-        this.ageLabel.setText(age+"");
+        Calendar calendar = new GregorianCalendar();
+        int age = calendar.get(Calendar.YEAR) - personalInformation.getDateOfBirth().get(Calendar.YEAR);
+        this.ageLabel.setText(age + "");
     }
 
     @FXML
     public void uploadInfo() {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/HQ/dataUpload.fxml"));
+        try {
+            stage.setScene(new Scene((Parent) loader.load()));
+            DataUploadController dataUploadCtrl = loader.getController();
+            dataUploadCtrl.setMainCtrl(mainCtrl);
+            dataUploadCtrl.setApplication(application);
+//            dataUploadCtrl.start();
+            stage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -83,7 +121,7 @@ public class ApplicantInfoController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        mainCtrl.refreshTable();
+        mainCtrl.refreshTable(mainCtrl.getApplicantFilterCtrl().isFilterOn());
     }
 
     public void showData(Application app) {

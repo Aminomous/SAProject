@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.FlowPane;
@@ -18,63 +17,71 @@ import java.util.ArrayList;
 
 public class ApplicantTableController {
     private MainController mainCtrl;
-    @FXML
     private FlowPane mainPane;
     @FXML
     private TableView<ApplicantData> applicantTable;
     @FXML
     private TableColumn IDColumn, firstnameColumn, lastnameColumn, positionColumn, statusColumn;
-
     private ArrayList<Application> applications;
     private ObservableList tableViewData;
 
-    public void initialize() {
-        IDColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("id"));
-        firstnameColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("firstName"));
-        lastnameColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("lastName"));
-        positionColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("position"));
-        statusColumn.setCellValueFactory(new PropertyValueFactory<ApplicantData, String>("status"));
+    @FXML
+    private void initialize() {
+        IDColumn.setCellValueFactory(new PropertyValueFactory<HR.controllers.ApplicantTableController.ApplicantData, String>("id"));
+        firstnameColumn.setCellValueFactory(new PropertyValueFactory<HR.controllers.ApplicantTableController.ApplicantData, String>("firstName"));
+        lastnameColumn.setCellValueFactory(new PropertyValueFactory<HR.controllers.ApplicantTableController.ApplicantData, String>("lastName"));
+        positionColumn.setCellValueFactory(new PropertyValueFactory<HR.controllers.ApplicantTableController.ApplicantData, String>("position"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<HR.controllers.ApplicantTableController.ApplicantData, String>("status"));
 
         tableViewData = FXCollections.observableArrayList();
 
         applicantTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<ApplicantData>() {
             public void changed(ObservableValue<? extends ApplicantData> observable, ApplicantData oldValue, ApplicantData newValue) {
-                if (newValue == null){ newValue = oldValue ; }
+                if (newValue == null) {
+                    newValue = oldValue;
+                }
 
                 mainCtrl.showApplicantInfo(newValue.getId());
             }
         });
+    }
 
+    public void refreshTable(boolean isFilterOn) {
+        if (isFilterOn) {
+            mainCtrl.getApplicantFilterCtrl().showFilteredApplication();
+        } else {
+            this.showData();
+        }
     }
 
     public void showData() {
-
         applicantTable.getItems().removeAll();
         tableViewData.clear();
-        for (Application app : applications) {
-            if (app.isApplicationStatus3()){
+        tableViewData = FXCollections.observableArrayList();
+
+            for (Application app : applications) {
+                if (app.getApplicationStatus6() == 0) {
+                    PersonalInformation tempInformation = app.getPersonalInformation();
+                    tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus(), app.getApplicationStatus6()));
+                }
+            }
+            applicantTable.setItems(tableViewData);
+
+    }
+
+    public void showData(ArrayList<Application> apps) {
+        applicantTable.getItems().removeAll();
+        tableViewData.clear();
+        tableViewData = FXCollections.observableArrayList();
+        for (Application app : apps) {
+            if(app.getLatestStatus() >= 3){
                 PersonalInformation tempInformation = app.getPersonalInformation();
-                tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
+                tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus(), app.getApplicationStatus6()));
             }
         }
         applicantTable.setItems(tableViewData);
     }
 
-    public void showData(ArrayList<Application> apps){
-        applicantTable.getItems().removeAll();
-        tableViewData.clear();
-        tableViewData = FXCollections.observableArrayList();
-
-        for (Application app : apps){
-            PersonalInformation tempInformation = app.getPersonalInformation();
-            tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus()));
-        }
-        applicantTable.setItems(tableViewData);
-    }
-
-    public void refreshTable(){
-        showData();
-    }
 
     public FlowPane getMainPane() {
         return mainPane;
@@ -92,6 +99,7 @@ public class ApplicantTableController {
         this.applications = applications;
     }
 
+
     public class ApplicantData {
         private SimpleStringProperty id;
         private SimpleStringProperty firstName;
@@ -99,13 +107,18 @@ public class ApplicantTableController {
         private SimpleStringProperty position;
         private SimpleStringProperty status;
 
-        ApplicantData(String id, String firstName, String lastName, String position, int status) {
+        ApplicantData(String id, String firstName, String lastName, String position, int status, int status2) {
             this.id = new SimpleStringProperty(id);
             this.firstName = new SimpleStringProperty(firstName);
             this.lastName = new SimpleStringProperty(lastName);
             this.position = new SimpleStringProperty(position + "");
+
             this.status = new SimpleStringProperty();
-            setStatus(status);
+            if (status2 != 0) {
+                setStatus(status2 + 5);
+            } else {
+                setStatus(status);
+            }
         }
 
         public String getId() {
@@ -141,7 +154,7 @@ public class ApplicantTableController {
         }
 
         public void setStatus(int status) {
-            switch (status){
+            switch (status) {
                 case 1:
                     this.status.set("ผ่านการทดสอบ");
                     break;
@@ -156,6 +169,12 @@ public class ApplicantTableController {
                     break;
                 case 5:
                     this.status.set("ผ่านการตรวจสอบร่างกาย");
+                    break;
+                case 6:
+                    this.status.set("ผ่านการพิจารณา");
+                    break;
+                case 7:
+                    this.status.set("ไม่ผ่านการพิจารณา");
                     break;
                 default:
                     this.status.set("รอการเปลี่ยนแปลงสถานะ");
@@ -181,3 +200,4 @@ public class ApplicantTableController {
         }
     }
 }
+

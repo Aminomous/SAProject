@@ -19,24 +19,23 @@ public class MainController {
 
     private Stage stage;
     private String title = "HQ";
-
     private MainPaneController mainPaneCtrl;
+    private ApplicantTableController applicantTableCtrl;
     private ApplicantFilterController applicantFilterCtrl;
     private ApplicantInfoController applicantInfoCtrl;
-    private ApplicantTableController applicantTableCtrl;
 
     private DatabaseApplicationService applicationService;
-
     private ArrayList<Application> applications;
 
     public MainController(Stage stage) throws IOException, SQLException {
         this.stage = stage;
-//        this.applicationService = new DatabaseApplicationService("//10.2.60.249:3306/saapplicationmanager", new MySQLConnector());
+//        this.applicationService = new DatabaseApplicationService("//localhost:3306/saapplicationmanager", new MySQLConnector());
         this.applicationService = new DatabaseApplicationService("saDB.db", new SQLiteConnector());
-
-        loadPane();
+        this.loadPane();
         loadData();
+
     }
+
 
     public void start() {
         Pane mainPane = this.mainPaneCtrl.getMainPane();
@@ -48,12 +47,8 @@ public class MainController {
 
         this.applicantTableCtrl.setApplications(applications);
         applicantTableCtrl.showData();
-
     }
 
-    private void loadData() {
-        applications = applicationService.getAll();
-    }
 
     private void loadPane() throws IOException {
         FXMLLoader mainPaneLoader = new FXMLLoader(getClass().getResource("/HQ/mainProgram.fxml"));
@@ -73,42 +68,63 @@ public class MainController {
         this.applicantFilterCtrl = applicantFilterPaneLoader.getController();
         this.applicantFilterCtrl.setMainPane(applicantFilterPane);
         this.applicantFilterCtrl.setMainCtrl(this);
+//        this.applicantFilterCtrl.setTableCtrl(this.applicantTableCtrl);
 
         FXMLLoader applicantInfoPaneLoader = new FXMLLoader(getClass().getResource("/HQ/applicantInfo.fxml"));
         FlowPane applicantInfoPane = applicantInfoPaneLoader.load();
         this.applicantInfoCtrl = applicantInfoPaneLoader.getController();
         this.applicantInfoCtrl.setMainPane(applicantInfoPane);
         this.applicantInfoCtrl.setMainCtrl(this);
+
         this.mainPaneCtrl.getLeftPane().setTop(this.applicantTableCtrl.getMainPane());
+//        this.mainPaneCtrl.getLeftPane().setCenter(this.applicantTableCtrl.getMainPane());
         this.mainPaneCtrl.getRightPane().getChildren().add(this.applicantFilterCtrl.getMainPane());
-//        this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
+        //this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
     }
 
-    public void showApplicantInfo(String id){
+    public void showApplicantInfo(String id) {
         this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
-        for (Application app: applications){
-            if (app.getPersonalInformation().getID().equals(id)){
-                applicantInfoCtrl.showData(app);
-                this.applicantInfoCtrl.setUp();
-                break;
+            for (Application app : applications) {
+                if (app.getPersonalInformation().getID().equals(id)) {
+                    this.applicantInfoCtrl.showData(app);
+                    this.applicantInfoCtrl.setApplication(app);
+                    this.applicantInfoCtrl.setUp();
+                    break;
+                }
             }
         }
+
+
+
+
+
+    public void refreshTable(boolean isFilterOn) {
+        applicantTableCtrl.refreshTable(isFilterOn);
     }
 
-    public void refreshTable(){
-        applicantTableCtrl.refreshTable();
+    public void resetInfoSection() {
+        this.mainPaneCtrl.getLeftPane().setBottom(null);
+
     }
 
-
-    public DatabaseApplicationService getApplicationService() {
-        return applicationService;
+    private void loadData() {
+        applications = applicationService.getAll();
     }
 
     public ArrayList<Application> getApplications() {
         return applications;
     }
 
+    public DatabaseApplicationService getApplicationService() {
+        return applicationService;
+    }
+
     public ApplicantTableController getApplicantTableCtrl() {
         return this.applicantTableCtrl;
     }
+
+    public ApplicantFilterController getApplicantFilterCtrl() {
+        return applicantFilterCtrl;
+    }
+
 }

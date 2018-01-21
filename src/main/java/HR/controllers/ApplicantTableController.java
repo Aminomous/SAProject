@@ -19,7 +19,7 @@ public class ApplicantTableController {
     private MainController mainCtrl;
     private FlowPane mainPane;
     @FXML
-    private TableView<HR.controllers.ApplicantTableController.ApplicantData> applicantTable;
+    private TableView<ApplicantData> applicantTable;
     @FXML
     private TableColumn IDColumn, firstnameColumn, lastnameColumn, positionColumn, statusColumn;
     private ArrayList<Application> applications;

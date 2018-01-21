@@ -17,6 +17,7 @@ public class ApplicationController {
     private ArrayList<AbstractApplicationController> controllers = new ArrayList<AbstractApplicationController>();
     private GridPane presentPane;
     private int paneStatus = 0;
+    private MainController mainCtrl ;
     @FXML
     private GridPane mainPane;
     @FXML
@@ -87,6 +88,9 @@ public class ApplicationController {
 
     public GridPane getMainPane() {
         return mainPane;
+    }
+    public void setMainCtrl(MainController mainCtrl) {
+        this.mainCtrl = mainCtrl;
     }
 
 }
