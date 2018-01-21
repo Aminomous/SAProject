@@ -165,6 +165,7 @@ public class ApplicantFilterController {
         filter6.setSelected(false);
         filter7.setSelected(false);
         showFilteredApplication();
+        mainCtrl.resetInfoSection();
     }
     public FlowPane getMainPane() {
         return mainPane;

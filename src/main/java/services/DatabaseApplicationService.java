@@ -419,16 +419,29 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
         try {
 
             connect();
-            if (contentType.equals("photo")) {
+            if (contentType.equals("Photo")) {
                 String query = "update personalinformation set photo=? where citizenid=?";
                 PreparedStatement p = conn.prepareStatement(query);
 
                 try {
                     FileInputStream fis = new FileInputStream(file);
                     p.setBinaryStream(1, fis);
+                } catch(SQLException e){
+                    p = conn.prepareStatement(query);
+
+                    byte[] buffer = new byte[(int) file.length()];
+                    InputStream ios = new FileInputStream(file);
+                    try {
+                        ios.read(buffer);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    p.setBytes(1, buffer);
+                    p.setString(2, application.getPersonalInformation().getID());
 
                     p.executeUpdate();
-                } catch (FileNotFoundException e) {
+                }catch (FileNotFoundException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
