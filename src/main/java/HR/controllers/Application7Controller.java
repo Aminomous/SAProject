@@ -14,7 +14,6 @@ import models.Apprenticeship;
 import java.util.ArrayList;
 
 public class Application7Controller extends  AbstractApplicationController {
-    private MainController mainCtrl;
     @FXML
     private GridPane mainPane;
     @FXML
@@ -39,9 +38,6 @@ public class Application7Controller extends  AbstractApplicationController {
         this.mainPane = mainPane;
     }
 
-    public void setMainCtrl(MainController mainCtrl) {
-        this.mainCtrl = mainCtrl;
-    }
     public void showData(){
         ObservableList temp = FXCollections.observableArrayList();
         ArrayList<Apprenticeship> apprenticeships = application.getApprenticeship();

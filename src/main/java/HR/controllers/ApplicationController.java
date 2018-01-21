@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ApplicationController {
+    private MainController mainCtrl;
     private Application application;
     private ArrayList<GridPane> panes = new ArrayList<GridPane>();
     private Application1Controller application1Ctrl ,application2Ctrl;
@@ -26,7 +27,7 @@ public class ApplicationController {
 
     @FXML
     private void initialize() throws IOException {
-        for (int i = 1; i < 13; i++) {
+        for (int i = 1; i < 14; i++) {
             FXMLLoader paneLoader = new FXMLLoader(getClass().getResource("/HR/application" + i + ".fxml"));
             GridPane pane = paneLoader.load();
             AbstractApplicationController controller = paneLoader.getController();
@@ -42,6 +43,7 @@ public class ApplicationController {
         this.refNumLabel.setText("Ref. number:  " +application.getRefnum());
         for (AbstractApplicationController controller: controllers) {
             controller.setApplication(application);
+            controller.setMainController(mainCtrl);
             controller.showInfo();
         }
     }
@@ -55,11 +57,11 @@ public class ApplicationController {
 
     @FXML
     public void next() {
-        if (paneStatus < 11) {
+        if (paneStatus < 12) {
             paneStatus++;
             showPage();
         }
-        if (paneStatus == 11) {
+        if (paneStatus == 12) {
             this.nextBtn.setVisible(false);
         }
         this.backBtn.setVisible(true);
@@ -76,7 +78,6 @@ public class ApplicationController {
         this.nextBtn.setVisible(true);
     }
 
-
     public void setApplication(Application application) {
         this.application = application;
     }
@@ -89,4 +90,7 @@ public class ApplicationController {
         return mainPane;
     }
 
+    public void setMainCtrl(MainController mainCtrl) {
+        this.mainCtrl = mainCtrl;
+    }
 }

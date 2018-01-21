@@ -1,15 +1,14 @@
 package HR.controllers;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import models.Application;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 public class DataUploadController {
     private MainController mainCtrl;
@@ -22,6 +21,8 @@ public class DataUploadController {
     private TextArea descriptionBox;
     @FXML
     private RadioButton applicantPhoto, applicantDocument;
+    @FXML
+    private Label fileDestination;
 
 
     @FXML
@@ -44,19 +45,18 @@ public class DataUploadController {
                 new FileChooser.ExtensionFilter("PDF", "*.pdf"));
         file = fileChooser.showOpenDialog(new Stage());
 
-
+        fileDestination.setText(file.getPath());
     }
 
 
     @FXML
-    public void confirm() {
+    public void confirm() throws FileNotFoundException {
         if (file != null) {
-            System.out.println(file);
 
-            byte[] fileContent = new byte[(int) file.length()];
+//            FileOutputStream fos = new FileOutputStream(file.getPath());
+//            mainCtrl.getApplicationService().upload(application, descriptionBox.getText(), fileContent, applicantPhoto.isSelected()?"Photo":"Document");
 
-            System.out.println(fileContent);
-            mainCtrl.getApplicationService().upload(application, descriptionBox.getText(), fileContent, applicantPhoto.isSelected()?"Photo":"Document");
+            mainCtrl.getApplicationService().upload(application, descriptionBox.getText(), applicantPhoto.isSelected()?"Photo":"Document", file);
 
         } else {
             System.out.println("NO FILE HAS BEEN UPLOADED");

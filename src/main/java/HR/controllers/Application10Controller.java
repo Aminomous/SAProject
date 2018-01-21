@@ -15,7 +15,6 @@ import models.Q6;
 import java.util.ArrayList;
 
 public class Application10Controller extends AbstractApplicationController{
-    private MainController mainCtrl;
     @FXML
     private GridPane mainPane;
     @FXML
@@ -36,10 +35,6 @@ public class Application10Controller extends AbstractApplicationController{
 
     public void setMainPane(GridPane mainPane) {
         this.mainPane = mainPane;
-    }
-
-    public void setMainCtrl(MainController mainCtrl) {
-        this.mainCtrl = mainCtrl;
     }
 
     public void showData(){

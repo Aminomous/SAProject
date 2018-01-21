@@ -10,7 +10,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Application2Controller extends AbstractApplicationController {
-    private MainController mainCtrl;
     private GridPane mainPane;
     @FXML
     private Label thaiNameLabel, engNameLabel, addressLabel, telLabel, emailLabel, birthAndAgeLabel, weightHeightLabel, nationalityLabel, placeOfBirthLabel, religionLabel, idLabel, professionalLabel, militaryLabel, maritalLabel;
@@ -29,10 +28,6 @@ public class Application2Controller extends AbstractApplicationController {
 
     public void setMainPane(GridPane mainPane) {
         this.mainPane = mainPane;
-    }
-
-    public void setMainCtrl(MainController mainCtrl) {
-        this.mainCtrl = mainCtrl;
     }
 
     public void showInfo() {

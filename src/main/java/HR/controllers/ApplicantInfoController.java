@@ -34,7 +34,6 @@ public class ApplicantInfoController {
     @FXML
     private Button imageButton;
 
-    private Desktop desktop = Desktop.getDesktop();
 
     @FXML
     private void initialize() {
@@ -52,6 +51,7 @@ public class ApplicantInfoController {
             stage.setScene(new Scene((Parent) loader.load()));
             ApplicationController applicationCtrl = loader.getController();
             applicationCtrl.setApplication(this.application);
+            applicationCtrl.setMainCtrl(mainCtrl);
             applicationCtrl.showRef();
             stage.showAndWait();
         } catch (IOException e) {
@@ -85,17 +85,6 @@ public class ApplicantInfoController {
             e.printStackTrace();
         }
 
-    }
-
-    private void openFile(File file) {
-        try {
-            desktop.open(file);
-        } catch (IOException ex) {
-            Logger.getLogger(
-                    ApplicantInfoController.class.getName()).log(
-                    Level.SEVERE, null, ex
-            );
-        }
     }
 
     @FXML

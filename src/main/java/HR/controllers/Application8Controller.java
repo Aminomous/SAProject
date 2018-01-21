@@ -15,7 +15,6 @@ import models.FamilyDetail;
 import java.util.ArrayList;
 
 public class Application8Controller extends AbstractApplicationController{
-    private MainController mainCtrl;
     @FXML
     private GridPane mainPane;
     @FXML
@@ -41,9 +40,6 @@ public class Application8Controller extends AbstractApplicationController{
         this.mainPane = mainPane;
     }
 
-    public void setMainCtrl(MainController mainCtrl) {
-        this.mainCtrl = mainCtrl;
-    }
     public void showData(){
         ObservableList temp = FXCollections.observableArrayList();
         ArrayList<FamilyDetail> familyDetails = application.getFamilyDetails();

@@ -32,6 +32,7 @@ public class Application {
     private boolean applicationStatus4;
     private boolean applicationStatus5;
     private int applicationStatus6;
+    private ArrayList<ApplicantDocument> documents;
 
     public Application(int refnum, Calendar date, String position1, String position2, boolean workInShift, String workerType, double salary, Calendar startingDate, ArrayList<QH1> qh1, String qh2, String qh3, String relativeWorkInHospital, String additionalInformation, ArrayList<Apprenticeship> apprenticeship, ArrayList<Education> education, Employee employee, ArrayList<EmploymentRecord> employmentRecords, ArrayList<FamilyDetail> familyDetails, ArrayList<Hospital> hospitals, ArrayList<LanguageAbility> languageAbilities, PersonalInformation personalInformation, ArrayList<ReferencePerson> referencePeople, boolean applicationStatus1, boolean applicationStatus2, boolean applicationStatus3, boolean applicationStatus4, boolean applicationStatus5, int applicationStatus6) {
         this.refnum = refnum;
@@ -241,5 +242,13 @@ public class Application {
 
         return app1.getRefnum() == app2.getRefnum();
 
+    }
+
+    public ArrayList<ApplicantDocument> getDocuments() {
+        return documents;
+    }
+
+    public void setDocuments(ArrayList<ApplicantDocument> documents) {
+        this.documents = documents;
     }
 }

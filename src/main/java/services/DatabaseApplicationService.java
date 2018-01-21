@@ -2,8 +2,7 @@ package services;
 
 import models.*;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.*;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -22,6 +21,65 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
         queries.add("CREATE TABLE product (product_id varchar(8) NOT NULL, name text NOT NULL, price double NOT NULL, quantity int(11) NOT NULL, PRIMARY KEY (product_id))");
         return queries;
     }
+
+    public ArrayList<ApplicantDocument> getDocuments(Application application) {
+        ArrayList<ApplicantDocument> documents = new ArrayList<ApplicantDocument>();
+
+        try {
+            connect();
+
+            String query = "select id, refnum, description from applicant_documents";
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(query);
+
+            while (result.next()) {
+                int id = result.getInt(1);
+                int ref = result.getInt(2);
+                String desc = result.getString(3);
+                ApplicantDocument doc = new ApplicantDocument(id, ref, desc);
+                documents.add(doc);
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return documents;
+    }
+
+    public byte[] getFileFromDocument(ApplicantDocument doc) {
+        byte[] document = null;
+        try {
+            connect();
+
+            String query = "select document from applicant_documents where id=" + doc.getId();
+            Statement statement = conn.createStatement();
+            ResultSet result = statement.executeQuery(query);
+
+            while (result.next()) {
+                try {
+
+//                    Blob blob = result.getBlob("document");
+//
+//                    InputStream in = blob.getBinaryStream();
+//                    System.out.println("blob length" + blob.length());
+//                    return in;
+                    byte[] buffer = result.getBytes(1);
+                    InputStream in = result.getBinaryStream(1);
+                    return buffer;
+
+                } catch (SQLException e) {
+
+                }
+            }
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 
     public ArrayList<Application> getAll() {
         ArrayList<Application> applications = new ArrayList<Application>();
@@ -251,7 +309,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             String driveLicenseCar = result.getString(31);
             boolean rideMotorcycle = result.getBoolean(32);
             boolean ownMotorcycle = result.getBoolean(33);
-            String driveLicenseMotocycle = result.getString(34);
+            String driveLicenseMotorcycle = result.getString(34);
             String hobby = result.getString(35);
             boolean q1 = result.getBoolean(36);
             boolean q2 = result.getBoolean(37);
@@ -266,7 +324,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             ArrayList<Q6> q6s = getQ6(citizenID);
 
 
-            personalInformation = new PersonalInformation(ID, titleTH, fNameTH, lNameTH, fNameEN, lNameEN, address, email, phoneNumber, dateOfBirth, placeOfBirth, weight, height, nationality, race, religion, profNo, militaryStatus, maritalStatus, emergencyContact, toeicScore, toeicYear, toeflScore, toeflYear, word, excel, powerpoint, driveCar, ownCar, driveLicenseCar, rideMotorcycle, ownMotorcycle, driveLicenseMotocycle, hobby, q1, q2, q3, q4, q5, q6s);
+            personalInformation = new PersonalInformation(ID, titleTH, fNameTH, lNameTH, fNameEN, lNameEN, address, email, phoneNumber, dateOfBirth, placeOfBirth, weight, height, nationality, race, religion, profNo, militaryStatus, maritalStatus, emergencyContact, toeicScore, toeicYear, toeflScore, toeflYear, word, excel, powerpoint, driveCar, ownCar, driveLicenseCar, rideMotorcycle, ownMotorcycle, driveLicenseMotorcycle, hobby, q1, q2, q3, q4, q5, q6s);
         }
         return personalInformation;
     }
@@ -324,8 +382,6 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             Statement statement = conn.createStatement();
             statement.execute(query);
 
-
-//            Statement statement = conn.createStatement();
             statement.execute(query);
 
             close();
@@ -342,43 +398,62 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
         }
     }
 
-    public void upload(Application application, String description, byte[] content, String contentType) {
+    public void upload(Application application, String description, String contentType, File file) {
 
         try {
 
             connect();
-            Blob blob = new javax.sql.rowset.serial.SerialBlob(content);
             if (contentType.equals("photo")) {
                 String query = "update personalinformation set photo=? where citizenid=?";
                 PreparedStatement p = conn.prepareStatement(query);
 
                 try {
-                    p.setBlob(1, blob);
-                }catch (SQLException e){
-                    System.out.println("Using Sqlite");
-                    p.setBytes(1, content);
+                    FileInputStream fis = new FileInputStream(file);
+                    p.setBinaryStream(1, fis);
+
+                    p.executeUpdate();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
                 p.setString(2, application.getPersonalInformation().getID());
                 p.executeUpdate();
             } else {
-                String query = "insert into applicant_documents (refnum, document, description) values(?, ?, ?)";
-
-                PreparedStatement p = conn.prepareStatement(query);
-                p.setInt(1, application.getRefnum());
-                p.setString(3, description);
+                String query = "insert into applicant_documents (refnum, document, description) values (?, ?, ?)";
                 try {
-                    p.setBlob(2, blob);
-                }catch (SQLException e){
-                    System.out.println("Using Sqlite");
-                    p.setBytes(1, content);
+                    PreparedStatement p = conn.prepareStatement(query);
+                    FileInputStream input = new FileInputStream(file);
+
+                    p.setInt(1, application.getRefnum());
+                    p.setBinaryStream(2, input);
+                    p.setString(3, description);
+
+                    p.executeUpdate();
+                } catch (SQLException e) {
+                    PreparedStatement p = conn.prepareStatement(query);
+
+                    byte[] buffer = new byte[(int) file.length()];
+                    InputStream ios = new FileInputStream(file);
+                    try {
+                        ios.read(buffer);
+                    } catch (IOException e1) {
+                        e1.printStackTrace();
+                    }
+
+                    p.setInt(1, application.getRefnum());
+                    p.setBytes(2, buffer);
+                    p.setString(3, description);
+
+                    p.executeUpdate();
                 }
-                p.setString(2, application.getPersonalInformation().getID());
-                p.executeUpdate();
             }
             close();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } finally {
             if (conn != null) try {

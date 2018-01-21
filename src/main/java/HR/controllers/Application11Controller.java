@@ -5,7 +5,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 public class Application11Controller extends  AbstractApplicationController{
-    private MainController mainCtrl;
     private GridPane mainPane;
     @FXML
     private Label q1Label, q2Label, q3Label;
@@ -22,10 +21,6 @@ public class Application11Controller extends  AbstractApplicationController{
 
     public void setMainPane(GridPane mainPane) {
         this.mainPane = mainPane;
-    }
-
-    public void setMainCtrl(MainController mainCtrl) {
-        this.mainCtrl = mainCtrl;
     }
 
     public void showInfo() {

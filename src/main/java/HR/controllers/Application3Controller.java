@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Application3Controller extends  AbstractApplicationController {
-    private MainController mainCtrl;
     private GridPane mainPane;
     @FXML
     private TableView<EducationData> educationTable;
@@ -52,10 +51,6 @@ public class Application3Controller extends  AbstractApplicationController {
 
     public void setMainPane(GridPane mainPane) {
         this.mainPane = mainPane;
-    }
-
-    public void setMainCtrl(MainController mainCtrl) {
-        this.mainCtrl = mainCtrl;
     }
 
     public void showInfo() {
