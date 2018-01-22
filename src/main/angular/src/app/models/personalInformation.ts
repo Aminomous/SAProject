@@ -15,11 +15,11 @@ export class PersonalInformation {
     lNameEN: string;
     address: string;
     email: string;
-    phoneNumber: string;
+    telephone: string;
     dateOfBirth: Date;
     placeOfBirth: string;
     weight: number;
-    heigth: number;
+    height: number;
     nationality: string;
     race: string;
     religion: string;

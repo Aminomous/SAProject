@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'app/user.service';
 
 @Component({
   selector: 'app-detail',
@@ -11,7 +12,7 @@ export class DetailComponent implements OnInit {
   registered = false
   isDraft = false
   registrationStatus = "not sent"
-  constructor() { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
   }

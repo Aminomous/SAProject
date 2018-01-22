@@ -60,11 +60,11 @@ export class UserService {
       (this.checkNull(this.personalInformation.fNameTH)) &&
       (this.checkNull(this.personalInformation.lNameTH)) &&
       (this.checkNull(this.personalInformation.address)) &&
-      (this.checkNull(this.personalInformation.phoneNumber)) &&
+      (this.checkNull(this.personalInformation.telephone)) &&
       (this.checkNull(this.personalInformation.email)) &&
       (this.checkNull(this.personalInformation.dateOfBirth)) &&
       (this.checkNull(this.personalInformation.weight)) &&
-      (this.checkNull(this.personalInformation.heigth)) &&
+      (this.checkNull(this.personalInformation.height)) &&
       (this.checkNull(this.personalInformation.placeOfBirth)) &&
       (this.checkNull(this.personalInformation.race)) &&
       (this.checkNull(this.personalInformation.nationality)) &&

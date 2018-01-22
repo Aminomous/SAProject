@@ -1,14 +1,14 @@
-<div *ngIf="!piIsValid" class="middle-screen">
+<div *ngIf="!userService.checkPersonalInformation()" class="middle-screen">
   Your profile is incomplete, please give us more information.<br> <a routerLink="info">Edit your personal information</a>
 </div>
-<div *ngIf="piIsValid && !registered" class="middle-screen">
+<div *ngIf="userService.checkPersonalInformation() && !registered" class="middle-screen">
   <a routerLink="registration">Create new registration form.</a>
 </div>
-<div *ngIf="piIsValid && registered && isDraft" class="middle-screen">
+<div *ngIf="userService.checkPersonalInformation() && registered && isDraft" class="middle-screen">
   You didn't sent your application.<br>
   <a routerLink="registration">Edit & sent it</a>
 </div>
-<div *ngIf="piIsValid && registered && !isDraft" class="middle-screen">
+<div *ngIf="userService.checkPersonalInformation() && registered && !isDraft" class="middle-screen">
   <h1>
     สถานะใบสมัคร: {{registrationStatus}}
   </h1>
