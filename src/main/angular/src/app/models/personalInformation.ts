@@ -38,7 +38,7 @@ export class PersonalInformation {
     toeflYear: number;
     word: number;
     excel: number;
-    powerponumber: number;
+    powerPoint: number;
     driveCar: boolean;
     ownCar: boolean;
     driveLicenseCar: string;

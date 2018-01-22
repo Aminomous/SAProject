@@ -10,11 +10,8 @@ import { PersonalInformation } from '../models/personalInformation';
 })
 export class InformationComponent implements OnInit {
 
-  pi: PersonalInformation
   page
   constructor(private router:Router, private userService: UserService) {
-    this.pi = this.userService.personalInformation
-    
   }
 
   ngOnInit() {

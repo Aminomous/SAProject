@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PersonalInformation } from 'app/models/personalInformation';
+import { UserService } from 'app/user.service';
 
 @Component({
   selector: 'app-information5',
@@ -7,8 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Information5Component implements OnInit {
 
-  constructor() { }
-
+  pi: PersonalInformation
+  constructor(private userService: UserService) { 
+    this.pi = new PersonalInformation()
+    this.userService.getPersonalInformation().then((pi)=>{
+      this.pi = pi
+      console.log(pi)
+    })
+  }
   ngOnInit() {
   }
 

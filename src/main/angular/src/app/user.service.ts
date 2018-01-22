@@ -28,30 +28,31 @@ export class UserService {
 
   async loadApplication() {
     let cid = this.personalInformation.citizenID
-    // console.log(cid)
+    console.log(cid)
     let res = await this.http.post("http://localhost/testauthapp/get_app.php", JSON.stringify(cid), {headers: this.headers}).toPromise()
     this.application = JSON.parse(res.text())
     return this.application
   }
 
   async getPersonalInformation() {
-    // if (this.personalInformation == null) {
-    //   await this.loadPersonalInformation()
-    // }
-    // return this.personalInformation
+    
     return await this.loadPersonalInformation()
   }
 
   async getApplication() {
-    if (this.application == null) {
-      await this.loadApplication()
-    }
-    return this.application
+   
+    return await this.loadApplication()
   }
 
   updatePersonalInformation() {
     console.log(this.personalInformation)
     this.http.post("http://localhost/testauthapp/update_info.php", JSON.stringify(this.personalInformation), {headers: this.headers})
+    .subscribe()
+  }
+
+  updateApplication() {
+    console.log(this.application)
+    this.http.post("http://localhost/testauthapp/update_app.php", JSON.stringify(this.application), {headers: this.headers})
     .subscribe()
   }
 
