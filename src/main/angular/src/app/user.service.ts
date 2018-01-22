@@ -9,8 +9,8 @@ import { Application } from './models/application';
 export class UserService {
 
   headers: Headers = new Headers()
-  personalInformation :PersonalInformation
-  application: Application
+  personalInformation :PersonalInformation = new PersonalInformation()
+  application: Application = new Application()
 
   constructor(private http:Http) { }
 
@@ -35,10 +35,11 @@ export class UserService {
   }
 
   async getPersonalInformation() {
-    if (this.personalInformation == null) {
-      await this.loadPersonalInformation()
-    }
-    return this.personalInformation
+    // if (this.personalInformation == null) {
+    //   await this.loadPersonalInformation()
+    // }
+    // return this.personalInformation
+    return await this.loadPersonalInformation()
   }
 
   async getApplication() {

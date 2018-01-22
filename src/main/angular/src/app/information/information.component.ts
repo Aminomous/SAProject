@@ -27,6 +27,11 @@ export class InformationComponent implements OnInit {
     }
   }
 
+  save() {
+    this.userService.updatePersonalInformation()
+    this.router.navigate(['/'])
+  }
+
   next() {
     this.page+=1
     this.router.navigate(['main','info',this.page])
