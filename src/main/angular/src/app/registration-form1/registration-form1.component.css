@@ -1,0 +1,39 @@
+label{
+    margin-right: 20px;
+}
+
+p{
+    margin: 0px;
+}
+
+.form-header {
+    border: 5px solid black;
+    width: 100%;
+    margin-bottom: 10px;
+}
+[class*="col-"]:not(.form-header) {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.control-label-required:after {
+    content: "*";
+    color: red;
+}
+
+textarea {
+    width: 100%;
+    resize: none;
+    height: 60px;
+}
+
+.row {
+    margin-bottom: 5px;
+}
+
+label > input[type="radio"] {
+    width: 10px;
+}

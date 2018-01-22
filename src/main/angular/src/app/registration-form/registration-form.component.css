@@ -1,0 +1,16 @@
+.form-container {
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.footer * {
+    margin: 10px;
+}
+
+.form {
+    margin-bottom: 80px;
+    border: 1px solid black;
+}
