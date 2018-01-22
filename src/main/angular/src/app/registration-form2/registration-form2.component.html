@@ -15,18 +15,18 @@
     </div>
     
     <div class="col-11">
-      <label for="qh1">  <input type="checkbox" id="qh1"> เคยใช้บริการเครือโรงพยาบาลพญาไท และเครือโรงพยาบาลเปาโล</label>
-      <label for="qh1-description"> สาขา <input type="text" id="qh1-description"> </label>
+      <label for="qh11">  <input type="checkbox" id="qh11" (change)="select(0)"> เคยใช้บริการเครือโรงพยาบาลพญาไท และเครือโรงพยาบาลเปาโล </label>
+      <label for="qh11-description"> สาขา <input type="text" id="qh11-description" [disabled]="!qh11checked" [(ngModel)]="qh11.detail"> </label>
     </div>
     
     <div class="col-11">
-      <label for="qh2">  <input type="checkbox" id="qh2"> มีบุคคลแนะนำ</label>
-      <label for="qh2-description"> โปรดระบุ <input type="text" id="qh2-description"> </label>
+      <label for="qh12">  <input type="checkbox" id="qh12" (change)="select(1)"> มีบุคคลแนะนำ</label>
+      <label for="qh12-description"> โปรดระบุ <input type="text" id="q1h2-description" [disabled]="!qh12checked" [(ngModel)]="qh12.detail"> </label>
     </div>
     
     <div class="col-11">
-      <label for="qh3">  <input type="checkbox" id="qh3"> อื่น ๆ</label>
-      <label for="qh3-description"> โปรดระบุ <input type="text" id="qh3-description"> </label>
+      <label for="qh13">  <input type="checkbox" id="qh13" (change)="select(2)"> อื่น ๆ</label>
+      <label for="qh13-description"> โปรดระบุ <input type="text" id="qh13-description" [disabled]="!qh13checked" [(ngModel)]="qh13.detail"> </label>
     </div>
   </div>
   
@@ -36,11 +36,11 @@
       <br>
       ท่านมีความคิดเห็นหรือมีทัศนะคติอย่างไรบ้าง และท่านให้คำจำกัดความเกี่ยวกับเครือโรงพยาบาลพญาไทและเครือโรงพยาบาลเปาโลอย่างไร
     </span>
-    <input type="text" id="qh4" size="100px">
+    <input type="text" id="qh2" size="100px" [(ngModel)]="application.qh2">
   </div>
 
   <div class="row">
-      <span> เพราะเหตุใดท่านจึงเลือกสมัครมาเป็นพนักงานเครือโรงพยาบาลพญาไทและเครือโรงพยาบาลเปาโล <input type="text" id="qh5" size="100px" /></span>
+      <span> เพราะเหตุใดท่านจึงเลือกสมัครมาเป็นพนักงานเครือโรงพยาบาลพญาไทและเครือโรงพยาบาลเปาโล <input type="text" id="qh3" size="100px" [(ngModel)]="application.qh3"/></span>
   </div>
   
 </div>

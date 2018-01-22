@@ -8,7 +8,7 @@ export class Application {
     date: string;
     position1: string;
     position2: string;
-    workInShift: boolean;
+    workInShift: number;
     workerType: string;
     salary: number;
     startingDate: Date;
@@ -20,9 +20,5 @@ export class Application {
     hospitals: Hospital[];
     personalInformation: PersonalInformation;
     referencePeople: ReferencePerson[];
-    applicationStatus1: boolean;
-    applicationStatus2: boolean;
-    applicationStatus3: boolean;
-    applicationStatus4: boolean;
-    applicationStatus5: boolean;
+    applicationStatus6: number;
 }
