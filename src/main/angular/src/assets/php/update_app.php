@@ -48,7 +48,7 @@ $query = "DELETE FROM `hospital` WHERE refnum=".$refnum."";
 mysqli_query($conn, $query);
 $hospitals = $app->hospitals;
 foreach ($hospitals as $key => $hospital) {
-    $query = "INSERT INTO `hospital` (`refnum`, `hospitalName`) values ($refnum, '$hospital')";
+    $query = "INSERT INTO `hospital` (`refnum`, `hospitalName`) values ($refnum, '$hospital->hospitalName')";
     mysqli_query($conn, $query);
 }
 
@@ -66,7 +66,11 @@ $query = "DELETE FROM `referenceperson` WHERE refnum=".$refnum."";
 mysqli_query($conn, $query);
 $referencePeople = $app->referencePeople;
 foreach ($referencePeople as $key => $referenceperson) {
-    $query = "INSERT INTO `referenceperson` (`refnum`,  `name`, `relationship`, `address`, `telephone`) values ($refnum, '$referenceperson->name', '$referenceperson->relationship', '$referenceperson->address', '$referenceperson->telephone')";
+    $referencepersonname = !empty('$referenceperson->name') ? "'$referenceperson->name'" : "NULL";
+    $referencepersonrelationship = !empty('$referenceperson->relationship') ? "'$referenceperson->relationship'" : "NULL";
+    $referencepersonaddress = !empty('$referenceperson->address') ? "'$referenceperson->address'" : "NULL";
+    $referencepersontelephone = !empty('$referenceperson->telephone') ? "'$referenceperson->telephone'" : "NULL";
+    $query = "INSERT INTO `referenceperson` (`refnum`,  `name`, `relationship`, `address`, `telephone`) values ($refnum, '$referencepersonname', '$referencepersonrelationship', '$referencepersonaddress', '$referencepersontelephone')";
     mysqli_query($conn, $query);
 }
 

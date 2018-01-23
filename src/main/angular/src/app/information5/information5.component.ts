@@ -9,8 +9,8 @@ import { UserService } from 'app/user.service';
   styleUrls: ['./information5.component.css']
 })
 export class Information5Component implements OnInit {
-  haveCarLC = "0"
-  haveBikeLC = "0"
+  haveCarLC
+  haveBikeLC
   pi: PersonalInformation
   constructor(private userService: UserService) {
 
@@ -20,18 +20,18 @@ export class Information5Component implements OnInit {
       if (pi) {
         this.pi = pi
         
-        this.pi.driveCar = this.pi.driveCar + "";
-        this.pi.ownCar = this.pi.ownCar + "";
-        this.pi.rideMotocycle = this.pi.rideMotocycle +"";
-        this.pi.ownMotocycle = this.pi.ownMotocycle + "";
+        if(this.pi.driveCar==null) this.pi.driveCar = this.pi.driveCar + "";
+        if(this.pi.ownCar==null) this.pi.ownCar = this.pi.ownCar + "";
+        if(this.pi.rideMotocycle==null) this.pi.rideMotocycle = this.pi.rideMotocycle +"";
+        if(this.pi.ownMotocycle==null) this.pi.ownMotocycle = this.pi.ownMotocycle + "";
         console.log(this.pi.driveLicenseCar)
         if (this.pi.driveLicenseCar == null) {
-          this.haveCarLC = "0"
+          // this.haveCarLC = "0"
         } else {
           this.haveCarLC = "1"
         }
         if (this.pi.driveLicenseMotocycle == null) {
-          this.haveBikeLC = "0"
+          // this.haveBikeLC = "0"
         } else {
           this.haveBikeLC = "1"
         }

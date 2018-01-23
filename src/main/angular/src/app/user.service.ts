@@ -88,12 +88,13 @@ export class UserService {
     .subscribe()
   }
 
-  
+  addPersonalInformation(refnum) {
+    console.log(this._personalInformation)
+    this.http.post("http://localhost/add_info.php", JSON.stringify({pi: this._personalInformation, refnum: refnum}), {headers: this.headers})
+    .subscribe()
+  }
 
   updateApplication(application) {
-    
-    this.http.post("http://localhost/add_info.php", JSON.stringify({pi: this._personalInformation, refnum: application.refnum}), {headers: this.headers})
-    .subscribe()
     this.http.post("http://localhost/update_app.php", JSON.stringify(application), {headers: this.headers})
     .subscribe()
   }

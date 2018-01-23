@@ -38,7 +38,7 @@
     
     <div class="col-6">
       <p>ใบอนุญาตขับขี่</p>
-      <label for="own-car-driver-license"> มี <input type="radio" name="car-driver-license" id="own-car-driver-license" value="1" [(ngModel)]="haveCarLC"> <label for="car-license-number"></label> เลขที่ <input type="text" id="car-license-number" [(ngModel)]="pi.driveLicenseCar" [disabled]="haveCarLC=='0'"> </label>
+      <label for="own-car-driver-license"> มี <input type="radio" name="car-driver-license" id="own-car-driver-license" value="1" [(ngModel)]="haveCarLC"> <label for="car-license-number"></label> เลขที่ <input type="text" id="car-license-number" [(ngModel)]="pi.driveLicenseCar" [disabled]="haveCarLC=='0'||haveCarLC==null"> </label>
       <label for="not-own-car-driver-license"> ไม่มี <input type="radio" name="car-driver-license" id="not-own-car-driver-license" value="0" [(ngModel)]="haveCarLC" (change)="noLC('car')"></label>
     </div>
   </div>
@@ -58,7 +58,7 @@
     
     <div class="col-6">
       <p>ใบอนุญาตขับขี่</p>
-      <label for="own-motorcycle-driver-license"> มี <input type="radio" name="motocycle-driver-license" id="own-motorcycle-driver-license" value="1" [(ngModel)]="haveBikeLC"> <label for="motocycle-license-number"></label> เลขที่ <input type="text" id="motocycle-license-number" [(ngModel)]="pi.driveLicenseMotocycle" [disabled]="haveBikeLC=='0'"> </label>
+      <label for="own-motorcycle-driver-license"> มี <input type="radio" name="motocycle-driver-license" id="own-motorcycle-driver-license" value="1" [(ngModel)]="haveBikeLC"> <label for="motocycle-license-number"></label> เลขที่ <input type="text" id="motocycle-license-number" [(ngModel)]="pi.driveLicenseMotocycle" [disabled]="haveBikeLC=='0'||haveBikeLC==null"> </label>
       <label for="not-own-motorcycle-driver-license"> ไม่มี <input type="radio" name="motocycle-driver-license" id="not-own-motorcycle-driver-license" value="0" [(ngModel)]="haveBikeLC" (change)="noLC('bike')"></label>
     </div>
   </div>
