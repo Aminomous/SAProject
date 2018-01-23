@@ -9,7 +9,7 @@ header('Accept-Language: *');
 // $username = "root";
 // $password = "";
 // $dbname = "test_everything";
-$servername = "10.2.30.137";
+$servername = "192.168.1.9";
 $username = "root";
 $password = "";
 $dbname = "saapplicationmanager";

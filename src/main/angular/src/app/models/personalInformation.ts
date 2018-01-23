@@ -39,12 +39,12 @@ export class PersonalInformation {
     word: number;
     excel: number;
     powerPoint: number;
-    driveCar: boolean;
-    ownCar: boolean;
+    driveCar: string;
+    ownCar: string;
     driveLicenseCar: string;
-    rideMotocycle: boolean;
-    ownMotocycle: boolean;
-    driveLicenseMotocycle: boolean;
+    rideMotocycle: string;
+    ownMotocycle: string;
+    driveLicenseMotocycle: string;
     hobby: string;
     q1: boolean;
     q2: boolean;

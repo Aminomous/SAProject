@@ -18,6 +18,12 @@ export class Information5Component implements OnInit {
       if (pi) {
         this.pi = pi
         
+        this.pi.driveCar = this.pi.driveCar + "";
+        this.pi.ownCar = this.pi.ownCar + "";
+        this.pi.rideMotocycle = this.pi.rideMotocycle +"";
+        this.pi.ownMotocycle = this.pi.ownMotocycle + "";
+
+        
       }
     })
   }

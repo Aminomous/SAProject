@@ -85,8 +85,8 @@
 
         </div>
         <div class="col-11">
-            <label for="q5-description"> นสพ. โปรดระบุ
-                <input type="text" size="70px" id="q6-1"> </label>
+            <label for="news"> นสพ. โปรดระบุ
+                <input type="text" size="70px" id="news" [(ngModel)]="news" (change)="change($event)"> </label>
         </div>
     </div>
 
@@ -95,8 +95,8 @@
 
         </div>
         <div class="col-11">
-            <label for="q6-2"> เว๊บไซต์ โปรดระบุ
-                <input type="text" size="70px" id="q6-2"> </label>
+            <label for="website"> เว๊บไซต์ โปรดระบุ
+                <input type="text" size="70px" id="website" [(ngModel)]="website" (change)="change($event)"> </label>
         </div>
     </div>
 
@@ -105,8 +105,8 @@
 
         </div>
         <div class="col-11">
-            <label for="q6-3"> งานนัดพบแรงงาน โปรดระบุ
-                <input type="text" size="70px" id="q6-3"> </label>
+            <label for="conferrence"> งานนัดพบแรงงาน โปรดระบุ
+                <input type="text" size="70px" id="conferrence" [(ngModel)]="conferrence" (change)="change($event)"> </label>
         </div>
     </div>
 
@@ -115,8 +115,8 @@
 
         </div>
         <div class="col-11">
-            <label for="q6-4"> บุคคลแนะนำ โปรดระบุ
-                <input type="text" size="70px" id="q6-4"> </label>
+            <label for="suggested"> บุคคลแนะนำ โปรดระบุ
+                <input type="text" size="70px" id="suggested" [(ngModel)]="suggested" (change)="change($event)"> </label>
         </div>
     </div>
 
@@ -125,8 +125,8 @@
 
         </div>
         <div class="col-11">
-            <label for="q6-5"> อื่นๆ โปรดระบุ
-                <input type="text" size="70px" id="q6-5"> </label>
+            <label for="other"> อื่นๆ โปรดระบุ
+                <input type="text" size="70px" id="other" [(ngModel)]="other" (change)="change($event)"> </label>
         </div>
     </div>
 
