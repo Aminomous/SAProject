@@ -10,14 +10,16 @@
   </div>
   
   <div class="row">
-    <label for="name1" class="col-3"> ชื่อ-สกุล <input type="text" id="name1"></label>
-    <label for="relation1" class="col-3"> ความสัมพันธ์ <input type="text" id="relation1"></label>
-    <label for="address1" class="col-6"> ที่อยู่ <input type="text" id="address1"></label>
+    <label for="name1" class="col-3"> <span class="control-label-required">ชื่อ-สกุล</span> <input type="text" id="name1" [(ngModel)]="ref1.name" (change)="change(1)"></label>
+    <label for="relation1" class="col-2"> <span class="control-label-required">ความสัมพันธ์</span> <input type="text" id="relation1" [(ngModel)]="ref1.relationship" size="3" (change)="change(1)"></label>
+    <label for="address1" class="col-3"> <span class="control-label-required">ที่อยู่</span> <input type="text" id="address1" [(ngModel)]="ref1.address" (change)="change(1)"></label>
+    <label for="telephone1" class="col-4"> <span class="control-label-required">เบอร์โทรศัพท์</span> <input type="tel" id="telephone1" [(ngModel)]="ref1.telephone" maxlength="10" pattern="0[0-9]{9}" (change)="change(1)"></label>
   </div>
   
   <div class="row">
-    <label for="name2" class="col-3"> ชื่อ-สกุล <input type="text" id="name2"></label>
-    <label for="relation2" class="col-3"> ความสัมพันธ์ <input type="text" id="relation2"></label>
-    <label for="address2"  class="col-6"> ที่อยู่ <input type="text" id="address2"></label>
+    <label for="name2" class="col-3"> <span class="control-label-required">ชื่อ-สกุล</span> <input type="text" id="name2" [(ngModel)]="ref2.name" (change)="change(0)"></label>
+    <label for="relation2" class="col-2"> <span class="control-label-required">ความสัมพันธ์</span> <input type="text" id="relation2" [(ngModel)]="ref2.relationship" size="3" (change)="change(0)"></label>
+    <label for="address2"  class="col-3"> <span class="control-label-required">ที่อยู่</span> <input type="text" id="address2" [(ngModel)]="ref2.address" (change)="change(0)"></label>
+    <label for="telephone2"  class="col-4"> <span class="control-label-required">เบอร์โทรศัพท์</span> <input type="tel" id="telephone2" [(ngModel)]="ref2.telephone" maxlength="10" pattern="0[0-9]{9}" (change)="change(0)"></label>
   </div>
 </div>
