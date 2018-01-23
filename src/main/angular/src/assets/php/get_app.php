@@ -26,7 +26,7 @@ if (!$conn) {
 }
 
 //application
-$query = "SELECT `refnum`,`date`,`position1`,`position2`,`workInShift`,`workerType`,`salary`,`startingDate`,`QH2`,`QH3`,`relativeWorkInHospital`,`additionalInformation`,`applicationStatus6` FROM `application`  WHERE citizenID='$cid'";
+$query = "SELECT `refnum`,`date`,`position1`,`position2`,`workInShift`,`workerType`,`salary`,`startingDate`,`QH2`,`QH3`,`relativeWorkInHospital`,`additionalInformation`,`applicationStatus6` FROM `application`  WHERE citizenID='$cid' AND refnum=max(refnum)";
 
 $result = mysqli_query($conn, $query);
 

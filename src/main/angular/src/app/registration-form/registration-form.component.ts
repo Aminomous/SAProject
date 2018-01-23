@@ -33,6 +33,9 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   sent(){
+    let now = new Date()
+    let nowDate = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate()
+    this.application.date = nowDate
     this.application.applicationStatus6 = 0
     this.save()
   }
