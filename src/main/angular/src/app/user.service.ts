@@ -92,7 +92,8 @@ export class UserService {
 
   updateApplication(application) {
     
-    
+    this.http.post("http://localhost/add_info.php", JSON.stringify({pi: this._personalInformation, refnum: application.refnum}), {headers: this.headers})
+    .subscribe()
     this.http.post("http://localhost/update_app.php", JSON.stringify(application), {headers: this.headers})
     .subscribe()
   }

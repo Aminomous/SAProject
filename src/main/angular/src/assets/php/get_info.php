@@ -12,7 +12,7 @@ $servername = "localhost";
 // $servername = "192.168.1.9";
 $username = "root";
 $password = "";
-$dbname = "saapplicationmanager";
+$dbname = "saapplicationmanager2";
 
 $email = json_decode(file_get_contents("php://input"));
 

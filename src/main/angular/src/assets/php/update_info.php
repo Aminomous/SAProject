@@ -12,7 +12,7 @@ $servername = "localhost";
 // $servername = "192.168.1.9";
 $username = "root";
 $password = "";
-$dbname = "saapplicationmanager";
+$dbname = "saapplicationmanager2";
 
 $pi = json_decode(file_get_contents("php://input"));
 
@@ -78,95 +78,95 @@ $query = "UPDATE personalinformation SET `titleTH`=$titleTH,`fNameTH`=$fNameTH,`
 $result = mysqli_query($conn, $query);
 
 //apprenticeship
-$apprenticeshipcourse = !empty($apprenticeship->course) ? "'$apprenticeship->course'" : "NULL";
-$apprenticeshipinstituteName = !empty($apprenticeship->instituteName) ? "'$apprenticeship->instituteName'" : "NULL";
-$apprenticeshipcertificate = !empty($apprenticeship->certificate) ? "'$apprenticeship->certificate'" : "NULL";
-$apprenticeshipperiod = !empty($apprenticeship->period) ? "'$apprenticeship->period'" : "NULL";
 
 
 $query = "DELETE FROM `apprenticeship` WHERE citizenID='$pi->citizenID'";
 mysqli_query($conn, $query);
 $apprenticeships = $pi->apprenticeships;
 foreach ($apprenticeships as $key => $apprenticeship) {
+    $apprenticeshipcourse = !empty($apprenticeship->course) ? "'$apprenticeship->course'" : "NULL";
+    $apprenticeshipinstituteName = !empty($apprenticeship->instituteName) ? "'$apprenticeship->instituteName'" : "NULL";
+    $apprenticeshipcertificate = !empty($apprenticeship->certificate) ? "'$apprenticeship->certificate'" : "NULL";
+    $apprenticeshipperiod = !empty($apprenticeship->period) ? "'$apprenticeship->period'" : "NULL";
     $query = "INSERT INTO `apprenticeship` (`citizenID`, `course`, `instituteName`, `certificate`, `period`) values ('$pi->citizenID', $apprenticeshipcourse, $apprenticeshipinstituteName, $apprenticeshipcertificate, $apprenticeshipperiod)";
     mysqli_query($conn, $query);
 }
 
 // education
-$educationlevel = !empty($education->level) ? "'$education->level'" : "NULL";
-$educationinstituteName = !empty($education->instituteName) ? "'$education->instituteName'" : "NULL";
-$educationdegreeOrCertificate = !empty($education->degreeOrCertificate) ? "'$education->degreeOrCertificate'" : "NULL";
-$educationmajor = !empty($education->major) ? "'$education->major'" : "NULL";
-$educationstudyFrom = !empty($education->studyFrom) ? "'$education->studyFrom'" : "NULL";
-$educationstudyTo = !empty($education->studyTo) ? "'$education->studyTo'" : "NULL";
-$educationgpa = !empty($education->gpa) ? $education->gpa : "NULL";
 
 $query = "DELETE FROM `education` WHERE citizenID='$pi->citizenID'";
 mysqli_query($conn, $query);
 $educations = $pi->educations;
 foreach ($educations as $key => $education) {
+    $educationlevel = !empty($education->level) ? "'$education->level'" : "NULL";
+    $educationinstituteName = !empty($education->instituteName) ? "'$education->instituteName'" : "NULL";
+    $educationdegreeOrCertificate = !empty($education->degreeOrCertificate) ? "'$education->degreeOrCertificate'" : "NULL";
+    $educationmajor = !empty($education->major) ? "'$education->major'" : "NULL";
+    $educationstudyFrom = !empty($education->studyFrom) ? "'$education->studyFrom'" : "NULL";
+    $educationstudyTo = !empty($education->studyTo) ? "'$education->studyTo'" : "NULL";
+    $educationgpa = !empty($education->gpa) ? $education->gpa : "NULL";
     $query = "INSERT INTO `education` (`citizenID`, `level`, `instituteName`, `degreeOrCertificate`, `major`, `studyFrom`, `studyTo`, `gpa`) values ('$pi->citizenID', $educationlevel, $educationinstituteName, $educationdegreeOrCertificate, $educationmajor, $educationstudyFrom, $educationstudyTo, $educationgpa)";
     mysqli_query($conn, $query);
 }
 
 //employmentRecord
-$employmentRecordfromM = !empty($employmentRecord->fromM) ? "'$employmentRecord->fromM'" : "NULL";
-$employmentRecordfromY = !empty($employmentRecord->fromY) ? "'$employmentRecord->fromY'" : "NULL";
-$employmentRecordtoM = !empty($employmentRecord->toM) ? "'$employmentRecord->toM'" : "NULL";
-$employmentRecordtoY = !empty($employmentRecord->toY) ? "'$employmentRecord->toY'" : "NULL";
-$employmentRecordcompany = !empty($employmentRecord->company) ? "'$employmentRecord->company'" : "NULL";
-$employmentRecordposition = !empty($employmentRecord->position) ? "'$employmentRecord->position'" : "NULL";
-$employmentRecordsalary = !empty($employmentRecord->salary) ? $employmentRecord->salary : "NULL";
-$employmentRecordreasonForLeaving = !empty($employmentRecord->reasonForLeaving) ? "'$employmentRecord->reasonForLeaving'" : "NULL";
 
 
 $query = "DELETE FROM `employmentrecord` WHERE citizenID='$pi->citizenID'";
 mysqli_query($conn, $query);
 $employmentRecords = $pi->employmentRecords;
 foreach ($employmentRecords as $key => $employmentRecord) {
+    $employmentRecordfromM = !empty($employmentRecord->fromM) ? "'$employmentRecord->fromM'" : "NULL";
+    $employmentRecordfromY = !empty($employmentRecord->fromY) ? "'$employmentRecord->fromY'" : "NULL";
+    $employmentRecordtoM = !empty($employmentRecord->toM) ? "'$employmentRecord->toM'" : "NULL";
+    $employmentRecordtoY = !empty($employmentRecord->toY) ? "'$employmentRecord->toY'" : "NULL";
+    $employmentRecordcompany = !empty($employmentRecord->company) ? "'$employmentRecord->company'" : "NULL";
+    $employmentRecordposition = !empty($employmentRecord->position) ? "'$employmentRecord->position'" : "NULL";
+    $employmentRecordsalary = !empty($employmentRecord->salary) ? $employmentRecord->salary : "NULL";
+    $employmentRecordreasonForLeaving = !empty($employmentRecord->reasonForLeaving) ? "'$employmentRecord->reasonForLeaving'" : "NULL";
     $query = "INSERT INTO `employmentrecord` (`citizenID`, `fromM`, `fromY`, `toM`, `toY`, `company`, `position`, `salary`,`reasonForLeaving`) values ('$pi->citizenID', $employmentRecordfromM, $employmentRecordfromY, $employmentRecordtoM, $employmentRecordtoY, $employmentRecordcompany, $employmentRecordposition, $employmentRecordsalary, $employmentRecordreasonForLeaving)";
     mysqli_query($conn, $query);
 }
 
 //familyDetail
-$familyDetailstatus = !empty($familyDetail->status) ? "'$familyDetail->status'" : "NULL";
-$familyDetailfirstName = !empty($familyDetail->firstName) ? "'$familyDetail->firstName'" : "NULL";
-$familyDetaillastName = !empty($familyDetail->lastName) ? "'$familyDetail->lastName'" : "NULL";
-$familyDetailage = !empty($familyDetail->age) ? $familyDetail->age : "NULL";
-$familyDetailoccupation = !empty($familyDetail->occupation) ? "'$familyDetail->occupation'" : "NULL";
-$familyDetailaddress = !empty($familyDetail->address) ? "'$familyDetail->address'" : "NULL";
-$familyDetailphoneNumber = !empty($familyDetail->phoneNumber) ? "'$familyDetail->phoneNumber'" : "NULL";
 
 $query = "DELETE FROM `familydetail` WHERE citizenID='$pi->citizenID'";
 mysqli_query($conn, $query);
 $familyDetails = $pi->familyDetails;
 foreach ($familyDetails as $key => $familyDetail) {
+    $familyDetailstatus = !empty($familyDetail->status) ? "'$familyDetail->status'" : "NULL";
+    $familyDetailfirstName = !empty($familyDetail->firstName) ? "'$familyDetail->firstName'" : "NULL";
+    $familyDetaillastName = !empty($familyDetail->lastName) ? "'$familyDetail->lastName'" : "NULL";
+    $familyDetailage = !empty($familyDetail->age) ? $familyDetail->age : "NULL";
+    $familyDetailoccupation = !empty($familyDetail->occupation) ? "'$familyDetail->occupation'" : "NULL";
+    $familyDetailaddress = !empty($familyDetail->address) ? "'$familyDetail->address'" : "NULL";
+    $familyDetailphoneNumber = !empty($familyDetail->phoneNumber) ? "'$familyDetail->phoneNumber'" : "NULL";
     $query = "INSERT INTO `familydetail` (`citizenID`, `status`, `firstName`, `lastName`, `age`, `occupation`, `address`, `phoneNumber`) values ($pi->citizenID, $familyDetailstatus, $familyDetailfirstName, $familyDetaillastName, $familyDetailage, $familyDetailoccupation, $familyDetailaddress, $familyDetailphoneNumber)";
     mysqli_query($conn, $query);
 }
 
 //language ability
-$languageAbilitylanguage = !empty($languageAbility->language) ? "'$languageAbility->language'" : "NULL";
-$languageAbilityspeaking = !empty($languageAbility->speaking) ? $languageAbility->speaking : "NULL";
-$languageAbilityreading = !empty($languageAbility->reading) ? $languageAbility->reading : "NULL";
-$languageAbilitywriting = !empty($languageAbility->writing) ? $languageAbility->writing : "NULL";
 
 $query = "DELETE FROM `languageability` WHERE citizenID='$pi->citizenID'";
 mysqli_query($conn, $query);
 $languageAbilities = $pi->languageAbilities;
 foreach ($languageAbilities as $key => $languageAbility) {
+    $languageAbilitylanguage = !empty($languageAbility->language) ? "'$languageAbility->language'" : "NULL";
+    $languageAbilityspeaking = !empty($languageAbility->speaking) ? $languageAbility->speaking : "NULL";
+    $languageAbilityreading = !empty($languageAbility->reading) ? $languageAbility->reading : "NULL";
+    $languageAbilitywriting = !empty($languageAbility->writing) ? $languageAbility->writing : "NULL";
     $query = "INSERT INTO `languageability` (`citizenID`, `language`, `speaking`, `reading`, `writing`) values ('$pi->citizenID', $languageAbilitylanguage, $languageAbilityspeaking, $languageAbilityreading, $languageAbilitywriting)";
     mysqli_query($conn, $query);
 }
 
 //q6
-$q6mediaType = !empty($q6->mediaType) ? "'$q6->mediaType'" : "NULL";
-$q6detail = !empty($q6->detail) ? "'$q6->detail'" : "NULL";
 
 $query = "DELETE FROM `q6` WHERE citizenID='$pi->citizenID'";
 mysqli_query($conn, $query);
 $q6s = $pi->q6;
 foreach ($q6s as $key => $q6) {
+    $q6mediaType = !empty($q6->mediaType) ? "'$q6->mediaType'" : "NULL";
+    $q6detail = !empty($q6->detail) ? "'$q6->detail'" : "NULL";
     $query = "INSERT INTO `q6` (`citizenID`, `mediaType`, `detail`) values ('$pi->citizenID', $q6mediaType, $q6detail)";
     mysqli_query($conn, $query);
 }
