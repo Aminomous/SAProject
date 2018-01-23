@@ -15,13 +15,13 @@ export class UserService {
   constructor(private http:Http) { }
 
   createUser(user) {
-    return this.http.post("http://localhost/testauthapp/signup.php", JSON.stringify(user), {headers: this.headers})
+    return this.http.post("http://10.2.30.137/testauthapp/signup.php", JSON.stringify(user), {headers: this.headers})
   }
 
   async loadPersonalInformation() {
     let email = localStorage.getItem('user')
     // console.log(email)
-    let res = await this.http.post("http://localhost/testauthapp/get_info.php", JSON.stringify(email), {headers: this.headers}).toPromise()
+    let res = await this.http.post("http://10.2.30.137/testauthapp/get_info.php", JSON.stringify(email), {headers: this.headers}).toPromise()
     this.personalInformation = JSON.parse(res.text())
     return this.personalInformation
   }
@@ -29,7 +29,7 @@ export class UserService {
   async loadApplication() {
     let cid = this.personalInformation.citizenID
     console.log(cid)
-    let res = await this.http.post("http://localhost/testauthapp/get_app.php", JSON.stringify(cid), {headers: this.headers}).toPromise()
+    let res = await this.http.post("http://10.2.30.137/testauthapp/get_app.php", JSON.stringify(cid), {headers: this.headers}).toPromise()
     this.application = JSON.parse(res.text())
     return this.application
   }
@@ -46,13 +46,13 @@ export class UserService {
 
   updatePersonalInformation() {
     console.log(this.personalInformation)
-    this.http.post("http://localhost/testauthapp/update_info.php", JSON.stringify(this.personalInformation), {headers: this.headers})
+    this.http.post("http://10.2.30.137/testauthapp/update_info.php", JSON.stringify(this.personalInformation), {headers: this.headers})
     .subscribe()
   }
 
   updateApplication() {
     console.log(this.application)
-    this.http.post("http://localhost/testauthapp/update_app.php", JSON.stringify(this.application), {headers: this.headers})
+    this.http.post("http://10.2.30.137/testauthapp/update_app.php", JSON.stringify(this.application), {headers: this.headers})
     .subscribe()
   }
 
