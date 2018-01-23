@@ -7,7 +7,7 @@
   
   <div class="row">
     <div class="col-12">
-      <span> ตำแหน่งงานที่ต้องการสมัคร </span> 
+      <span class="control-label-required"> ตำแหน่งงานที่ต้องการสมัคร </span> 
       <label for="position1"> 1.)<input type="text" id="position1" [(ngModel)]="application.position1"> </label>
       <label for="position2"> 2.)<input type="text" id="position2" [(ngModel)]="application.position2"> </label>
     </div>
@@ -24,7 +24,7 @@
   
   <div class="row">
     <div class="col-12">
-      <p> สามารถปฏิบัติงานเป็นกะได้หรือไม่ </p> 
+      <p class="control-label-required"> สามารถปฏิบัติงานเป็นกะได้หรือไม่ </p> 
     </div>
     
     <div class="col-1">
@@ -39,7 +39,7 @@
   
   <div class="row">
     <div>
-      <p>
+      <p class="control-label-required">
         เครือโรงพยาบาลพญาไทและเครือโรงพยาบาลเปาโล ทีประสงค์จะเข้าปฏิบัติงาน (เลือกได่้มากกว่า 1 ข้อ)
       </p>
     </div>
@@ -59,7 +59,11 @@
     </div>
   </div>
   <div class="row">
-    <label for="salary">เงินเดือนที่ต้องการ<input type="number" id="salary"  [(ngModel)]="application.salary"> บาท/เดือน</label>
-    <label for="startingDate">วันที่พร้อมจะเริ่มทำงาน<input type="date" id="startingDate"  [(ngModel)]="application.startingDate"></label>
+    <div class="col-6">
+        <label for="salary" class="control-label-required"> เงินเดือนที่ต้องการ </label><input type="number" id="salary"  [(ngModel)]="application.salary"> <label> บาท/เดือน </label>
+    </div>
+    <div class="col-6">
+        <label for="startingDate" class="control-label-required">วันที่พร้อมจะเริ่มทำงาน </label> <input type="date" id="startingDate"  [(ngModel)]="application.startingDate">
+    </div>
   </div>
 </div>

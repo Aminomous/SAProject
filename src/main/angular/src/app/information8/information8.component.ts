@@ -27,11 +27,11 @@ export class Information8Component implements OnInit {
         this.q6 = pi.q6;
         
         for (let i = 0 ; i < this.q6.length ; i++){
-          this.news.detail = this.q6[i].mediaType == "news"?this.q6[i].detail:""
-          this.website.detail = this.q6[i].mediaType == "website"?this.q6[i].detail:""
-          this.conferrence.detail = this.q6[i].mediaType == "conferrence"?this.q6[i].detail:""
-          this.suggested.detail = this.q6[i].mediaType == "suggested"?this.q6[i].detail:""
-          this.other.detail = this.q6[i].mediaType == "other"?this.q6[i].detail:""
+          this.news.detail = (this.q6[i].mediaType == "news")?this.q6[i].detail:"";
+          this.website.detail = this.q6[i].mediaType == "website"?this.q6[i].detail:"";
+          this.conferrence.detail = this.q6[i].mediaType == "conferrence"?this.q6[i].detail:"";
+          this.suggested.detail = this.q6[i].mediaType == "suggested"?this.q6[i].detail:"";
+          this.other.detail = this.q6[i].mediaType == "other"?this.q6[i].detail:"";
         }
 
         this.q6 = []
