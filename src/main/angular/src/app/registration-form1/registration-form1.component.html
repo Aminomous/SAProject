@@ -47,15 +47,16 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-8">
-      <label for="hospital1"> <input type="checkbox" id="hospital1" (change)="selectHospital('โรงพยาบาลพญาไท 1')"> โรงพยาบาลพญาไท 1  </label>
-      <label for="hospital2"> <input type="checkbox" id="hospital2" (change)="selectHospital('โรงพยาบาลพญาไท 2')"> โรงพยาบาลพญาไท 2  </label>
-      <label for="hospital3"> <input type="checkbox" id="hospital3" (change)="selectHospital('โรงพยาบาลพญาไท 3')"> โรงพยาบาลพญาไท 3  </label>
-      <label for="hospital4"> <input type="checkbox" id="hospital4" (change)="selectHospital('โรงพยาบาลพญาไท นวมินทร์')"> โรงพยาบาลพญาไท นวมินทร์  </label>
-      <label for="hospital5"> <input type="checkbox" id="hospital5" (change)="selectHospital('โรงพยาบาลพญาไท ศรีราชา')"> โรงพยาบาลพญาไท ศรีราชา  </label>
-      <label for="hospital6"> <input type="checkbox" id="hospital6" (change)="selectHospital('โรงพยาบาลพญาไท พหลโยธิน')"> โรงพยาบาลพญาไท พหลโยธิน  </label>
-      <label for="hospital7"> <input type="checkbox" id="hospital7" (change)="selectHospital('โรงพยาบาลพญาไท สมุทรปราการ')"> โรงพยาบาลพญาไท สมุทรปราการ  </label>
-      <label for="hospital8"> <input type="checkbox" id="hospital8" (change)="selectHospital('โรงพยาบาลเปาโล โชคชัย 4')"> โรงพยาบาลเปาโล โชคชัย 4  </label>
-      <label for="hospital9"> <input type="checkbox" id="hospital9" (change)="selectHospital('โรงพยาบาลเปาโล รังสิต')"> โรงพยาบาลเปาโล รังสิต  </label>
+      <label for="hospital1"> <input type="checkbox" id="hospital1" [(ngModel)]="hospitals[0].selected" (change)="selectHospital(0)"> โรงพยาบาลพญาไท 1  </label>
+      <label for="hospital2"> <input type="checkbox" id="hospital2" [(ngModel)]="hospitals[1].selected" (change)="selectHospital(1)"> โรงพยาบาลพญาไท 2  </label>
+      <label for="hospital3"> <input type="checkbox" id="hospital3" [(ngModel)]="hospitals[2].selected" (change)="selectHospital(2)"> โรงพยาบาลพญาไท 3  </label>
+      <label for="hospital4"> <input type="checkbox" id="hospital4" [(ngModel)]="hospitals[3].selected" (change)="selectHospital(3)"> โรงพยาบาลพญาไท นวมินทร์  </label>
+      <label for="hospital5"> <input type="checkbox" id="hospital5" [(ngModel)]="hospitals[4].selected" (change)="selectHospital(4)"> โรงพยาบาลพญาไท ศรีราชา  </label>
+      <label for="hospital6"> <input type="checkbox" id="hospital6" [(ngModel)]="hospitals[5].selected" (change)="selectHospital(5)"> โรงพยาบาลพญาไท พหลโยธิน  </label>
+      <label for="hospital7"> <input type="checkbox" id="hospital7" [(ngModel)]="hospitals[6].selected" (change)="selectHospital(6)"> โรงพยาบาลพญาไท สมุทรปราการ  </label>
+      <label for="hospital8"> <input type="checkbox" id="hospital8" [(ngModel)]="hospitals[7].selected" (change)="selectHospital(7)"> โรงพยาบาลเปาโล โชคชัย 4  </label>
+      <label for="hospital9"> <input type="checkbox" id="hospital9" [(ngModel)]="hospitals[8].selected" (change)="selectHospital(8)"> โรงพยาบาลเปาโล รังสิต  </label>
+      <label for="hospital10"> <input type="checkbox" id="hospital10" [(ngModel)]="hospitals[9].selected" (change)="selectHospital(9)"> โรงพยาบาลเปาโล เกษตร  </label>
     </div>
   </div>
   <div class="row">
