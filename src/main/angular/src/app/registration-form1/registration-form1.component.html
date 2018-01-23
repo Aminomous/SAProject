@@ -8,8 +8,8 @@
   <div class="row">
     <div class="col-12">
       <span> ตำแหน่งงานที่ต้องการสมัคร </span> 
-      <label for="position1"> 1.)<input type="text" id="position1"> </label>
-      <label for="position2"> 2.)<input type="text" id="position2"> </label>
+      <label for="position1"> 1.)<input type="text" id="position1" [(ngModel)]="application.position1"> </label>
+      <label for="position2"> 2.)<input type="text" id="position2" [(ngModel)]="application.position2"> </label>
     </div>
     
     <div class="col-1">
@@ -17,8 +17,8 @@
     </div>
     
     <div class="col-6">
-      <label for="workerType1">  <input type="radio" id="workerType1" name="workerType">พนักงานประจำ</label>
-      <label for="workerType2"> <input type="radio" id="workerType2" name="workerType">พนักงานชั่วคราว </label>
+      <label for="workerType1">  <input type="radio" id="workerType1" name="workerType" value="พนักงานประจำ" [(ngModel)]="application.workerType">พนักงานประจำ</label>
+      <label for="workerType2"> <input type="radio" id="workerType2" name="workerType" value="พนักงานชั่วคราว"  [(ngModel)]="application.workerType">พนักงานชั่วคราว </label>
     </div>
   </div>
   
@@ -32,8 +32,8 @@
     </div>
     
     <div class="col-6">
-      <label for="can-workInShift"> <input type="radio" id="workInShift" name="can-workInShift">ได้ </label>
-      <label for="cannot-workInShift">  <input type="radio" id="workInShift" name="cannot-workInShift">ไม่ได้</label>
+      <label for="can-workInShift"> <input type="radio" id="workInShift1" name="can-workInShift" value="1" [(ngModel)]="application.workInShift">ได้ </label>
+      <label for="cannot-workInShift">  <input type="radio" id="workInShift2" name="cannot-workInShift" value="0" [(ngModel)]="application.workInShift">ไม่ได้</label>
     </div>
   </div>
   
@@ -47,19 +47,19 @@
   <div class="row">
     <div class="col-1"></div>
     <div class="col-8">
-      <label for="hospital1"> <input type="checkbox" id="hospital1"> โรงพยาบาลพญาไท 1  </label>
-      <label for="hospital2"> <input type="checkbox" id="hospital2"> โรงพยาบาลพญาไท 2  </label>
-      <label for="hospital3"> <input type="checkbox" id="hospital3"> โรงพยาบาลพญาไท 3  </label>
-      <label for="hospital4"> <input type="checkbox" id="hospital4"> โรงพยาบาลพญาไท นวมินทร์  </label>
-      <label for="hospital5"> <input type="checkbox" id="hospital5"> โรงพยาบาลพญาไท ศรีราชา  </label>
-      <label for="hospital6"> <input type="checkbox" id="hospital6"> โรงพยาบาลพญาไท พหลโยธิน  </label>
-      <label for="hospital7"> <input type="checkbox" id="hospital7"> โรงพยาบาลพญาไท สมุทรปราการ  </label>
-      <label for="hospital8"> <input type="checkbox" id="hospital8"> โรงพยาบาลเปาโล โชคชัย 4  </label>
-      <label for="hospital9"> <input type="checkbox" id="hospital9"> โรงพยาบาลเปาโล รังสิต  </label>
+      <label for="hospital1"> <input type="checkbox" id="hospital1" (change)="selectHospital('โรงพยาบาลพญาไท 1')"> โรงพยาบาลพญาไท 1  </label>
+      <label for="hospital2"> <input type="checkbox" id="hospital2" (change)="selectHospital('โรงพยาบาลพญาไท 2')"> โรงพยาบาลพญาไท 2  </label>
+      <label for="hospital3"> <input type="checkbox" id="hospital3" (change)="selectHospital('โรงพยาบาลพญาไท 3')"> โรงพยาบาลพญาไท 3  </label>
+      <label for="hospital4"> <input type="checkbox" id="hospital4" (change)="selectHospital('โรงพยาบาลพญาไท นวมินทร์')"> โรงพยาบาลพญาไท นวมินทร์  </label>
+      <label for="hospital5"> <input type="checkbox" id="hospital5" (change)="selectHospital('โรงพยาบาลพญาไท ศรีราชา')"> โรงพยาบาลพญาไท ศรีราชา  </label>
+      <label for="hospital6"> <input type="checkbox" id="hospital6" (change)="selectHospital('โรงพยาบาลพญาไท พหลโยธิน')"> โรงพยาบาลพญาไท พหลโยธิน  </label>
+      <label for="hospital7"> <input type="checkbox" id="hospital7" (change)="selectHospital('โรงพยาบาลพญาไท สมุทรปราการ')"> โรงพยาบาลพญาไท สมุทรปราการ  </label>
+      <label for="hospital8"> <input type="checkbox" id="hospital8" (change)="selectHospital('โรงพยาบาลเปาโล โชคชัย 4')"> โรงพยาบาลเปาโล โชคชัย 4  </label>
+      <label for="hospital9"> <input type="checkbox" id="hospital9" (change)="selectHospital('โรงพยาบาลเปาโล รังสิต')"> โรงพยาบาลเปาโล รังสิต  </label>
     </div>
   </div>
   <div class="row">
-    <label for="salary">เงินเดือนที่ต้องการ<input type="number" id="salary"> บาท/เดือน</label>
-    <label for="startingDate">วันที่พร้อมจะเริ่มทำงาน<input type="date" id="startingDate"></label>
+    <label for="salary">เงินเดือนที่ต้องการ<input type="number" id="salary"  [(ngModel)]="application.salary"> บาท/เดือน</label>
+    <label for="startingDate">วันที่พร้อมจะเริ่มทำงาน<input type="date" id="startingDate"  [(ngModel)]="application.startingDate"></label>
   </div>
 </div>

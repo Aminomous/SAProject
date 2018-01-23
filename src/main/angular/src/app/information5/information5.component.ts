@@ -9,18 +9,18 @@ import { UserService } from 'app/user.service';
   styleUrls: ['./information5.component.css']
 })
 export class Information5Component implements OnInit {
-  
-  pi: PersonalInformation 
-  constructor(private userService: UserService) { 
+
+  pi: PersonalInformation
+  constructor(private userService: UserService) {
     this.pi = new PersonalInformation()
     this.userService.getPersonalInformation().then((pi)=>{
       this.pi = pi
       console.log(pi)
     })
   }
-  
-  
-  
+
+
+
   ngOnInit() {
   }
   printOut(){

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserService } from '../user.service';
 import { PersonalInformation } from '../models/personalInformation';
+import { Application } from 'app/models/application';
 
 
 @Component({
@@ -10,12 +11,16 @@ import { PersonalInformation } from '../models/personalInformation';
   styleUrls: ['./registration-form.component.css']
 })
 export class RegistrationFormComponent implements OnInit {
-  pi: PersonalInformation
   page
+  application: Application
   constructor(private router:Router, private userService: UserService) {
-    this.pi = this.userService.personalInformation
-    
-   }
+    this.userService.getPersonalInformation().then(()=>{
+      this.userService.getApplication().then(app=>{
+        this.application = app
+        console.log(app)
+      })
+    }) 
+  }
 
   ngOnInit() {
     let urls = this.router.url.split("/")
@@ -27,8 +32,13 @@ export class RegistrationFormComponent implements OnInit {
     }
   }
 
+  sent(){
+    this.application.applicationStatus6 = 0
+    this.save()
+  }
+
   save() {
-    this.userService.updatePersonalInformation()
+    this.userService.updateApplication()
     this.router.navigate(['/'])
   }
 
