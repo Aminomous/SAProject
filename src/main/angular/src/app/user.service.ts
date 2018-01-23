@@ -83,8 +83,8 @@ export class UserService {
   }
 
   updatePersonalInformation() {
-    
-    this.http.post("http://10.2.58.177/testauthapp/update_info.php", JSON.stringify(this.personalInformation), {headers: this.headers})
+    console.log(this._personalInformation)
+    this.http.post("http://10.2.58.177/testauthapp/update_info.php", JSON.stringify(this._personalInformation), {headers: this.headers})
     .subscribe()
   }
 

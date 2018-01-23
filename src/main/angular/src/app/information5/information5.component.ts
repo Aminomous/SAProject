@@ -24,7 +24,7 @@ export class Information5Component implements OnInit {
 
   ngOnInit() {
   }
-  printOut() {
-    
+  print() {
+    console.log(this.pi)
   }
 }
