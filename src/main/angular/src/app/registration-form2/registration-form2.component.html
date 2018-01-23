@@ -15,17 +15,17 @@
     </div>
     
     <div class="col-11">
-      <label for="qh11">  <input type="checkbox" id="qh11" (change)="select(0)"> เคยใช้บริการเครือโรงพยาบาลพญาไท และเครือโรงพยาบาลเปาโล </label>
+      <label for="qh11">  <input type="checkbox" id="qh11" [(ngModel)]="qh11checked" (change)="select(0)"> เคยใช้บริการเครือโรงพยาบาลพญาไท และเครือโรงพยาบาลเปาโล </label>
       <label for="qh11-description"> สาขา <input type="text" id="qh11-description" [disabled]="!qh11checked" [(ngModel)]="qh11.detail"> </label>
     </div>
     
     <div class="col-11">
-      <label for="qh12">  <input type="checkbox" id="qh12" (change)="select(1)"> มีบุคคลแนะนำ</label>
+      <label for="qh12">  <input type="checkbox" id="qh12" [(ngModel)]="qh12checked" (change)="select(1)"> มีบุคคลแนะนำ</label>
       <label for="qh12-description"> โปรดระบุ <input type="text" id="q1h2-description" [disabled]="!qh12checked" [(ngModel)]="qh12.detail"> </label>
     </div>
     
     <div class="col-11">
-      <label for="qh13">  <input type="checkbox" id="qh13" (change)="select(2)"> อื่น ๆ</label>
+      <label for="qh13">  <input type="checkbox" id="qh13" [(ngModel)]="qh13checked" (change)="select(2)"> อื่น ๆ</label>
       <label for="qh13-description"> โปรดระบุ <input type="text" id="qh13-description" [disabled]="!qh13checked" [(ngModel)]="qh13.detail"> </label>
     </div>
   </div>

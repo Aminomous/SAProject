@@ -12,6 +12,8 @@ export class RegistrationForm1Component implements OnInit {
 
 
   application: Application = new Application()
+  now = new Date()
+  nowString = ""
   hospitals = [
     {hospital: new Hospital("โรงพยาบาลพญาไท 1"), selected: false},
     {hospital: new Hospital("โรงพยาบาลพญาไท 2"), selected: false},
@@ -28,6 +30,11 @@ export class RegistrationForm1Component implements OnInit {
 
 
   constructor(private userService: UserService) { 
+
+    this.nowString = this.now.getFullYear() +"-"
+    this.nowString += (this.now.getMonth()+1<10 ? "0": "")       +  (this.now.getMonth()+1)
+    this.nowString += "-" +   (this.now.getDate()<10 ? "0": "")       + this.now.getDate()
+    console.log(this.nowString)
     this.userService.personalInformation.subscribe(()=>{
       this.userService.application.subscribe(app=>{
         this.application = app

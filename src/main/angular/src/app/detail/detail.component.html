@@ -9,4 +9,5 @@
   <h1>
     สถานะใบสมัคร: {{registrationStatus}}
   </h1>
+  <button *ngIf="fail" class="btn btn-primary" (click)="newForm()">สร้างใบสมัครใหม่</button>
 </div>

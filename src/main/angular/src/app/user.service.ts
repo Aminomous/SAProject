@@ -95,7 +95,13 @@ export class UserService {
   }
 
   updateApplication(application) {
+    console.log(application)
     this.http.post("http://localhost/update_app.php", JSON.stringify(application), {headers: this.headers})
+    .subscribe()
+  }
+
+  addApplication(cid) {
+    return this.http.post("http://localhost/add_app.php", JSON.stringify(cid), {headers: this.headers})
     .subscribe()
   }
 
@@ -120,7 +126,25 @@ export class UserService {
       (this.checkNull(this._personalInformation.maritalStatus))
   }
 
+  checkApplication() {
+    if (!this._application) return false
+    return (this.checkNull(this._application.position1)) &&
+      (this.checkNull(this._application.salary)) &&
+      (this.checkNull(this._application.startingDate)) &&
+      (this.checkNull(this._application.qh2)) &&
+      (this.checkNull(this._application.qh3)) &&
+      (this.checkNull(this._application.workerType)) &&
+      (this.checkNull(this._application.workInShift)) &&
+      (this.checkArray(this._application.hospitals, 1)) &&
+      (this.checkArray(this._application.qh1, 1)) &&
+      (this.checkArray(this._application.referencePeople, 2))
+  }
+
   private checkNull(field) {
     return field != "" && field != null
+  }
+
+  private checkArray(array, num) {
+    return array != null && array.length >= num
   }
 }

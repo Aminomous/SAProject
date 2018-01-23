@@ -20,7 +20,7 @@ export class RegistrationForm3Component implements OnInit {
         if (this.application.referencePeople.length > 0) {
           this.ref1 = this.application.referencePeople[0]
           if (this.application.referencePeople.length > 1) {
-            this.ref1 = this.application.referencePeople[1]
+            this.ref2 = this.application.referencePeople[1]
           } else {
             // this.application.referencePeople.push(this.ref2)
           }
@@ -37,9 +37,8 @@ export class RegistrationForm3Component implements OnInit {
 
   change(n) {
     console.log(this.application)
-    if (n) {
+    if (n == 1) {
       let pos = this.application.referencePeople.indexOf(this.ref1)
-      console.log(pos)
       if (this.checkNull(this.ref1.name) && this.checkNull(this.ref1.relationship) && this.checkNull(this.ref1.address) && this.checkNull(this.ref1.telephone) && this.checkTel(this.ref1.telephone)) {
         if (pos == -1) {
           this.application.referencePeople.push(this.ref1)
@@ -51,7 +50,6 @@ export class RegistrationForm3Component implements OnInit {
       }
     } else {
       let pos = this.application.referencePeople.indexOf(this.ref2)
-      console.log(pos)
       if (this.checkNull(this.ref2.name) && this.checkNull(this.ref2.relationship) && this.checkNull(this.ref2.address) && this.checkNull(this.ref2.telephone) && this.checkTel(this.ref2.telephone)) {
         if (pos == -1) {
           this.application.referencePeople.push(this.ref2)
