@@ -108,7 +108,7 @@
         <h4>
           ภาษาอื่น ๆ
         </h4>
-        <label for="other-language">โปรดระบุ <input type="text" id="other-language" [(ngModel)]="langs[2].language"> </label>
+        <label for="other-language">โปรดระบุ <input type="text" id="other-language" [(ngModel)]="langs[2].language" (change)="checkThirdLang()"> </label>
       </div>
       
     </div>
@@ -119,9 +119,9 @@
         <label> การพูด</label> 
       </div>
       <div class="col-6">
-        <label for="other-speaking-best"> ดีมาก <input type="radio" name="other-speaking" value="2" id="other-speaking-best" [(ngModel)]="langs[2].speaking"> </label>
-        <label for="other-speaking-good"> ดี <input type="radio" name="other-speaking" value="1" id="other-speaking-good" [(ngModel)]="langs[2].speaking"> </label>
-        <label for="other-speaking-common"> พอใช้ <input type="radio" name="other-speaking" value="0" id="other-speaking-common" [(ngModel)]="langs[2].speaking"> </label>
+        <label for="other-speaking-best"> ดีมาก <input type="radio" name="other-speaking" value="2" id="other-speaking-best" [(ngModel)]="langs[2].speaking" [disabled]="noThirdLang"> </label>
+        <label for="other-speaking-good"> ดี <input type="radio" name="other-speaking" value="1" id="other-speaking-good" [(ngModel)]="langs[2].speaking" [disabled]="noThirdLang"> </label>
+        <label for="other-speaking-common"> พอใช้ <input type="radio" name="other-speaking" value="0" id="other-speaking-common" [(ngModel)]="langs[2].speaking" [disabled]="noThirdLang"> </label>
       </div>
     </div>
     <div class="row">
@@ -131,9 +131,9 @@
         <label> การอ่าน</label> 
       </div>
       <div class="col-6">
-        <label for="other-reading-best"> ดีมาก <input type="radio" name="other-reading" value="2" id="other-reading-best" [(ngModel)]="langs[2].reading"> </label>
-        <label for="other-reading-good"> ดี <input type="radio" name="other-reading" value="1" id="other-reading-good" [(ngModel)]="langs[2].reading"> </label>
-        <label for="other-reading-common"> พอใช้ <input type="radio" name="other-reading" value="0" id="other-reading-common" [(ngModel)]="langs[2].reading"> </label>
+        <label for="other-reading-best"> ดีมาก <input type="radio" name="other-reading" value="2" id="other-reading-best" [(ngModel)]="langs[2].reading" [disabled]="noThirdLang"> </label>
+        <label for="other-reading-good"> ดี <input type="radio" name="other-reading" value="1" id="other-reading-good" [(ngModel)]="langs[2].reading" [disabled]="noThirdLang"> </label>
+        <label for="other-reading-common"> พอใช้ <input type="radio" name="other-reading" value="0" id="other-reading-common" [(ngModel)]="langs[2].reading" [disabled]="noThirdLang"> </label>
       </div>
     </div>
     <div class="row">
@@ -143,9 +143,9 @@
         <label> การเขียน</label> 
       </div>
       <div class="col-6">
-        <label for="other-writing-best"> ดีมาก <input type="radio" name="other-writing" value="2" id="other-writing-best" [(ngModel)]="langs[2].writing"> </label>
-        <label for="other-writing-good"> ดี <input type="radio" name="other-writing" value="1" id="other-writing-good" [(ngModel)]="langs[2].writing"> </label>
-        <label for="other-writing-common"> พอใช้ <input type="radio" name="other-writing" value="0" id="other-writing-common" [(ngModel)]="langs[2].writing"> </label>
+        <label for="other-writing-best"> ดีมาก <input type="radio" name="other-writing" value="2" id="other-writing-best" [(ngModel)]="langs[2].writing" [disabled]="noThirdLang"> </label>
+        <label for="other-writing-good"> ดี <input type="radio" name="other-writing" value="1" id="other-writing-good" [(ngModel)]="langs[2].writing" [disabled]="noThirdLang"> </label>
+        <label for="other-writing-common"> พอใช้ <input type="radio" name="other-writing" value="0" id="other-writing-common" [(ngModel)]="langs[2].writing" [disabled]="noThirdLang"> </label>
       </div>
     </div>
     

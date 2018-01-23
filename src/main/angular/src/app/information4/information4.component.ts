@@ -12,6 +12,7 @@ export class Information4Component implements OnInit {
 
   pi: PersonalInformation = new PersonalInformation()
   langs: LanguageAbility[] = []
+  noThirdLang = true
   constructor(private userService: UserService) {
     this.langs.push(new LanguageAbility())
     this.langs.push(new LanguageAbility())
@@ -24,22 +25,40 @@ export class Information4Component implements OnInit {
         if (this.pi.languageAbilities == null) {
           this.pi.languageAbilities = this.langs
         } else {
-          if (this.pi.languageAbilities[0] == null) {
-            this.pi.languageAbilities[0] = this.langs[0]
+          if (this.pi.languageAbilities[0] != null) {
+            this.langs[0] = this.pi.languageAbilities[0]
+          } else {
+            this.pi.languageAbilities.push(this.langs[0])
           }
-          if (this.pi.languageAbilities[1] == null) {
-            this.pi.languageAbilities[1] = this.langs[1]
+          if (this.pi.languageAbilities[1] != null) {
+            this.langs[1] = this.pi.languageAbilities[1]
+          } else {
+            this.pi.languageAbilities.push(this.langs[1])
           }
-          if (this.pi.languageAbilities[2] == null) {
-            this.pi.languageAbilities[2] = new LanguageAbility()
+          if (this.pi.languageAbilities[2] != null) {
+            this.langs[2] = this.pi.languageAbilities[2]
           }
-          this.langs = this.pi.languageAbilities
         }
       }
     })
   }
 
   ngOnInit() {
+  }
+  checkThirdLang(){
+    console.log(this.pi.languageAbilities)
+    let pos = this.pi.languageAbilities.indexOf(this.langs[2])
+    if (this.langs[2].language!="") {
+      this.noThirdLang = false
+      if (pos == -1) {
+        this.pi.languageAbilities.push(this.langs[2])
+      }
+    } else {
+      this.noThirdLang = true
+      if (pos != -1) {
+        this.pi.languageAbilities.splice(pos, 1)
+      }
+    }
   }
 
 }
