@@ -20,13 +20,13 @@ export class UserService {
   constructor(private http:Http) { }
 
   createUser(user) {
-    return this.http.post("http://localhost/testauthapp/signup.php", JSON.stringify(user), {headers: this.headers})
+    return this.http.post("http://localhost//signup.php", JSON.stringify(user), {headers: this.headers})
   }
 
   // async loadPersonalInformation() {
   //   let email = localStorage.getItem('user')
   //   // 
-  //   let res = await this.http.post("http://localhost/testauthapp/get_info.php", JSON.stringify(email), {headers: this.headers}).toPromise()
+  //   let res = await this.http.post("http://localhost//get_info.php", JSON.stringify(email), {headers: this.headers}).toPromise()
   //   this.personalInformation = JSON.parse(res.text())
   //   return this.personalInformation
   // }
@@ -34,7 +34,7 @@ export class UserService {
   // async loadApplication() {
   //   let cid = this.personalInformation.citizenID
   //   
-  //   let res = await this.http.post("http://localhost/testauthapp/get_app.php", JSON.stringify(cid), {headers: this.headers}).toPromise()
+  //   let res = await this.http.post("http://localhost//get_app.php", JSON.stringify(cid), {headers: this.headers}).toPromise()
   //   this.application = JSON.parse(res.text())
   //   return this.application
   // }
@@ -43,12 +43,12 @@ export class UserService {
 
   async loadData() {
     let email = localStorage.getItem('user')
-    await this.http.post("http://localhost/testauthapp/get_info.php", JSON.stringify(email), {headers: this.headers}).subscribe(res => {
+    await this.http.post("http://localhost//get_info.php", JSON.stringify(email), {headers: this.headers}).subscribe(res => {
       this._personalInformation = JSON.parse(res.text())
       this.piSubject.next(this._personalInformation)
       
       let cid = this._personalInformation.citizenID
-       this.http.post("http://localhost/testauthapp/get_app.php", JSON.stringify(cid), {headers: this.headers}).subscribe(res=>{
+       this.http.post("http://localhost//get_app.php", JSON.stringify(cid), {headers: this.headers}).subscribe(res=>{
         this._application = JSON.parse(res.text())
         this.appSubject.next(this._application)
         
@@ -84,7 +84,7 @@ export class UserService {
 
   updatePersonalInformation() {
     console.log(this._personalInformation)
-    this.http.post("http://localhost/testauthapp/update_info.php", JSON.stringify(this._personalInformation), {headers: this.headers})
+    this.http.post("http://localhost//update_info.php", JSON.stringify(this._personalInformation), {headers: this.headers})
     .subscribe()
   }
 
@@ -93,7 +93,7 @@ export class UserService {
   updateApplication(application) {
     
     
-    this.http.post("http://localhost/testauthapp/update_app.php", JSON.stringify(application), {headers: this.headers})
+    this.http.post("http://localhost//update_app.php", JSON.stringify(application), {headers: this.headers})
     .subscribe()
   }
 
