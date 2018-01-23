@@ -5,11 +5,11 @@ header('Content-Type: application/x-www-form-urlencoded');
 header('Content-Type: application/json');
 header('Accept-Language: *');
 
-// $servername = "localhost";
+$servername = "localhost";
 // $username = "root";
 // $password = "";
 // $dbname = "test_everything";
-$servername = "192.168.1.9";
+// $servername = "192.168.1.9";
 $username = "root";
 $password = "";
 $dbname = "saapplicationmanager";
@@ -48,7 +48,6 @@ while($row = mysqli_fetch_assoc($result)) {
     $row['q2'] = $row['q2']+0;
     $row['q3'] = $row['q3']+0;
     $row['q4'] = $row['q4']+0;
-    $row['q5'] = $row['q5']+0;
     $pi = $row;
 }
 

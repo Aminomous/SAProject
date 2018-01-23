@@ -46,10 +46,10 @@ export class PersonalInformation {
     ownMotocycle: string;
     driveLicenseMotocycle: string;
     hobby: string;
-    q1: boolean;
-    q2: boolean;
-    q3: boolean;
-    q4: boolean;
-    q5: boolean;
+    q1: string;
+    q2: string;
+    q3: string;
+    q4: string;
+    q5: string;
     q6: Q6[];
 }

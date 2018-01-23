@@ -18,12 +18,20 @@ export class Information8Component implements OnInit {
   conferrence:Q6 = {mediaType:"conferrence", detail:""}
   suggested:Q6 = {mediaType:"suggested", detail:""}
   other:Q6 = {mediaType:"other", detail:""}
-  
+  q5ans = "0"
   constructor(private userService: UserService) {
     this.pi = new PersonalInformation();
     this.userService.personalInformation.subscribe((pi) => {
       if (pi) {
         this.pi = pi
+        this.pi.q1 = this.pi.q1+""
+        this.pi.q2 = this.pi.q2+""
+        this.pi.q3 = this.pi.q3+""
+        this.pi.q4 = this.pi.q4+""
+        if (this.pi.q5 != null) {
+          this.q5ans = "1"
+        }
+
         this.q6 = pi.q6;
         
         for (let i = 0 ; i < this.q6.length ; i++){
@@ -48,5 +56,9 @@ export class Information8Component implements OnInit {
     if (detail == ""){
       const index = this.q6.indexOf(event.id)
     }
+  }
+
+  noq5() {
+    this.pi.q5 = null
   }
 }

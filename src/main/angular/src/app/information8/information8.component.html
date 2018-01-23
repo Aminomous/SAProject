@@ -11,9 +11,9 @@
             <span> ท่านเคยถูกกล่าวหา หรือต้องโทษในคดีอาญาหรือไม่ </span>
         </div>
         <div class="col-3">
-            <label for="q1-1" class="choice"><input type="radio" value="1" id="q1-1" name="q1"> เคย
+            <label for="q1-1" class="choice"><input type="radio" value="1" id="q1-1" name="q1" [(ngModel)]="pi.q1"> เคย
                   </label>
-            <label for="q1-2" class="choice"> <input type="radio" value="0" id="q1-2" name="q1">ไม่เคย
+            <label for="q1-2" class="choice"> <input type="radio" value="0" id="q1-2" name="q1"[(ngModel)]="pi.q1">ไม่เคย
                   </label>
         </div>
     </div>
@@ -23,9 +23,9 @@
             <span> ท่านเคยเป็นบุคคลที่ศาลสั่งล้มละลาย หรือเป็นคนที่เสมือนไร้ซึ่งความสามารถหรือไม่ </span>
         </div>
         <div class="col-3">
-            <label for="q2-1" class="choice"><input type="radio" value="1" id="q2-1" name="q2"> เคย
+            <label for="q2-1" class="choice"><input type="radio" value="1" id="q2-1" name="q2" [(ngModel)]="pi.q2"> เคย
                   </label>
-            <label for="q2-2" class="choice"><input type="radio" value="0" id="q2-2" name="q2"> ไม่เคย
+            <label for="q2-2" class="choice"><input type="radio" value="0" id="q2-2" name="q2" [(ngModel)]="pi.q2"> ไม่เคย
                   </label>
         </div>
     </div>
@@ -35,9 +35,9 @@
             <span> ท่านเคยประสบอุบัติเหตุร้ายแรงหรือไม่ </span>
         </div>
         <div class="col-3">
-            <label for="q3-1" class="choice"><input type="radio" value="1" id="q3-1" name="q3"> เคย
+            <label for="q3-1" class="choice"><input type="radio" value="1" id="q3-1" name="q3" [(ngModel)]="pi.q3"> เคย
                   </label>
-            <label for="q3-2" class="choice"><input type="radio" value="0" id="q3-2" name="q3"> ไม่เคย
+            <label for="q3-2" class="choice"><input type="radio" value="0" id="q3-2" name="q3" [(ngModel)]="pi.q3"> ไม่เคย
                   </label>
         </div>
     </div>
@@ -47,9 +47,9 @@
             <span> ใน 5 ปีที่ผ่านมา ท่านเคยเจ็บปวดร้ายแรงหรือไม่ </span>
         </div>
         <div class="col-3">
-            <label for="q4-1" class="choice"><input type="radio" value="1" id="q4-1" name="q4"> เคย
+            <label for="q4-1" class="choice"><input type="radio" value="1" id="q4-1" name="q4" [(ngModel)]="pi.q4"> เคย
                   </label>
-            <label for="q4-2" class="choice"><input type="radio" value="0" id="q4-2" name="q4"> ไม่เคย
+            <label for="q4-2" class="choice"><input type="radio" value="0" id="q4-2" name="q4" [(ngModel)]="pi.q4"> ไม่เคย
                   </label>
         </div>
     </div>
@@ -59,9 +59,9 @@
             <span> ท่านมีโรคประจำตัวหรือไม่ </span>
         </div>
         <div class="col-3">
-            <label for="q5-1" class="choice"><input type="radio" value="1" id="q5-1" name="q5">  เคย
+            <label for="q5-1" class="choice"><input type="radio" value="1" id="q5-1" name="q5" [(ngModel)]="q5ans">  เคย
                  </label>
-            <label for="q5-2" class="choice"><input type="radio" value="0" id="q5-2" name="q5"> ไม่เคย
+            <label for="q5-2" class="choice"><input type="radio" value="0" id="q5-2" name="q5" [(ngModel)]="q5ans" (change)="pi.q5=null"> ไม่เคย
                   </label>
         </div>
     </div>
@@ -72,7 +72,7 @@
         </div>
         <div class="col-11">
             <label for="q5-description"> โปรดระบุ
-                <input type="text" size="70px" id="q5-description"> </label>
+                <input type="text" size="70px" id="q5-description" [disabled]="q5ans==0" [(ngModel)]="pi.q5"> </label>
         </div>
     </div>
 

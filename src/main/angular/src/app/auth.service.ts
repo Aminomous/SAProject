@@ -9,7 +9,7 @@ export class AuthService {
   constructor(private http:Http) { }
 
   login(user:User) {
-    return this.http.post("http://localhost//login.php", JSON.stringify(user), {headers: this.headers})
+    return this.http.post("http://localhost/login.php", JSON.stringify(user), {headers: this.headers})
   }
 
   logout() {

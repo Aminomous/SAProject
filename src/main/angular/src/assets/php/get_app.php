@@ -5,11 +5,11 @@ header('Content-Type: application/x-www-form-urlencoded');
 header('Content-Type: application/json');
 header('Accept-Language: *');
 
-// $servername = "localhost";
+$servername = "localhost";
 // $username = "root";
 // $password = "";
 // $dbname = "test_everything";
-$servername = "192.168.1.9";
+// $servername = "192.168.1.9";
 $username = "root";
 $password = "";
 $dbname = "saapplicationmanager";

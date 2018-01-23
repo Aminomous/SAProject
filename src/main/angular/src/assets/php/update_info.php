@@ -5,11 +5,11 @@ header('Content-Type: application/x-www-form-urlencoded');
 header('Content-Type: application/json');
 header('Accept-Language: *');
 
-// $servername = "localhost";
+$servername = "localhost";
 // $username = "root";
 // $password = "";
 // $dbname = "test_everything";
-$servername = "192.168.1.9";
+// $servername = "192.168.1.9";
 $username = "root";
 $password = "";
 $dbname = "saapplicationmanager";
@@ -64,7 +64,7 @@ $q1 = !empty($pi->q1) ? "$pi->q1" : "NULL";
 $q2 = !empty($pi->q2) ? "$pi->q2" : "NULL";
 $q3 = !empty($pi->q3) ? "$pi->q3" : "NULL";
 $q4 = !empty($pi->q4) ? "$pi->q4" : "NULL";
-$q5 = !empty($pi->q5) ? "$pi->q5" : "NULL";
+$q5 = !empty($pi->q5) ? "'$pi->q5'" : "NULL";
 
 
 $query = "UPDATE personalinformation SET `titleTH`=$titleTH,`fNameTH`=$fNameTH,`lNameTH`=$lNameTH,`fNameEN`=$fNameEN,`lNameEN`=$lNameEN,`address`=$address,`email`=$email,`telephone`=$telephone,`dateOfBirth`=$dateOfBirth,`placeOfBirth`=$placeOfBirth,`weight`=$weight,`height`=$height,`nationality`=$nationality,`race`=$race,`religion`=$religion,`profNo`=$profNo,`militaryStatus`=$militaryStatus,`maritalStatus`=$maritalStatus,`emergencyContact`=$emergencyContact,`toeicScore`=$toeicScore,`toeicYear`=$toeicYear,`toefl`=$toefl,`toeflYear`=$toeflYear,`word`=$word,`excel`=$excel,`powerPoint`=$powerPoint,`driveCar`=$driveCar,`ownCar`=$ownCar,`driveLicenseCar`=$driveLicenseCar,`rideMotocycle`=$rideMotocycle,`ownMotocycle`=$ownMotocycle,`driveLicenseMotocycle`=$driveLicenseMotocycle,`hobby`=$hobby,`q1`=$q1,`q2`=$q2,`q3`=$q3,`q4`=$q4,`q5`=$q5  WHERE CITIZENID='$pi->citizenID'";
