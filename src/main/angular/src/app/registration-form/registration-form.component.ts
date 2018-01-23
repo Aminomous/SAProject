@@ -14,10 +14,10 @@ export class RegistrationFormComponent implements OnInit {
   page
   application: Application
   constructor(private router:Router, private userService: UserService) {
-    this.userService.getPersonalInformation().then(()=>{
-      this.userService.getApplication().then(app=>{
+    this.userService.personalInformation.subscribe(()=>{
+      this.userService.application.subscribe(app=>{
         this.application = app
-        console.log(app)
+        
       })
     }) 
   }
@@ -38,7 +38,7 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   save() {
-    this.userService.updateApplication()
+    this.userService.updateApplication(this.application)
     this.router.navigate(['/'])
   }
 

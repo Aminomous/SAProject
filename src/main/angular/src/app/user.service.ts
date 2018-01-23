@@ -2,78 +2,120 @@ import { Injectable } from '@angular/core';
 import { User } from './models/user';
 import { Http, Headers } from '@angular/http';
 import { of } from 'rxjs/observable/of';
+import { BehaviorSubject, Subject } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { PersonalInformation } from './models/personalInformation';
 import { Application } from './models/application';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Injectable()
 export class UserService {
 
   headers: Headers = new Headers()
-  personalInformation :PersonalInformation = new PersonalInformation()
-  application: Application = new Application()
-
+  private _personalInformation :PersonalInformation
+  private _application: Application
+  piSubject = new ReplaySubject<PersonalInformation>()
+  appSubject = new ReplaySubject<Application>()
+  loaded = false
   constructor(private http:Http) { }
 
   createUser(user) {
-    return this.http.post("http://10.2.30.137/testauthapp/signup.php", JSON.stringify(user), {headers: this.headers})
+    return this.http.post("http://10.2.58.177/testauthapp/signup.php", JSON.stringify(user), {headers: this.headers})
   }
 
-  async loadPersonalInformation() {
+  // async loadPersonalInformation() {
+  //   let email = localStorage.getItem('user')
+  //   // 
+  //   let res = await this.http.post("http://10.2.58.177/testauthapp/get_info.php", JSON.stringify(email), {headers: this.headers}).toPromise()
+  //   this.personalInformation = JSON.parse(res.text())
+  //   return this.personalInformation
+  // }
+
+  // async loadApplication() {
+  //   let cid = this.personalInformation.citizenID
+  //   
+  //   let res = await this.http.post("http://10.2.58.177/testauthapp/get_app.php", JSON.stringify(cid), {headers: this.headers}).toPromise()
+  //   this.application = JSON.parse(res.text())
+  //   return this.application
+  // }
+
+
+
+  async loadData() {
     let email = localStorage.getItem('user')
-    // console.log(email)
-    let res = await this.http.post("http://10.2.30.137/testauthapp/get_info.php", JSON.stringify(email), {headers: this.headers}).toPromise()
-    this.personalInformation = JSON.parse(res.text())
-    return this.personalInformation
+    await this.http.post("http://10.2.58.177/testauthapp/get_info.php", JSON.stringify(email), {headers: this.headers}).subscribe(res => {
+      this._personalInformation = JSON.parse(res.text())
+      this.piSubject.next(this._personalInformation)
+      
+      let cid = this._personalInformation.citizenID
+       this.http.post("http://10.2.58.177/testauthapp/get_app.php", JSON.stringify(cid), {headers: this.headers}).subscribe(res=>{
+        this._application = JSON.parse(res.text())
+        this.appSubject.next(this._application)
+        
+        this.loaded = true
+      })
+    })
   }
 
-  async loadApplication() {
-    let cid = this.personalInformation.citizenID
-    console.log(cid)
-    let res = await this.http.post("http://10.2.30.137/testauthapp/get_app.php", JSON.stringify(cid), {headers: this.headers}).toPromise()
-    this.application = JSON.parse(res.text())
-    return this.application
-  }
 
-  async getPersonalInformation() {
+
+
+
+
+
+  get personalInformation() {
     
-    return await this.loadPersonalInformation()
+    // if (!this.loaded) {
+    //   this.loadData()
+    //   
+    // }
+    // return of(this._personalInformation)
+    return this.piSubject
   }
 
-  async getApplication() {
-   
-    return await this.loadApplication()
+  get application() {
+    
+    // if (!this.loaded) {
+    //   this.loadData()
+    //   
+    // }
+    return this.appSubject
   }
 
   updatePersonalInformation() {
-    console.log(this.personalInformation)
-    this.http.post("http://10.2.30.137/testauthapp/update_info.php", JSON.stringify(this.personalInformation), {headers: this.headers})
+    
+    this.http.post("http://10.2.58.177/testauthapp/update_info.php", JSON.stringify(this.personalInformation), {headers: this.headers})
     .subscribe()
   }
 
-  updateApplication() {
-    console.log(this.application)
-    this.http.post("http://10.2.30.137/testauthapp/update_app.php", JSON.stringify(this.application), {headers: this.headers})
+  
+
+  updateApplication(application) {
+    
+    
+    this.http.post("http://10.2.58.177/testauthapp/update_app.php", JSON.stringify(application), {headers: this.headers})
     .subscribe()
   }
 
   checkPersonalInformation() {
-    return (this.checkNull(this.personalInformation.titleTH)) &&
-      (this.checkNull(this.personalInformation.fNameTH)) &&
-      (this.checkNull(this.personalInformation.lNameTH)) &&
-      (this.checkNull(this.personalInformation.address)) &&
-      (this.checkNull(this.personalInformation.telephone)) &&
-      (this.checkNull(this.personalInformation.email)) &&
-      (this.checkNull(this.personalInformation.dateOfBirth)) &&
-      (this.checkNull(this.personalInformation.weight)) &&
-      (this.checkNull(this.personalInformation.height)) &&
-      (this.checkNull(this.personalInformation.placeOfBirth)) &&
-      (this.checkNull(this.personalInformation.race)) &&
-      (this.checkNull(this.personalInformation.nationality)) &&
-      (this.checkNull(this.personalInformation.religion)) &&
-      (this.checkNull(this.personalInformation.citizenID)) &&
-      (this.checkNull(this.personalInformation.profNo)) &&
-      (this.checkNull(this.personalInformation.militaryStatus)) &&
-      (this.checkNull(this.personalInformation.maritalStatus))
+    if (!this._personalInformation) return false
+    return (this.checkNull(this._personalInformation.titleTH)) &&
+      (this.checkNull(this._personalInformation.fNameTH)) &&
+      (this.checkNull(this._personalInformation.lNameTH)) &&
+      (this.checkNull(this._personalInformation.address)) &&
+      (this.checkNull(this._personalInformation.telephone)) &&
+      (this.checkNull(this._personalInformation.email)) &&
+      (this.checkNull(this._personalInformation.dateOfBirth)) &&
+      (this.checkNull(this._personalInformation.weight)) &&
+      (this.checkNull(this._personalInformation.height)) &&
+      (this.checkNull(this._personalInformation.placeOfBirth)) &&
+      (this.checkNull(this._personalInformation.race)) &&
+      (this.checkNull(this._personalInformation.nationality)) &&
+      (this.checkNull(this._personalInformation.religion)) &&
+      (this.checkNull(this._personalInformation.citizenID)) &&
+      (this.checkNull(this._personalInformation.profNo)) &&
+      (this.checkNull(this._personalInformation.militaryStatus)) &&
+      (this.checkNull(this._personalInformation.maritalStatus))
   }
 
   private checkNull(field) {

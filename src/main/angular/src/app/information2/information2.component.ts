@@ -16,20 +16,22 @@ export class Information2Component implements OnInit {
   educations: Education[] = []
   pi: PersonalInformation = new PersonalInformation()
   constructor(private userService: UserService) {
-    this.userService.getPersonalInformation().then((pi)=>{
-      this.pi = pi
-      if (pi.educations != null) {
-        this.educations = pi.educations
-        let tmp: Education[] = [];
-        this.educations.forEach(el=>{
-          if (!this.checkNullRow(el)) {
-            tmp.push(el)
-          }
-        })
-        this.pi.educations = tmp
-        this.educations = tmp
-      } else {
-        this.pi.educations = this.educations
+    this.userService.personalInformation.subscribe((pi)=>{
+      if (pi) {
+        this.pi = pi
+        if (pi.educations != null) {
+          this.educations = pi.educations
+          let tmp: Education[] = [];
+          this.educations.forEach(el=>{
+            if (!this.checkNullRow(el)) {
+              tmp.push(el)
+            }
+          })
+          this.pi.educations = tmp
+          this.educations = tmp
+        } else {
+          this.pi.educations = this.educations
+      }
       }
     })
   }
@@ -55,7 +57,7 @@ export class Information2Component implements OnInit {
   }
 
   print() {
-    console.log(this.pi)
+    
   }
 
 }

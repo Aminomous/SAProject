@@ -11,10 +11,10 @@ export class RegistrationForm3Component implements OnInit {
 
   application: Application = new Application()
   constructor(private userService: UserService) { 
-    this.userService.getPersonalInformation().then(()=>{
-      this.userService.getApplication().then(app=>{
+    this.userService.personalInformation.subscribe(()=>{
+      this.userService.application.subscribe(app=>{
         this.application = app
-        console.log(app)
+        
       })
     })
     

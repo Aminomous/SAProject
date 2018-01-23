@@ -12,10 +12,10 @@ export class RegistrationForm1Component implements OnInit {
 
   application: Application = new Application()
   constructor(private userService: UserService) { 
-    this.userService.getPersonalInformation().then(()=>{
-      this.userService.getApplication().then(app=>{
+    this.userService.personalInformation.subscribe(()=>{
+      this.userService.application.subscribe(app=>{
         this.application = app
-        console.log(app)
+        
       })
     })
   }
@@ -25,7 +25,7 @@ export class RegistrationForm1Component implements OnInit {
 
   selectHospital(hos){
 
-    console.log(this.application)
+    
     let i = this.application.hospitals.indexOf(hos)
     if (i==-1) {
       this.application.hospitals.push(hos)

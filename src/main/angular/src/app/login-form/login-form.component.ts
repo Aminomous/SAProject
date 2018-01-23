@@ -24,7 +24,7 @@ export class LoginFormComponent implements OnInit {
   loginUser(e) {
     this.authService.login(this.user)
     .subscribe((data)=>{
-      // console.log(data);
+      // 
       
       if (data.text()=="true") {
         localStorage.setItem('user', this.user.email)
@@ -33,7 +33,7 @@ export class LoginFormComponent implements OnInit {
         this.error = "E-mail or Password are incorrect, please try again."
       }
     }, (error)=>{
-      console.log("error! " + error);
+      
       this.error = "Can't connect to server."
     })
     

@@ -10,12 +10,13 @@ import { PersonalInformation } from '../models/personalInformation';
 export class Information1Component implements OnInit {
 
   prefixes = ["นาย", "นางสาว", "นาง"]
-  pi: PersonalInformation
+  pi: PersonalInformation = new PersonalInformation()
   constructor(private userService: UserService) { 
-    this.pi = new PersonalInformation()
-    this.userService.getPersonalInformation().then((pi)=>{
-      this.pi = pi
-      console.log(pi)
+    
+    this.userService.personalInformation.subscribe((pi)=>{
+      if (pi) {
+        this.pi = pi
+      }
     })
   }
 

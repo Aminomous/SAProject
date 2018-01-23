@@ -21,10 +21,10 @@ export class RegistrationForm2Component implements OnInit {
     this.qh11.type = 0
     this.qh12.type = 1
     this.qh13.type = 2
-    this.userService.getPersonalInformation().then(()=>{
-      this.userService.getApplication().then(app=>{
+    this.userService.personalInformation.subscribe(()=>{
+      this.userService.application.subscribe(app=>{
         this.application = app
-        console.log(app)
+        
       })
     })
     
@@ -33,7 +33,7 @@ export class RegistrationForm2Component implements OnInit {
   }
   select(c) {
     if (c == 0) {
-      console.log(c)
+      
       if (this.qh11checked) {
         this.application.qh1.splice(this.application.qh1.indexOf(this.qh11),1)
       } else {
@@ -42,7 +42,7 @@ export class RegistrationForm2Component implements OnInit {
       this.qh11checked = !this.qh11checked
     }
     if (c == 1) {
-      console.log(c)
+      
       if (this.qh12checked) {
         this.application.qh1.splice(this.application.qh1.indexOf(this.qh12),1)
       } else {
@@ -51,7 +51,7 @@ export class RegistrationForm2Component implements OnInit {
       this.qh12checked = !this.qh12checked
     }
     if (c == 2) {
-      console.log(c)
+      
       if (this.qh13checked) {
         this.application.qh1.splice(this.application.qh1.indexOf(this.qh13),1)
       } else {
@@ -59,7 +59,7 @@ export class RegistrationForm2Component implements OnInit {
       }
       this.qh13checked = !this.qh13checked
     }
-    console.log(this.application)
+    
   }
 
 }

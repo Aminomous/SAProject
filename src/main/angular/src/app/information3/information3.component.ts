@@ -14,20 +14,22 @@ export class Information3Component implements OnInit {
   employmentRecords: EmploymentRecord[] = []
   pi: PersonalInformation = new PersonalInformation()
   constructor(private userService: UserService) {
-    this.userService.getPersonalInformation().then((pi)=>{
-      this.pi = pi
-      if (pi.educations != null) {
-        this.employmentRecords = pi.employmentRecords
-        let tmp: EmploymentRecord[] = [];
-        this.employmentRecords.forEach(el=>{
-          if (!this.checkNullRow(el)) {
-            tmp.push(el)
-          }
-        })
-        this.pi.employmentRecords = tmp
-        this.employmentRecords = tmp
-      } else {
-        this.pi.employmentRecords = this.employmentRecords
+    this.userService.personalInformation.subscribe((pi) => {
+      if (pi) {
+        this.pi = pi
+        if (pi.educations != null) {
+          this.employmentRecords = pi.employmentRecords
+          let tmp: EmploymentRecord[] = [];
+          this.employmentRecords.forEach(el => {
+            if (!this.checkNullRow(el)) {
+              tmp.push(el)
+            }
+          })
+          this.pi.employmentRecords = tmp
+          this.employmentRecords = tmp
+        } else {
+          this.pi.employmentRecords = this.employmentRecords
+        }
       }
     })
   }
@@ -41,18 +43,18 @@ export class Information3Component implements OnInit {
 
   checkNullRow(education) {
     return Object.keys(education).every(x => {
-      return education[x]===''||education[x]===null
+      return education[x] === '' || education[x] === null
     });
-  } 
+  }
 
   remove(edu) {
     const index: number = this.employmentRecords.indexOf(edu);
     if (index !== -1) {
-        this.employmentRecords.splice(index, 1);
+      this.employmentRecords.splice(index, 1);
     }
   }
 
   print() {
-    console.log(this.pi)
+    
   }
 }
