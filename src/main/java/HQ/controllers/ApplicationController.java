@@ -43,6 +43,7 @@ public class ApplicationController {
         this.refNumLabel.setText("Ref. number:  " +application.getRefnum());
         for (AbstractApplicationController controller: controllers) {
             controller.setApplication(application);
+            controller.setMainController(mainCtrl);
             controller.showInfo();
         }
     }
@@ -56,11 +57,11 @@ public class ApplicationController {
 
     @FXML
     public void next() {
-        if (paneStatus < 11) {
+        if (paneStatus < 12) {
             paneStatus++;
             showPage();
         }
-        if (paneStatus == 11) {
+        if (paneStatus == 12) {
             this.nextBtn.setVisible(false);
         }
         this.backBtn.setVisible(true);

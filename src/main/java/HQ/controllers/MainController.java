@@ -86,7 +86,7 @@ public class MainController {
     public void showApplicantInfo(int refnum) {
         this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
             for (Application app : applications) {
-                if (app.getPersonalInformation().getID().equals(refnum)) {
+                if (app.getRefnum() == refnum) {
                     this.applicantInfoCtrl.showData(app);
                     this.applicantInfoCtrl.setApplication(app);
                     this.applicantInfoCtrl.setUp();
