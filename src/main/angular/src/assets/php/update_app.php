@@ -38,7 +38,8 @@ $QH2 = !empty($app->qh2) ? "'$app->qh2'" : "NULL";
 $QH3 = !empty($app->qh3) ? "'$app->qh3'" : "NULL";
 $relativeWorkInHospital = !empty($app->relativeWorkInHospital) ? "'$app->relativeWorkInHospital'" : "NULL";
 $additionalInformation = !empty($app->additionalInformation) ? "'$app->additionalInformation'" : "NULL";
-$applicationStatus6 = !empty($app->applicationStatus6) ? "$app->applicationStatus6" : "NULL";
+// $applicationStatus6 = !empty($app->applicationStatus6) ? "$app->applicationStatus6" : "NULL";
+$applicationStatus6 = $app->applicationStatus6;
 
 $query = "UPDATE `application` SET `date`=$date,`position1`=$position1,`position2`=$position2,`workInShift`=$workInShift,`workerType`=$workerType,`salary`=$salary,`startingDate`=$startingDate,`QH2`=$QH2,`QH3`=$QH3,`relativeWorkInHospital`=$relativeWorkInHospital,`additionalInformation`=$additionalInformation,`applicationStatus6`=$applicationStatus6 WHERE `refnum`=$app->refnum";
 mysqli_query($conn, $query);

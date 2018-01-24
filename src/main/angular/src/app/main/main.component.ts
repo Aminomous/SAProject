@@ -46,6 +46,7 @@ export class MainComponent implements OnInit {
   }
 
   logout() {
+    window.location.reload()
     this.authService.logout()
   }
 
