@@ -375,7 +375,7 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
 
     private ArrayList<ReferencePerson> getReferencePerson(int refnum) throws ClassNotFoundException, SQLException {
         ArrayList<ReferencePerson> getReferencePeople = new ArrayList<ReferencePerson>();
-        String query = "select * from QH1 where (refnum = " + refnum + ")";
+        String query = "select * from ReferencePerson where (refnum = " + refnum + ")";
         Statement statement = conn.createStatement();
         ResultSet result = statement.executeQuery(query);
         while (result.next()) {
