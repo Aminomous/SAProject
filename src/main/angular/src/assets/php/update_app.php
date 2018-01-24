@@ -34,8 +34,8 @@ $workInShift = !empty($app->workInShift) ? "$app->workInShift" : "NULL";
 $workerType = !empty($app->workerType) ? "'$app->workerType'" : "NULL";
 $salary = !empty($app->salary) ? "$app->salary" : "NULL";
 $startingDate = !empty($app->startingDate) ? "'$app->startingDate'" : "NULL";
-$QH2 = !empty($app->QH2) ? "'$app->QH2'" : "NULL";
-$QH3 = !empty($app->QH3) ? "'$app->QH3'" : "NULL";
+$QH2 = !empty($app->qh2) ? "'$app->qh2'" : "NULL";
+$QH3 = !empty($app->qh3) ? "'$app->qh3'" : "NULL";
 $relativeWorkInHospital = !empty($app->relativeWorkInHospital) ? "'$app->relativeWorkInHospital'" : "NULL";
 $additionalInformation = !empty($app->additionalInformation) ? "'$app->additionalInformation'" : "NULL";
 $applicationStatus6 = !empty($app->applicationStatus6) ? "$app->applicationStatus6" : "NULL";
@@ -70,7 +70,7 @@ foreach ($referencePeople as $key => $referenceperson) {
     $referencepersonrelationship = !empty('$referenceperson->relationship') ? "'$referenceperson->relationship'" : "NULL";
     $referencepersonaddress = !empty('$referenceperson->address') ? "'$referenceperson->address'" : "NULL";
     $referencepersontelephone = !empty('$referenceperson->telephone') ? "'$referenceperson->telephone'" : "NULL";
-    $query = "INSERT INTO `referenceperson` (`refnum`,  `name`, `relationship`, `address`, `telephone`) values ($refnum, '$referencepersonname', '$referencepersonrelationship', '$referencepersonaddress', '$referencepersontelephone')";
+    $query = "INSERT INTO `referenceperson` (`refnum`,  `name`, `relationship`, `address`, `telephone`) values ($refnum, $referencepersonname, $referencepersonrelationship, $referencepersonaddress, $referencepersontelephone)";
     mysqli_query($conn, $query);
 }
 

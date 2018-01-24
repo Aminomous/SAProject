@@ -1,7 +1,7 @@
 <div class="header-bar">
   <div class="right bottom">
     <span class="name btn">Logged in as {{name}}</span>
-    <a class="btn btn-primary" (click)="editPersonalInfo()">edit personal information</a>
+    <button class="btn btn-primary" (click)="editPersonalInfo()" [disabled]="app.applicationStatus6>=0">edit personal information</button>
     <a routerLink="/login" class="logout btn btn-danger" (click)="logout()">log out</a>
   </div>
 </div>

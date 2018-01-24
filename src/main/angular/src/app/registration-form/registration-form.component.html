@@ -2,7 +2,7 @@
     <h1>
       ใบสมัคร
     </h1>
-    <div [hidden]="userService.checkPersonalInformation()" class="alert alert-warning">
+    <div [hidden]="userService.checkApplication()" class="alert alert-warning">
       กรุณากรอกช่องที่มี * (ดอกจัน) สีแดงให้ครบ
     </div>
     <div class="form">
@@ -16,7 +16,7 @@
     <button class="btn btn-primary" (click)="save()">
       save
     </button>
-    <button class="btn btn-warning" (click)="sent()">
+    <button class="btn btn-warning" (click)="sent()" [disabled]="!userService.checkApplication()">
       sent
     </button>
     <button class="btn btn-secondary" (click)="cancel()">
