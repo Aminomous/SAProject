@@ -64,6 +64,7 @@ public class ApplicantInfoController {
 
     public void setUp() {
         BufferedImage img;
+        imageButton.setGraphic(null);
         try {
             img = ImageIO.read(new ByteArrayInputStream(mainCtrl.getApplicationService().getApplicantPhoto(application)));
 
