@@ -41,7 +41,7 @@ public class ApplicantTableController {
                     newValue = oldValue;
                 }
 
-                mainCtrl.showApplicantInfo(newValue.getId());
+                mainCtrl.showApplicantInfo(newValue.getRefnum());
             }
         });
     }
@@ -59,13 +59,16 @@ public class ApplicantTableController {
         tableViewData.clear();
         tableViewData = FXCollections.observableArrayList();
 
-            for (Application app : applications) {
-                if (app.getApplicationStatus6() == 0) {
+        for (Application app : applications) {
+            if (app.getApplicationStatus6() == 0) {
+                if (app.getLatestStatus() >= 3) {
+
                     PersonalInformation tempInformation = app.getPersonalInformation();
-                    tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus(), app.getApplicationStatus6()));
+                    tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus(), app.getApplicationStatus6(), app.getRefnum()));
                 }
             }
-            applicantTable.setItems(tableViewData);
+        }
+        applicantTable.setItems(tableViewData);
 
     }
 
@@ -74,9 +77,9 @@ public class ApplicantTableController {
         tableViewData.clear();
         tableViewData = FXCollections.observableArrayList();
         for (Application app : apps) {
-            if(app.getLatestStatus() >= 3){
+            if (app.getLatestStatus() >= 3) {
                 PersonalInformation tempInformation = app.getPersonalInformation();
-                tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus(), app.getApplicationStatus6()));
+                tableViewData.add(new ApplicantData(tempInformation.getID(), tempInformation.getfNameTH(), tempInformation.getlNameTH(), app.getPosition1(), app.getLatestStatus(), app.getApplicationStatus6(), app.getRefnum()));
             }
         }
         applicantTable.setItems(tableViewData);
@@ -106,13 +109,14 @@ public class ApplicantTableController {
         private SimpleStringProperty lastName;
         private SimpleStringProperty position;
         private SimpleStringProperty status;
+        private int refnum;
 
-        ApplicantData(String id, String firstName, String lastName, String position, int status, int status2) {
+        ApplicantData(String id, String firstName, String lastName, String position, int status, int status2, int refnum) {
             this.id = new SimpleStringProperty(id);
             this.firstName = new SimpleStringProperty(firstName);
             this.lastName = new SimpleStringProperty(lastName);
             this.position = new SimpleStringProperty(position + "");
-
+            this.refnum = refnum;
             this.status = new SimpleStringProperty();
             if (status2 != 0) {
                 setStatus(status2 + 5);
@@ -197,6 +201,10 @@ public class ApplicantTableController {
         @Override
         public String toString() {
             return String.format("ID: %s\nNAME:%s %s\nPOSITION: %s\nSTATUS: %s", getId(), getFirstName(), getLastName(), getPosition(), getStatus());
+        }
+
+        public int getRefnum() {
+            return refnum;
         }
     }
 }

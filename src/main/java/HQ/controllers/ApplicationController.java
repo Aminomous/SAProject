@@ -27,7 +27,7 @@ public class ApplicationController {
 
     @FXML
     private void initialize() throws IOException {
-        for (int i = 1; i < 13; i++) {
+        for (int i = 1; i < 14; i++) {
             FXMLLoader paneLoader = new FXMLLoader(getClass().getResource("/HQ/application" + i + ".fxml"));
             GridPane pane = paneLoader.load();
             AbstractApplicationController controller = paneLoader.getController();

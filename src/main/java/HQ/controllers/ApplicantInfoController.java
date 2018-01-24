@@ -70,12 +70,16 @@ public class ApplicantInfoController {
         BufferedImage img;
         try {
             img = ImageIO.read(new ByteArrayInputStream(mainCtrl.getApplicationService().getApplicantPhoto(application)));
+            Image test = new Image(new ByteArrayInputStream(mainCtrl.getApplicationService().getApplicantPhoto(application)), 100, 100, false, false);
+            imageButton.setGraphic(new javafx.scene.image.ImageView(test));
         } catch (IOException e) {
             e.printStackTrace();
         }
+        catch (NullPointerException e){
 
-        Image test = new Image(new ByteArrayInputStream(mainCtrl.getApplicationService().getApplicantPhoto(application)), 100, 100, false, false);
-        imageButton.setGraphic(new javafx.scene.image.ImageView(test));
+        }
+
+
         imageButton.prefHeight(100);
         imageButton.prefWidth(100);
         imageButton.setMaxWidth(100);

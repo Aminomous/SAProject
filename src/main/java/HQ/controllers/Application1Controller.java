@@ -46,7 +46,7 @@ public class Application1Controller extends AbstractApplicationController {
         if(application.getHospitals().size() >0){
             int count = application.getHospitals().size();
             for(int i = 0 ; i < count ;i++){
-                hospitals.get(i).setText(application.getHospitals().get(i+1).getHospitalName());
+                hospitals.get(i).setText(application.getHospitals().get(i).getHospitalName());
             }
         }
 
