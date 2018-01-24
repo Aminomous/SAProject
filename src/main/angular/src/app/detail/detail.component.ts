@@ -22,7 +22,7 @@ export class DetailComponent implements OnInit {
         console.log(app)
         this.app = app;
         this.isDraft = this.app.applicationStatus6 == -1
-        this.registrationStatus = this.app.applicationStatus6 == 0 ? "รอผลการสมัคร" : this.app.applicationStatus6 == 1 ? "ผ่าน" : "ไม่ผ่าน"
+        this.registrationStatus = this.app.applicationStatus6 == 0 ? "รอผลการสมัคร" : (this.app.applicationStatus6 == 1 ? "ผ่าน" : "ไม่ผ่าน")
         this.fail = this.app.applicationStatus6 == 2
       }
     })
