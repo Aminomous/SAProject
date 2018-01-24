@@ -82,10 +82,10 @@ public class MainController {
         //this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
     }
 
-    public void showApplicantInfo(String id) {
+    public void showApplicantInfo(int refnum) {
         this.mainPaneCtrl.getLeftPane().setBottom(this.applicantInfoCtrl.getMainPane());
         for (Application app : applications) {
-            if (app.getPersonalInformation().getID().equals(id)) {
+            if (app.getRefnum() == refnum) {
                 this.applicantInfoCtrl.showData(app);
                 this.applicantInfoCtrl.setApplication(app);
                 this.applicantInfoCtrl.setUp();
