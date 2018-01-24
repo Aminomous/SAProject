@@ -31,19 +31,47 @@ export class Information8Component implements OnInit {
         if (this.pi.q5 != null) {
           this.q5ans = "1"
         }
-
+        
         this.q6 = pi.q6;
         
-        for (let i = 0 ; i < this.q6.length ; i++){
-          this.news.detail = (this.q6[i].mediaType == "news")?this.q6[i].detail:"";
-          this.website.detail = this.q6[i].mediaType == "website"?this.q6[i].detail:"";
-          this.conferrence.detail = this.q6[i].mediaType == "conferrence"?this.q6[i].detail:"";
-          this.suggested.detail = this.q6[i].mediaType == "suggested"?this.q6[i].detail:"";
-          this.other.detail = this.q6[i].mediaType == "other"?this.q6[i].detail:"";
-        }
+        for (let i = 0 ; i < pi.q6.length ; i++){
+          if (this.q6[i].mediaType == "news"){
+            this.news.detail = this.q6[i].detail
+          }
+          else if (this.q6[i].mediaType == "website"){
+            this.website.detail = this.q6[i].detail
 
+          }
+          else if (this.q6[i].mediaType == "conferrence"){
+            this.conferrence.detail = this.q6[i].detail
+
+          }
+          else if (this.q6[i].mediaType == "suggested"){
+            this.suggested.detail = this.q6[i].detail
+
+          }
+          else if (this.q6[i].mediaType == "other"){
+            this.other.detail = this.q6[i].detail
+
+          }
+        }
+        console.log(this.q6);
         this.q6 = []
-        
+        if (this.news.detail != ""){
+          this.q6.push(this.news)
+        }
+        if (this.website.detail != ""){
+          this.q6.push(this.website)
+        }
+        if (this.conferrence.detail != ""){
+          this.q6.push(this.conferrence)
+        }
+        if (this.suggested.detail != ""){
+          this.q6.push(this.suggested)
+        }
+        if (this.other.detail != ""){
+          this.q6.push(this.other)
+        }
       }
     })
   }
@@ -53,11 +81,59 @@ export class Information8Component implements OnInit {
   
   change(event){
     let detail = event.target.value;
-    if (detail == ""){
-      const index = this.q6.indexOf(event.id)
+    if (this.q6.length == 0){
+      console.log("LENGTH = 0")
+      if (event.target.id == "news"){
+        this.q6.push(this.news)
+      }
+      else if (event.target.id == "website"){
+        this.q6.push(this.website)
+      }
+      else if (event.target.id == "conferrence"){
+        this.q6.push(this.conferrence)
+      }
+      else if (event.target.id == "suggested"){
+        this.q6.push(this.suggested)
+      }
+      else if (event.target.id == "other"){
+        this.q6.push(this.other)
+      }
+    }else{
+      console.log("BEFORE LOOP")
+      console.log(this.q6)
+      for (let i = 0; i<this.q6.length; i++){
+        console.log("BEFORE IF")
+        console.log(this.q6[i])
+        if (this.q6[i].mediaType == event.target.id){
+          console.log("BEFORE WORK")
+          console.log(this.q6);
+          this.q6.splice(i, 1)
+          
+          break;
+        }
+      }
+      if (detail != ""){
+        if (event.target.id == "news"){
+          this.q6.push(this.news)
+        }
+        else if (event.target.id == "website"){
+          this.q6.push(this.website)
+        }
+        else if (event.target.id == "conferrence"){
+          this.q6.push(this.conferrence)
+        }
+        else if (event.target.id == "suggested"){
+          this.q6.push(this.suggested)
+        }
+        else if (event.target.id == "other"){
+          this.q6.push(this.other)
+        }
+        
+      }
     }
+    console.log("AFTER WORK")
+    console.log(this.q6)
   }
-
   noq5() {
     this.pi.q5 = null
   }

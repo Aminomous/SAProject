@@ -41,8 +41,6 @@ public class ApplicantInfoController {
 
     @FXML
     private void initialize() {
-        Image test = new Image(getClass().getResourceAsStream("/asset/kiiroitori2.png"));
-        imageButton.setGraphic(new javafx.scene.image.ImageView(test));
     }
 
     @FXML
