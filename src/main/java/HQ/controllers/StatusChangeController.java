@@ -49,9 +49,9 @@ public class StatusChangeController {
             }
         }
 
-//        if(application.getApplicationStatus6() == 0){
-//            acceptButton.setDisable(status5.isSelected());
-//        }else {
+        if(application.getApplicationStatus6() == 0){
+            acceptButton.setDisable(status5.isSelected());
+        }else {
             if(application.getApplicationStatus6() == 1){
                 acceptButton.setSelected(true);
             }else{
@@ -59,7 +59,7 @@ public class StatusChangeController {
             }
 //            acceptButton.setDisable(true);
 //            declineButton.setDisable(true);
-//        }
+        }
 
     }
 

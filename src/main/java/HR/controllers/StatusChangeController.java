@@ -41,16 +41,20 @@ public class StatusChangeController {
 
         int latestStatus = application.getLatestStatus();
 
-        for (int i = 0; i< latestStatus; i++){
-            statuses[i].setSelected(true);
-            if (i == latestStatus-1){
-                statuses[i].setDisable(false);
-                statuses[Math.min(i+1, 4)].setDisable(false);
+        if (latestStatus == 0){
+            status1.setDisable(false);
+        }else {
+
+            for (int i = 0; i < latestStatus; i++) {
+                statuses[i].setSelected(true);
+                if (i == latestStatus - 1) {
+                    statuses[i].setDisable(false);
+                    statuses[Math.min(i + 1, 4)].setDisable(false);
+                }
             }
         }
-
         if(application.getApplicationStatus6() == 0){
-            acceptButton.setDisable(status5.isSelected());
+            acceptButton.setDisable(!status5.isSelected());
         }else {
             if(application.getApplicationStatus6() == 1){
                 acceptButton.setSelected(true);
