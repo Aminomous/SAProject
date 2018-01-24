@@ -49,7 +49,7 @@ public class Application13Controller extends AbstractApplicationController {
                     newValue = oldValue;
                 }
 
-                mainCtrl.showApplicantInfo(newValue.getId());
+                mainCtrl.showApplicantInfo(newValue.getRefnum());
             }
         });
     }
