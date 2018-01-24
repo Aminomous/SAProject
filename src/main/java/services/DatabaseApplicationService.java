@@ -190,14 +190,20 @@ public class DatabaseApplicationService extends DatabaseDataService<Application>
             String major = result.getString(5);
             String studyFromRaw = result.getString(6);
             String studyToRaw = result.getString(7);
+            GregorianCalendar studyTo = null;
             double gpa = result.getDouble(8);
+            if (studyToRaw != null) {
+                studyTo = new GregorianCalendar();
+                String[] temp = studyToRaw.split("-");
+                studyTo.set(Calendar.YEAR, Integer.valueOf(temp[0]));
+            }
 
-            GregorianCalendar studyFrom = new GregorianCalendar();
-            GregorianCalendar studyTo = new GregorianCalendar();
-            String[] temp = studyFromRaw.split("-");
-            studyFrom.set(Calendar.YEAR, Integer.valueOf(temp[0]));
-            temp = studyToRaw.split("-");
-            studyTo.set(Calendar.YEAR, Integer.valueOf(temp[0]));
+            GregorianCalendar studyFrom = null;
+            if (studyFromRaw != null) {
+                studyFrom = new GregorianCalendar();
+                String[] temp = studyFromRaw.split("-");
+                studyFrom.set(Calendar.YEAR, Integer.valueOf(temp[0]));
+            }
 
             educations.add(new Education(level, instituteName, degreeOrCertificate, major, studyFrom, studyTo, gpa));
         }
