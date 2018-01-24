@@ -22,4 +22,14 @@
     <label for="address2"  class="col-3"> <span class="control-label-required">ที่อยู่</span> <input type="text" id="address2" [(ngModel)]="ref2.address" (change)="change(0)"></label>
     <label for="telephone2"  class="col-4"> <span class="control-label-required">เบอร์โทรศัพท์</span> <input type="tel" id="telephone2" [(ngModel)]="ref2.telephone" maxlength="10" pattern="0[0-9]{9}" (change)="change(0)"></label>
   </div>
+  <div class="row">
+    <div class="col-12">
+      <label for="relative">ระบุชื่อญาติ/ เพื่อน ที่ทำงานอยู่ในเครือโรงพยาบาลพญาไทและเครือโรงพยาบาลเปาโล ซึ่งท่านรู้จัก <input id="relative" type="text" [(ngModel)]="application.relativeWorkInHospital" size="100%"></label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <label for="add">บันทึกเพิ่มเติมซึ่งท่านคิดว่าจะเป็นประโยชน์ต่อการสมัครงาน <input id="add" type="text" [(ngModel)]="application.additionalInformation" size="100%"></label>
+    </div>
+  </div>
 </div>
