@@ -27,11 +27,11 @@ public class ApplicantTableController {
 
     @FXML
     private void initialize() {
-        IDColumn.setCellValueFactory(new PropertyValueFactory<HR.controllers.ApplicantTableController.ApplicantData, String>("id"));
-        firstnameColumn.setCellValueFactory(new PropertyValueFactory<HR.controllers.ApplicantTableController.ApplicantData, String>("firstName"));
-        lastnameColumn.setCellValueFactory(new PropertyValueFactory<HR.controllers.ApplicantTableController.ApplicantData, String>("lastName"));
-        positionColumn.setCellValueFactory(new PropertyValueFactory<HR.controllers.ApplicantTableController.ApplicantData, String>("position"));
-        statusColumn.setCellValueFactory(new PropertyValueFactory<HR.controllers.ApplicantTableController.ApplicantData, String>("status"));
+        IDColumn.setCellValueFactory(new PropertyValueFactory<HQ.controllers.ApplicantTableController.ApplicantData, String>("id"));
+        firstnameColumn.setCellValueFactory(new PropertyValueFactory<HQ.controllers.ApplicantTableController.ApplicantData, String>("firstName"));
+        lastnameColumn.setCellValueFactory(new PropertyValueFactory<HQ.controllers.ApplicantTableController.ApplicantData, String>("lastName"));
+        positionColumn.setCellValueFactory(new PropertyValueFactory<HQ.controllers.ApplicantTableController.ApplicantData, String>("position"));
+        statusColumn.setCellValueFactory(new PropertyValueFactory<HQ.controllers.ApplicantTableController.ApplicantData, String>("status"));
 
         tableViewData = FXCollections.observableArrayList();
 

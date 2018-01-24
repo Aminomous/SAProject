@@ -29,8 +29,8 @@ public class MainController {
 
     public MainController(Stage stage) throws IOException, SQLException {
         this.stage = stage;
-//        this.applicationService = new DatabaseApplicationService("//192.168.43.1:3306/saapplicationmanager", new MySQLConnector());
-        this.applicationService = new DatabaseApplicationService("saDB.db", new SQLiteConnector());
+        this.applicationService = new DatabaseApplicationService("//localhost:3306/saapplicationmanager", new MySQLConnector());
+//        this.applicationService = new DatabaseApplicationService("saDB.db", new SQLiteConnector());
         this.loadPane();
         loadData();
 
